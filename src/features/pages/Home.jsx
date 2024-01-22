@@ -9,7 +9,7 @@ import ChartThree from "../../shared/ChartThree";
 
 const Home = () => {
   return (
-    <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
+    <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased  bg-gray-700  text-white">
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
         <div className="p-4">
           <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
