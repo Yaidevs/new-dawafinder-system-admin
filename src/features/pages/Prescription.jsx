@@ -1,5 +1,4 @@
 import React from "react";
-import pres1 from "../../assets/pres1.png";
 import pres2 from "../../assets/pres2.jpeg";
 import pres3 from "../../assets/pres2.png";
 
@@ -23,10 +22,7 @@ const Prescription = () => {
           <div className="w-full flex gap-3 p-4">
             <div className="relative flex w-full max-w-[16rem] max-h-[32rem] flex-col rounded-xl bg-gray-600  bg-clip-border shadow-lg">
               <div className="relative mx-4 mt-4 overflow-hidden bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
-                <img
-                src={pres3}
-                  alt="ui/ux review check"
-                />
+                <img src={pres3} alt="ui/ux review check" />
                 <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60" />
               </div>
               <div className="p-6">
