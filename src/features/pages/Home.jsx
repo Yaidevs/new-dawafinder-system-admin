@@ -3,6 +3,8 @@ import UserIcon from "../../assets/users.png";
 import StoreIcon from "../../assets/medicine-store.png";
 import AdsIcon from "../../assets/Ads.png";
 
+
+
 const Home = () => {
   return (
     <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
@@ -132,6 +134,9 @@ const Home = () => {
           </dl>
         </div>
       </div>
+       <div className="charts">
+           
+       </div>
     </div>
   );
 };

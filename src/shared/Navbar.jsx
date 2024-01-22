@@ -5,14 +5,14 @@ import dawalogo from "../assets/dawafinder.png";
 const Navbar = () => {
   return (
     <div className="fixed w-full flex items-center justify-between h-14 text-white z-10">
-      <div className="flex items-center justify-start md:justify-center p-5 w-14 md:w-64 h-14 bg-blue-800 dark:bg-gray-800 border-none">
+      <div className="flex items-center justify-start md:justify-center p-5 w-14 md:w-64 h-14  dark:bg-gray-800 border-none">
         <img
           className="w-50 h-50 md:w-50 md:h-50 mr-2 rounded-md overflow-hidden"
           src={dawalogo}
           alt="."
         />
       </div>
-      <div className="flex w-screen justify-between items-center h-14 bg-blue-800 dark:bg-gray-800 header-right">
+      <div className="flex w-screen justify-between items-center h-14  dark:bg-gray-800 header-right">
         <div className="dark:bg-gray-700 rounded flex items-center w-full max-w-xl ml-9 mr-4 p-2 shadow-sm border border-gray-400">
           <button className="outline-none focus:outline-none">
             <svg
