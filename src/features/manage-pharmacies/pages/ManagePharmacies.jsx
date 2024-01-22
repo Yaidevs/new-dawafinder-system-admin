@@ -1,4 +1,6 @@
 import React from "react";
+import pharma1 from "../../../assets/pharma1.jpeg";
+import pharma2 from "../../../assets/pharma2.jpeg";
 import pharma3 from "../../../assets/pharma3.jpeg";
 import pharma4 from "../../../assets/pharma4.jpeg";
 
@@ -13,7 +15,7 @@ const ManagePharmacies = () => {
           <div className="w-full flex gap-3 p-4">
             <div className="relative flex w-full max-w-[16rem] max-h-[32rem] flex-col rounded-xl bg-gray-600  bg-clip-border shadow-lg">
               <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
-                <img src={pharma3} alt="ui/ux review check" />
+                <img src={pharma1} alt="ui/ux review check" />
                 <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60" />
               </div>
               <div className="p-6">
@@ -27,7 +29,7 @@ const ManagePharmacies = () => {
             </div>
             <div className="relative flex w-full max-w-[16rem] max-h-[32rem] flex-col rounded-xl bg-gray-600  bg-clip-border shadow-lg">
               <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
-                <img src={pharma4} alt="ui/ux review check" />
+                <img src={pharma2} alt="ui/ux review check" />
                 <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60" />
               </div>
               <div className="p-6">
