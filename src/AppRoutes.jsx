@@ -4,7 +4,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./features/pages/Home";
 import ManagePharmacies from "./features/manage-pharmacies/pages/ManagePharmacies";
 import Layout from "./shared/Layout";
-import ManageUsers from './features/manage-users/pages/ManageUsers';
+import ManageUsers from "./features/manage-users/pages/ManageUsers";
+import Prescription from "./features/pages/Prescription";
+
 
 const AppRoutes = () => {
   return (
@@ -31,6 +33,14 @@ const AppRoutes = () => {
           element={
             <Layout>
               <ManageUsers />
+            </Layout>
+          }
+        />
+        <Route
+          path="/prescriptions"
+          element={
+            <Layout>
+              <Prescription/>
             </Layout>
           }
         />

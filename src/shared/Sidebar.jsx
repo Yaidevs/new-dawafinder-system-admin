@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FcAdvertising } from "react-icons/fc";
+import { RiAdvertisementLine } from "react-icons/ri";
 import { AiOutlineMedicineBox } from "react-icons/ai";
 import { MdOutlineDashboard } from "react-icons/md";
 import { FaFilePrescription } from "react-icons/fa";
@@ -40,11 +40,11 @@ const Sidebar = () => {
           </li>
           <li>
             <Link
-              to='/manage-ads'
+              to='/'
               className="relative flex flex-row items-center h-11 focus:outline-none  hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent  hover:border-gray-800 pr-6"
             >
               <span className="inline-flex justify-center items-center ml-4">
-              <FcAdvertising size={20} />
+              <RiAdvertisementLine size ={20} />
               </span>
               <span className="ml-2 text-sm tracking-wide truncate">
                 Manage Ads
@@ -66,7 +66,7 @@ const Sidebar = () => {
           </li>
           <li>
             <Link
-              to='/manage-users'
+              to='/'
               className="relative flex flex-row items-center h-11 focus:outline-none  hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent  hover:border-gray-800 pr-6"
             >
               <span className="inline-flex justify-center items-center ml-4">
@@ -85,8 +85,8 @@ const Sidebar = () => {
             </div>
           </li>
           <li>
-            <a
-              href='.'
+            <Link
+              to='/'
               className="relative flex flex-row items-center h-11 focus:outline-none  hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent  hover:border-gray-800 pr-6"
             >
               <span className="inline-flex justify-center items-center ml-4">
@@ -95,11 +95,11 @@ const Sidebar = () => {
               <span className="ml-2 text-sm tracking-wide truncate">
                 Profile
               </span>
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href='.'
+            <Link
+              to='/'
               className="relative flex flex-row items-center h-11 focus:outline-none  hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent  hover:border-gray-800 pr-6"
             >
               <span className="inline-flex justify-center items-center ml-4">
@@ -108,7 +108,7 @@ const Sidebar = () => {
               <span className="ml-2 text-sm tracking-wide truncate">
                 Settings
               </span>
-            </a>
+            </Link>
           </li>
         </ul>
         <p className="mb-14 px-5 py-3 hidden md:block text-center text-xs">
