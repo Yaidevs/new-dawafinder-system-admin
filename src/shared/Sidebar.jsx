@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FcAdvertising } from "react-icons/fc";
 import { AiOutlineMedicineBox } from "react-icons/ai";
 import { MdOutlineDashboard } from "react-icons/md";
+import { FaFilePrescription } from "react-icons/fa";
 import { FiUsers } from "react-icons/fi";
 import { CiUser } from "react-icons/ci";
 import { IoMdSettings } from "react-icons/io";
@@ -47,6 +48,19 @@ const Sidebar = () => {
               </span>
               <span className="ml-2 text-sm tracking-wide truncate">
                 Manage Ads
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              to='/prescriptions'
+              className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6"
+            >
+              <span className="inline-flex justify-center items-center ml-4">
+              <FaFilePrescription size={20} />
+              </span>
+              <span className="ml-2 text-sm tracking-wide truncate">
+                Prescription
               </span>
             </Link>
           </li>
