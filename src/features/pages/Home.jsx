@@ -36,7 +36,7 @@ const Home = () => {
                   <span className="sr-only"> Increased by </span>
                   122
                 </p>
-                <div className="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
+                {/* <div className="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
                   <div className="text-sm">
                     <a
                       href="."
@@ -46,7 +46,7 @@ const Home = () => {
                       <span className="sr-only"> Total Subscribers stats</span>
                     </a>
                   </div>
-                </div>
+                </div> */}
               </dd>
             </div>
             <div className="relative overflow-hidden rounded-lg bg-gray-600 px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6">
@@ -76,7 +76,7 @@ const Home = () => {
                   <span className="sr-only"> Increased by </span>
                   5.4%
                 </p>
-                <div className="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
+                {/* <div className="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
                   <div className="text-sm">
                     <a
                       href="."
@@ -86,7 +86,7 @@ const Home = () => {
                       <span className="sr-only"> Avg. Open Rate stats</span>
                     </a>
                   </div>
-                </div>
+                </div> */}
               </dd>
             </div>
             <div className="relative overflow-hidden rounded-lg bg-gray-600 px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6">
@@ -116,7 +116,7 @@ const Home = () => {
                   <span className="sr-only"> Decreased by </span>
                   3.2%
                 </p>
-                <div className="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
+                {/* <div className="absolute inset-x-0 bottom-0 bg-gray-50 px-4 py-4 sm:px-6">
                   <div className="text-sm">
                     <a
                       href="."
@@ -126,7 +126,7 @@ const Home = () => {
                       <span className="sr-only"> Avg. Click Rate stats</span>
                     </a>
                   </div>
-                </div>
+                </div> */}
               </dd>
             </div>
           </dl>
