@@ -2,9 +2,9 @@ import React from "react";
 import UserIcon from "../../assets/users.png";
 import StoreIcon from "../../assets/medicine-store.png";
 import AdsIcon from "../../assets/Ads.png";
-
-
-
+import ChartOne from "../../shared/ChartOne";
+import ChartTwo from "../../shared/ChartTwo";
+import ChartThree from "../../shared/ChartThree";
 
 
 const Home = () => {
@@ -13,7 +13,7 @@ const Home = () => {
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
         <div className="p-4">
           <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="relative overflow-hidden rounded-lg bg-gray-600 px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6">
+            <div className="relative overflow-hidden rounded-lg bg-gray-900 px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6">
               <dt>
                 <div className="absolute rounded-md bg-red-600 p-3">
                   <img className="w-8 h-8" src={StoreIcon} alt="." />
@@ -53,7 +53,7 @@ const Home = () => {
                 </div> */}
               </dd>
             </div>
-            <div className="relative overflow-hidden rounded-lg bg-gray-600 px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6">
+            <div className="relative overflow-hidden rounded-lg bg-gray-900 px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6">
               <dt>
                 <div className="absolute rounded-md bg-orange-500  p-3">
                   <img className="w-8 h-8" src={AdsIcon} alt="." />
@@ -93,7 +93,7 @@ const Home = () => {
                 </div> */}
               </dd>
             </div>
-            <div className="relative overflow-hidden rounded-lg bg-gray-600 px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6">
+            <div className="relative overflow-hidden rounded-lg bg-gray-900 px-4 pb-12 pt-5 shadow sm:px-6 sm:pt-6">
               <dt>
                 <div className="absolute rounded-md bg-blue-500 p-3">
                   <img className="w-8 h-8" src={UserIcon} alt="." />
@@ -135,10 +135,19 @@ const Home = () => {
             </div>
           </dl>
         </div>
+        <div className="charts flex p-3 gap-4">
+          <div className="chartone w-1/2">
+            <ChartOne />
+          </div>
+          <div className="charttwo w-1/2">
+            <ChartTwo />
+          </div>
+
+        </div>
+        <div className="charthree p-4">
+            <ChartThree />
+          </div>
       </div>
-       <div className="charts">
-          
-       </div>
     </div>
   );
 };

@@ -6,7 +6,7 @@ import {
     Typography,
   } from "@material-tailwind/react";
   import Chart from "react-apexcharts";
-  import { BeakerIcon } from '@heroicons/react/24/solid'
+
    
   // If you're using Next.js please use the dynamic import for react-apexcharts and remove the import from the top for the react-apexcharts
   // import dynamic from "next/dynamic";
@@ -33,7 +33,7 @@ import {
       dataLabels: {
         enabled: false,
       },
-      colors: ["#020617"],
+      colors: ["#fff"],
       plotOptions: {
         bar: {
           columnWidth: "40%",
@@ -102,27 +102,23 @@ import {
 
 const ChartOne = () => {
     return (
-        <Card>
+        <Card className=' bg-gray-900'>
           <CardHeader
             floated={false}
             shadow={false}
             color="transparent"
             className="flex flex-col gap-4 rounded-none md:flex-row md:items-center"
           >
-            <div className="w-max rounded-lg bg-gray-900 p-5 text-white">
-              <BeakerIcon className="h-6 w-6" />
-            </div>
             <div>
-              <Typography variant="h6" color="blue-gray">
-                Bar Chart
+              <Typography className='text-white font-bold flex justify-center'>
+                
               </Typography>
               <Typography
                 variant="small"
                 color="gray"
-                className="max-w-sm font-normal"
+                className="max-w-sm font-normal text-white"
               >
-                Visualize your data in a simple way using the
-                @material-tailwind/react chart plugin.
+                
               </Typography>
             </div>
           </CardHeader>
