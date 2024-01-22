@@ -1,4 +1,4 @@
-name: 🚀 System Admin
+name:  System Admin
 on:
   push:
     branches:
