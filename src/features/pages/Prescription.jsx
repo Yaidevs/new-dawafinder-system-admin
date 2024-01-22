@@ -24,7 +24,7 @@ const Prescription = () => {
             <div className="relative flex w-full max-w-[16rem] max-h-[32rem] flex-col rounded-xl bg-gray-600  bg-clip-border shadow-lg">
               <div className="relative mx-4 mt-4 overflow-hidden bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
                 <img
-                  src="https://www.researchgate.net/publication/345830022/figure/fig1/AS:957640024793088@1605330582266/A-sample-prescription-containing-handwritten-texts-over-the-printed-lines.png"
+                src={pres3}
                   alt="ui/ux review check"
                 />
                 <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60" />
@@ -38,7 +38,7 @@ const Prescription = () => {
             </div>
             <div className="relative flex w-full max-w-[16rem] max-h-[32rem] flex-col rounded-xl bg-gray-600  bg-clip-border shadow-lg">
               <div className="relative mx-4 mt-4 overflow-hidden bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
-                <img src={pres1} alt="ui/ux review check" />
+                <img src={pres3} alt="ui/ux review check" />
                 <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60" />
               </div>
               <div className="p-6">
