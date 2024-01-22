@@ -1,5 +1,4 @@
 import React from "react";
-// import { MdOutlineDarkMode } from "react-icons/md";
 import { IoIosLogOut } from "react-icons/io";
 import dawalogo from "../assets/dawafinder.png";
 
@@ -10,6 +9,7 @@ const Navbar = () => {
         <img
           className="w-50 h-50 md:w-50 md:h-50 mr-2 rounded-md overflow-hidden"
           src={dawalogo}
+          alt="."
         />
       </div>
       <div className="flex w-screen justify-between items-center h-14 bg-blue-800 dark:bg-gray-800 header-right">
@@ -43,7 +43,7 @@ const Navbar = () => {
             <div className="block w-px h-6 mx-3 bg-gray-400 dark:bg-gray-700" />
           </li>
           <li>
-            <a href="#" className="flex items-center mr-4 hover:text-blue-100">
+            <a href="." className="flex items-center mr-4 hover:text-blue-100">
               <span className="inline-flex mr-1">
               <IoIosLogOut size={20} />
               </span>
