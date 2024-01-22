@@ -3,7 +3,7 @@ import React from "react";
 
 const ManagePharmacies = () => {
   return (
-    <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
+    <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-700 text-white">
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
         <div className="">
           <div className ="flex justify-center font-bold p-4">Pharmacies we are working with</div>
