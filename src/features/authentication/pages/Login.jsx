@@ -1,19 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div className="flex flex-col items-center justify-center h-screen shadow">
       <div className="sm:mx-auto sm:w-full sm>:max-w-sm">
         {/* <img
           className="mx-auto h-10 w-auto"
           src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
           alt="Dawa Logo"
         /> */}
-        <h2 className="mt-10 text-center font-sans text-2xl font-semibold leading-9 tracking-tight text-gray-900">
+        {/* <h2 className="mt-10 text-center font-sans text-2xl font-semibold leading-9 tracking-tight text-gray-900">
           Sign in
-        </h2>
+        </h2> */}
       </div>
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="sm:mx-auto border-gray-500 p-10 shadow sm:w-full sm:max-w-sm">
         <form className="space-y-6" action="#">
           <div>
             <label
@@ -24,12 +25,13 @@ const Login = () => {
             </label>
             <div className="mt-2">
               <input
+                placeholder="email"
                 id="email"
                 name="email"
                 type="email"
                 autoComplete="email"
                 required
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset outline-none"
+                className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset outline-none"
               />
             </div>
           </div>
@@ -52,22 +54,25 @@ const Login = () => {
             </div>
             <div className="mt-2">
               <input
+                placeholder="password"
                 id="password"
                 name="password"
                 type="password"
                 autoComplete="current-password"
                 required
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset outline-none"
+                className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset outline-none"
               />
             </div>
           </div>
           <div>
-            <button
-              type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              Sign in
-            </button>
+            <Link to="/home">
+              <button
+                type="submit"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Sign in
+              </button>
+            </Link>
           </div>
         </form>
       </div>

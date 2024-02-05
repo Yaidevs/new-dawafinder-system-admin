@@ -6,14 +6,15 @@ import ManagePharmacies from "./features/manage-pharmacies/pages/ManagePharmacie
 import Layout from "./shared/Layout";
 import ManageUsers from "./features/manage-users/pages/ManageUsers";
 import Prescription from "./features/pages/Prescription";
-
+import Login from "./features/authentication/pages/Login";
 
 const AppRoutes = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Login />} />
         <Route
-          path="/"
+          path="/home"
           element={
             <Layout>
               <Home />
@@ -40,7 +41,7 @@ const AppRoutes = () => {
           path="/prescriptions"
           element={
             <Layout>
-              <Prescription/>
+              <Prescription />
             </Layout>
           }
         />
