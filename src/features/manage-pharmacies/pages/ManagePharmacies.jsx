@@ -9,13 +9,14 @@ const ManagePharmacies = () => {
     <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-700 text-white">
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
         <div className="">
-          <div className="flex justify-center font-bold p-4">
-            Pharmacies we are working with
+          <div className="flex justify-between p-4">
+            <h1 className="mb-2 font-bold">Pharmacies We Are Working With</h1>
+              <button className="bg-green-500 px-3 rounded">Add pharmacy</button>
           </div>
-          <div className="w-full flex gap-3 p-4">
-            <div className="relative flex w-full max-w-[16rem] max-h-[32rem] flex-col rounded-xl bg-gray-600  bg-clip-border shadow-lg">
+          <div className="w-full flex gap-3 p-4 mt-2">
+            <div className="relative flex w-full max-w-[16rem] max-h-[32rem] flex-col rounded-xl bg-gray-600  bg-clip-border shadow-lg cursor-pointer">
               <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
-                <img src={pharma1} alt="ui/ux review check" />
+                <img src={pharma1} alt=".." />
                 <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60" />
               </div>
               <div className="p-6">
@@ -27,9 +28,9 @@ const ManagePharmacies = () => {
                 </div>
               </div>
             </div>
-            <div className="relative flex w-full max-w-[16rem] max-h-[32rem] flex-col rounded-xl bg-gray-600  bg-clip-border shadow-lg">
+            <div className="relative flex w-full max-w-[16rem] max-h-[32rem] flex-col rounded-xl bg-gray-600  bg-clip-border shadow-lg cursor-pointer">
               <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
-                <img src={pharma2} alt="ui/ux review check" />
+                <img src={pharma2} alt=".." />
                 <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60" />
               </div>
               <div className="p-6">
@@ -41,9 +42,9 @@ const ManagePharmacies = () => {
                 </div>
               </div>
             </div>
-            <div className="relative flex w-full max-w-[16rem] max-h-[32rem] flex-col rounded-xl bg-gray-600  bg-clip-border shadow-lg">
+            <div className="relative flex w-full max-w-[16rem] max-h-[32rem] flex-col rounded-xl bg-gray-600  bg-clip-border shadow-lg cursor-pointer">
               <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
-                <img src={pharma3} alt="ui/ux review check" />
+                <img src={pharma3} alt=".." />
                 <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60" />
               </div>
               <div className="p-6">
@@ -55,9 +56,9 @@ const ManagePharmacies = () => {
                 </div>
               </div>
             </div>
-            <div className="relative flex w-full max-w-[16rem] max-h-[32rem] flex-col rounded-xl bg-gray-600  bg-clip-border shadow-lg">
+            <div className="relative flex w-full max-w-[16rem] max-h-[32rem] flex-col rounded-xl bg-gray-600  bg-clip-border shadow-lg cursor-pointer">
               <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
-                <img src={pharma4} alt="ui/ux review check" />
+                <img src={pharma4} alt=".." />
                 <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-tr from-transparent via-transparent to-black/60" />
               </div>
               <div className="p-6">

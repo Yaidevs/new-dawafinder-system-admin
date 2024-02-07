@@ -3,7 +3,7 @@ import React from "react";
 const ClientTable = () => {
   return (
     <div className="mt-4 mx-4">
-      <div className="w-full overflow-hidden rounded-lg shadow-xs">
+      <div className="w-full overflow-hidden shadow-xs">
         <div className="w-full overflow-x-auto">
           <table className="w-full">
             <thead>
@@ -18,10 +18,10 @@ const ClientTable = () => {
               <tr className="bg-gray-50 dark:bg-gray-800 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
                 <td className="px-4 py-3">
                   <div className="flex items-center text-sm">
-                    <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                    <div className="relative hidden w-10 h-10 mr-3 rounded-full md:block">
                       <img
-                        className="object-cover w-full h-full rounded-full"
-                        src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+                        className="object-cover w-full h-full"
+                        src="https://images.unsplash.com/photo-1642055514517-7b52288890ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBoYXJtYWN5fGVufDB8fDB8fHww"
                         alt="."
                         loading="lazy"
                         
@@ -52,10 +52,10 @@ const ClientTable = () => {
               <tr className="bg-gray-50 dark:bg-gray-800 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
                 <td className="px-4 py-3">
                   <div className="flex items-center text-sm">
-                    <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                    <div className="relative hidden w-10 h-10  mr-3 rounded-full md:block">
                       <img
-                        className="object-cover w-full h-full rounded-full"
-                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&facepad=3&fit=facearea&s=707b9c33066bf8808c934c8ab394dff6"
+                        className="object-cover w-full h-full"
+                        src="https://images.unsplash.com/photo-1576602975754-efdf313b9342?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBoYXJtYWN5fGVufDB8fDB8fHww"
                         alt="."
                         loading="lazy"
                       />
@@ -84,10 +84,10 @@ const ClientTable = () => {
               <tr className="bg-gray-50 dark:bg-gray-800 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
                 <td className="px-4 py-3">
                   <div className="flex items-center text-sm">
-                    <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                    <div className="relative hidden w-10 h-10  mr-3 rounded-full md:block">
                       <img
-                        className="object-cover w-full h-full rounded-full"
-                        src="https://images.unsplash.com/photo-1502720705749-871143f0e671?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=b8377ca9f985d80264279f277f3a67f5"
+                        className="object-cover w-full h-full"
+                        src="https://images.unsplash.com/photo-1576602975754-efdf313b9342?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBoYXJtYWN5fGVufDB8fDB8fHww"
                         alt="."
                         loading="lazy"
                       />
@@ -116,10 +116,10 @@ const ClientTable = () => {
               <tr className="bg-gray-50 dark:bg-gray-800 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
                 <td className="px-4 py-3">
                   <div className="flex items-center text-sm">
-                    <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                    <div className="relative hidden w-10 h-10  mr-3 rounded-full md:block">
                       <img
-                        className="object-cover w-full h-full rounded-full"
-                        src="https://images.unsplash.com/photo-1551006917-3b4c078c47c9?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+                        className="object-cover w-full h-full"
+                        src="https://images.unsplash.com/photo-1576602975754-efdf313b9342?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBoYXJtYWN5fGVufDB8fDB8fHww"
                         alt="."
                         loading="lazy"
                       />
@@ -148,10 +148,10 @@ const ClientTable = () => {
               <tr className="bg-gray-50 dark:bg-gray-800 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
                 <td className="px-4 py-3">
                   <div className="flex items-center text-sm">
-                    <div className="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                    <div className="relative hidden w-10 h-10  mr-3 rounded-full md:block">
                       <img
-                        className="object-cover w-full h-full rounded-full"
-                        src="https://images.unsplash.com/photo-1566411520896-01e7ca4726af?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+                        className="object-cover w-full h-full"
+                        src="https://images.unsplash.com/photo-1576602975754-efdf313b9342?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBoYXJtYWN5fGVufDB8fDB8fHww"
                         alt="."
                         loading="lazy"
                       />

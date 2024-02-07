@@ -14,7 +14,7 @@ const Login = () => {
           Sign in
         </h2> */}
       </div>
-      <div className="sm:mx-auto border-gray-500 p-10 shadow sm:w-full sm:max-w-sm">
+      <div className="sm:mx-auto border-black p-10 shadow sm:w-full sm:max-w-sm">
         <form className="space-y-6" action="#">
           <div>
             <label
