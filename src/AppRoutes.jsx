@@ -7,6 +7,7 @@ import Layout from "./shared/Layout";
 import ManageUsers from "./features/manage-users/pages/ManageUsers";
 import Prescription from "./features/pages/Prescription";
 import Login from "./features/authentication/pages/Login";
+import ManageAds from "./features/manage-ads/pages/ManageAds";
 
 const AppRoutes = () => {
   return (
@@ -18,6 +19,14 @@ const AppRoutes = () => {
           element={
             <Layout>
               <Home />
+            </Layout>
+          }
+        />
+        <Route
+          path="/manage-ads"
+          element={
+            <Layout>
+              <ManageAds />
             </Layout>
           }
         />

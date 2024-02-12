@@ -142,7 +142,6 @@ const Home = () => {
           <div className="charttwo w-1/2">
             <ChartTwo />
           </div>
-
         </div>
         <div className="charthree p-4">
             <ChartThree />
