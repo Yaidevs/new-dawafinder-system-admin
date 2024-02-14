@@ -7,15 +7,73 @@ const ClientTable = () => {
         <div className="w-full overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+              <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-900 ">
                 <th className="px-4 py-3">Pharmacy</th>
                 <th className="px-4 py-3">Location</th>
                 <th className="px-4 py-3">Status</th>
                 <th className="px-4 py-3">Date</th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-              <tr className="bg-gray-50 dark:bg-gray-800 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
+            <tbody className=" divide-y divide-gray-700 bg-gray-900">
+              <tr className=" bg-gray-900 cursor-pointer  hover:bg-gray-900 text-gray-300 ">
+                <td className="px-4 py-3">
+                  <div className="flex items-center text-sm">
+                    <div className="relative hidden w-10 h-10 mr-3 rounded-full md:block">
+                      <img
+                        className="object-cover w-full h-full"
+                        src="https://images.unsplash.com/photo-1642055514517-7b52288890ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBoYXJtYWN5fGVufDB8fDB8fHww"
+                        alt="."
+                        loading="lazy"
+                      />
+                      <div
+                        className="absolute inset-0 rounded-full shadow-inner"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <div>
+                      <p className="font-semibold">Hans Burger</p>
+                      <p className="text-xs text-gray-300 ">10x Developer</p>
+                    </div>
+                  </div>
+                </td>
+                <td className="px-4 py-3 text-sm">$855.85</td>
+                <td className="px-4 py-3 text-xs">
+                  <span className="px-2 py-1 font-semibold leading-tight text-gray-300  rounded-full bg-green-700 ">
+                    Approved
+                  </span>
+                </td>
+                <td className="px-4 py-3 text-sm">15-01-2021</td>
+              </tr>
+              <tr className=" bg-gray-900 cursor-pointer  hover:bg-gray-900 text-gray-300 ">
+                <td className="px-4 py-3">
+                  <div className="flex items-center text-sm">
+                    <div className="relative hidden w-10 h-10 mr-3 rounded-full md:block">
+                      <img
+                        className="object-cover w-full h-full"
+                        src="https://images.unsplash.com/photo-1642055514517-7b52288890ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBoYXJtYWN5fGVufDB8fDB8fHww"
+                        alt="."
+                        loading="lazy"
+                      />
+                      <div
+                        className="absolute inset-0 rounded-full shadow-inner"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <div>
+                      <p className="font-semibold">Hans Burger</p>
+                      <p className="text-xs text-gray-300 ">10x Developer</p>
+                    </div>
+                  </div>
+                </td>
+                <td className="px-4 py-3 text-sm">$855.85</td>
+                <td className="px-4 py-3 text-xs">
+                  <span className="px-2 py-1 font-semibold leading-tight text-gray-300  rounded-full bg-green-700 ">
+                    Approved
+                  </span>
+                </td>
+                <td className="px-4 py-3 text-sm">15-01-2021</td>
+              </tr>
+              <tr className=" bg-gray-900 cursor-pointer  hover:bg-gray-900 text-gray-300 ">
                 <td className="px-4 py-3">
                   <div className="flex items-center text-sm">
                     <div className="relative hidden w-10 h-10 mr-3 rounded-full md:block">
@@ -34,7 +92,7 @@ const ClientTable = () => {
                     </div>
                     <div>
                       <p className="font-semibold">Hans Burger</p>
-                      <p className="text-xs text-gray-600 dark:text-gray-400">
+                      <p className="text-xs text-gray-300 ">
                         10x Developer
                       </p>
                     </div>
@@ -42,20 +100,20 @@ const ClientTable = () => {
                 </td>
                 <td className="px-4 py-3 text-sm">$855.85</td>
                 <td className="px-4 py-3 text-xs">
-                  <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                  <span className="px-2 py-1 font-semibold leading-tight text-gray-300  rounded-full bg-green-700 ">
                     
                     Approved
                   </span>
                 </td>
                 <td className="px-4 py-3 text-sm">15-01-2021</td>
               </tr>
-              <tr className="bg-gray-50 dark:bg-gray-800 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
+              <tr className=" bg-gray-900 cursor-pointer  hover:bg-gray-900 text-gray-300 ">
                 <td className="px-4 py-3">
                   <div className="flex items-center text-sm">
-                    <div className="relative hidden w-10 h-10  mr-3 rounded-full md:block">
+                    <div className="relative hidden w-10 h-10 mr-3 rounded-full md:block">
                       <img
                         className="object-cover w-full h-full"
-                        src="https://images.unsplash.com/photo-1576602975754-efdf313b9342?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBoYXJtYWN5fGVufDB8fDB8fHww"
+                        src="https://images.unsplash.com/photo-1642055514517-7b52288890ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBoYXJtYWN5fGVufDB8fDB8fHww"
                         alt="."
                         loading="lazy"
                       />
@@ -65,93 +123,26 @@ const ClientTable = () => {
                       />
                     </div>
                     <div>
-                      <p className="font-semibold">Jolina Angelie</p>
-                      <p className="text-xs text-gray-600 dark:text-gray-400">
-                        Unemployed
-                      </p>
+                      <p className="font-semibold">Hans Burger</p>
+                      <p className="text-xs text-gray-300 ">10x Developer</p>
                     </div>
                   </div>
                 </td>
-                <td className="px-4 py-3 text-sm">$369.75</td>
+                <td className="px-4 py-3 text-sm">$855.85</td>
                 <td className="px-4 py-3 text-xs">
-                  <span className="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full">
-                    
-                    Pending
-                  </span>
-                </td>
-                <td className="px-4 py-3 text-sm">23-03-2021</td>
-              </tr>
-              <tr className="bg-gray-50 dark:bg-gray-800 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
-                <td className="px-4 py-3">
-                  <div className="flex items-center text-sm">
-                    <div className="relative hidden w-10 h-10  mr-3 rounded-full md:block">
-                      <img
-                        className="object-cover w-full h-full"
-                        src="https://images.unsplash.com/photo-1576602975754-efdf313b9342?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBoYXJtYWN5fGVufDB8fDB8fHww"
-                        alt="."
-                        loading="lazy"
-                      />
-                      <div
-                        className="absolute inset-0 rounded-full shadow-inner"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <div>
-                      <p className="font-semibold">Dave Li</p>
-                      <p className="text-xs text-gray-600 dark:text-gray-400">
-                        Influencer
-                      </p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-4 py-3 text-sm">$775.45</td>
-                <td className="px-4 py-3 text-xs">
-                  <span className="px-2 py-1 font-semibold leading-tight text-gray-700 bg-gray-100 rounded-full dark:text-gray-100 dark:bg-gray-700">
-                    
-                    Expired
-                  </span>
-                </td>
-                <td className="px-4 py-3 text-sm">09-02-2021</td>
-              </tr>
-              <tr className="bg-gray-50 dark:bg-gray-800 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
-                <td className="px-4 py-3">
-                  <div className="flex items-center text-sm">
-                    <div className="relative hidden w-10 h-10  mr-3 rounded-full md:block">
-                      <img
-                        className="object-cover w-full h-full"
-                        src="https://images.unsplash.com/photo-1576602975754-efdf313b9342?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBoYXJtYWN5fGVufDB8fDB8fHww"
-                        alt="."
-                        loading="lazy"
-                      />
-                      <div
-                        className="absolute inset-0 rounded-full shadow-inner"
-                        aria-hidden="true"
-                      />
-                    </div>
-                    <div>
-                      <p className="font-semibold">Rulia Joberts</p>
-                      <p className="text-xs text-gray-600 dark:text-gray-400">
-                        Actress
-                      </p>
-                    </div>
-                  </div>
-                </td>
-                <td className="px-4 py-3 text-sm">$1276.75</td>
-                <td className="px-4 py-3 text-xs">
-                  <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
-                    
+                  <span className="px-2 py-1 font-semibold leading-tight text-gray-300  rounded-full bg-green-700 ">
                     Approved
                   </span>
                 </td>
-                <td className="px-4 py-3 text-sm">17-04-2021</td>
+                <td className="px-4 py-3 text-sm">15-01-2021</td>
               </tr>
-              <tr className="bg-gray-50 dark:bg-gray-800 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
+              <tr className=" bg-gray-900 cursor-pointer  hover:bg-gray-900 text-gray-300 ">
                 <td className="px-4 py-3">
                   <div className="flex items-center text-sm">
-                    <div className="relative hidden w-10 h-10  mr-3 rounded-full md:block">
+                    <div className="relative hidden w-10 h-10 mr-3 rounded-full md:block">
                       <img
                         className="object-cover w-full h-full"
-                        src="https://images.unsplash.com/photo-1576602975754-efdf313b9342?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHBoYXJtYWN5fGVufDB8fDB8fHww"
+                        src="https://images.unsplash.com/photo-1642055514517-7b52288890ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBoYXJtYWN5fGVufDB8fDB8fHww"
                         alt="."
                         loading="lazy"
                       />
@@ -161,34 +152,31 @@ const ClientTable = () => {
                       />
                     </div>
                     <div>
-                      <p className="font-semibold">Hitney Wouston</p>
-                      <p className="text-xs text-gray-600 dark:text-gray-400">
-                        Singer
-                      </p>
+                      <p className="font-semibold">Hans Burger</p>
+                      <p className="text-xs text-gray-300 ">10x Developer</p>
                     </div>
                   </div>
                 </td>
-                <td className="px-4 py-3 text-sm">$863.45</td>
+                <td className="px-4 py-3 text-sm">$855.85</td>
                 <td className="px-4 py-3 text-xs">
-                  <span className="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700">
-                    
-                    Denied
+                  <span className="px-2 py-1 font-semibold leading-tight text-gray-300  rounded-full bg-green-700 ">
+                    Approved
                   </span>
                 </td>
-                <td className="px-4 py-3 text-sm">11-01-2021</td>
+                <td className="px-4 py-3 text-sm">15-01-2021</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div className="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
-          <span className="flex items-center col-span-3">
+        <div className="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t border-gray-700 bg-gray-500 sm:grid-cols-9 ">
+          {/* <span className="flex items-center col-span-3">
             
             Showing 21-30 of 100
-          </span>
+          </span> */}
           <span className="col-span-2" />
           {/* Pagination */}
           <span className="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
-            <nav aria-label="Table navigation">
+            {/* <nav aria-label="Table navigation">
               <ul className="inline-flex items-center">
                 <li>
                   <button
@@ -219,7 +207,7 @@ const ClientTable = () => {
                   </button>
                 </li>
                 <li>
-                  <button className="px-3 py-1 text-white dark:text-gray-800 transition-colors duration-150 bg-blue-600 dark:bg-gray-100 border border-r-0 border-blue-600 dark:border-gray-100 rounded-md focus:outline-none focus:shadow-outline-purple">
+                  <button className="px-3 py-1  text-gray-800 transition-colors duration-150 bg-gray-100 border border-r-0  border-gray-100 rounded-md focus:outline-none focus:shadow-outline-purple">
                     3
                   </button>
                 </li>
@@ -260,7 +248,7 @@ const ClientTable = () => {
                   </button>
                 </li>
               </ul>
-            </nav>
+            </nav> */}
           </span>
         </div>
       </div>

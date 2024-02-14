@@ -2,7 +2,7 @@ import { useState } from "react";
 import QuillEditor from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-function ManageAds() {
+function ManageBlogs() {
   const [value, setValue] = useState("");
   let toolbarOptions = [
     ["bold", "italic", "underline", "strike"],
@@ -63,4 +63,4 @@ function ManageAds() {
   );
 }
 
-export default ManageAds;
+export default ManageBlogs;
