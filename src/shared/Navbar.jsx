@@ -33,7 +33,7 @@ const Navbar = () => {
             name
             id
             placeholder="Search"
-            className="w-full  text-sm text-black outline-none focus:outline-none bg-transparent"
+            className="w-full  text-sm text-white font-semibold outline-none focus:outline-none bg-transparent"
           />
         </div>
         <ul className="flex items-center">

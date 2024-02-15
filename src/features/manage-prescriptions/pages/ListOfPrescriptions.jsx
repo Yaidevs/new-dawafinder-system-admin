@@ -1,5 +1,5 @@
 import React from "react";
-import ClientTable from "../../shared/ClientTable";
+import ClientTable from "../../../shared/ClientTable";
 
 
 const ListOfPrescriptions = () => {

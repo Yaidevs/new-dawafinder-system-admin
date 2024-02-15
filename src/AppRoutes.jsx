@@ -9,7 +9,8 @@ import Login from "./features/authentication/pages/Login";
 import ManageAds from "./features/manage-ads/pages/ManageAds";
 import ManageBlogs from "./features/manage-blogs/pages/ManageBlogs";
 import ListOfPharmacies from "./features/manage-pharmacies/pages/ListOfPharmacies";
-import ListOfPrescriptions from "./features/manage-prescriptions/ListOfPrescriptions";
+import ListOfPrescriptions from "./features/manage-prescriptions/pages/ListOfPrescriptions";
+
 
 const AppRoutes = () => {
   return (
