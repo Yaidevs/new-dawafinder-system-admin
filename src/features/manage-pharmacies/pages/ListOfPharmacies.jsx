@@ -1,5 +1,6 @@
 import React from "react";
-import ClientTable from "../../../shared/ClientTable";
+import PharmaciesTable from "./PharmaciesTable";
+
 
 
 const ListOfPharmacies = () => {
@@ -10,7 +11,7 @@ const ListOfPharmacies = () => {
             <div className=" flex justify-center p-6 font-bold text-gray-300 ">
               Pharmacies
             </div>
-            <ClientTable />
+            <PharmaciesTable/>
           </div>
         </div>
       </div>

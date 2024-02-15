@@ -10,7 +10,8 @@ import ManageAds from "./features/manage-ads/pages/ManageAds";
 import ManageBlogs from "./features/manage-blogs/pages/ManageBlogs";
 import ListOfPharmacies from "./features/manage-pharmacies/pages/ListOfPharmacies";
 import ListOfPrescriptions from "./features/manage-prescriptions/pages/ListOfPrescriptions";
-
+import PrescriptionDetail from "./features/manage-prescriptions/pages/PrescriptionDetail";
+import PharmacyDetails from "./features/manage-pharmacies/pages/PharmacyDetails";
 
 const AppRoutes = () => {
   return (
@@ -26,6 +27,22 @@ const AppRoutes = () => {
           }
         />
         <Route
+          path="/prescription-detail"
+          element={
+            <Layout>
+              <PrescriptionDetail />
+            </Layout>
+          }
+        />
+        <Route
+          path="/pharmacy-detail"
+          element={
+            <Layout>
+              <PharmacyDetails />
+            </Layout>
+          }
+        />
+        <Route
           path="/manage-ads"
           element={
             <Layout>
@@ -33,6 +50,7 @@ const AppRoutes = () => {
             </Layout>
           }
         />
+
         <Route
           path="/manage-blogs"
           element={
