@@ -1,4 +1,3 @@
-// src/AppRoutes.jsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./features/pages/Home";
@@ -12,6 +11,8 @@ import ListOfPharmacies from "./features/manage-pharmacies/pages/ListOfPharmacie
 import ListOfPrescriptions from "./features/manage-prescriptions/pages/ListOfPrescriptions";
 import PrescriptionDetail from "./features/manage-prescriptions/pages/PrescriptionDetail";
 import PharmacyDetails from "./features/manage-pharmacies/pages/PharmacyDetails";
+import PostedBlog from "./features/manage-blogs/pages/PostedBlog";
+import BlogCategory from "./features/manage-blogs/pages/BlogCategory";
 
 const AppRoutes = () => {
   return (
@@ -52,10 +53,27 @@ const AppRoutes = () => {
         />
 
         <Route
-          path="/manage-blogs"
+          path="/view-post"
+          element={
+            <Layout>
+              <PostedBlog />
+            </Layout>
+          }
+        />
+
+        <Route
+          path="/post-blog"
           element={
             <Layout>
               <AddBlog />
+            </Layout>
+          }
+        />
+        <Route
+          path="/blog-category"
+          element={
+            <Layout>
+              <BlogCategory />
             </Layout>
           }
         />
