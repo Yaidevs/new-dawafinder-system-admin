@@ -7,7 +7,7 @@ import Layout from "./shared/Layout";
 import ManageUsers from "./features/manage-users/pages/ManageUsers";
 import Login from "./features/authentication/pages/Login";
 import ManageAds from "./features/manage-ads/pages/ManageAds";
-import ManageBlogs from "./features/manage-blogs/pages/ManageBlogs";
+import AddBlog from "./features/manage-blogs/pages/AddBlog";
 import ListOfPharmacies from "./features/manage-pharmacies/pages/ListOfPharmacies";
 import ListOfPrescriptions from "./features/manage-prescriptions/pages/ListOfPrescriptions";
 import PrescriptionDetail from "./features/manage-prescriptions/pages/PrescriptionDetail";
@@ -55,7 +55,7 @@ const AppRoutes = () => {
           path="/manage-blogs"
           element={
             <Layout>
-              <ManageBlogs />
+              <AddBlog />
             </Layout>
           }
         />
