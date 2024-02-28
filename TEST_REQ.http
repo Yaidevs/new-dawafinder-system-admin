@@ -1,0 +1,16 @@
+GET https://api.dawaafinder.com/blogapi/posts/
+
+### Post the post
+POST https://api.dawaafinder.com/blogapi/posts/
+content-type: application/json
+
+{
+  "categoryId": "65d64cb4ec5719c7c481ed11",
+  "image": "im3333333",
+  "title": "New Title",
+  "content": "lorem ipsum hheueueu",
+  "creatorId": "65d64cb4ec5719c7c481ed11",
+  "tagNames": [
+    "Skin","Thhhsw"
+  ]
+}

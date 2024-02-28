@@ -1,11 +1,22 @@
 import React, { useState } from "react";
 import QuillEditor from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { useAddPostsMutation, useGetPostCategoryQuery } from "../api/blogApi";
 
 function ManageBlogs() {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState(null);
   const [content, setContent] = useState("");
+  const [category, setCategory] = useState("");
+
+  const {
+    data: categories,
+    isLoading,
+    isSuccess,
+    isError,
+  } = useGetPostCategoryQuery();
+  // console.log(categories?.data.categories);
+  const [addPost] = useAddPostsMutation();
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -19,9 +30,34 @@ function ManageBlogs() {
     setContent(value);
   };
 
-  const submitFormHandler = (event) => {
+  const handleCategoryChange = (event) => {
+    setCategory(event.target.value);
+  };
+
+  const submitFormHandler = async (event) => {
     event.preventDefault();
-    console.log(title, image.name, content);
+
+    console.log(title , image ,content , category)
+
+    // try {
+    //   const { data } = await addPost({
+    //     variables: {
+    //       title: title,
+    //       image: image.name,
+    //       content: content,
+    //       categoryId: category,
+    //     },
+    //   });
+
+    //   console.log("New post added:", data.addPost);
+
+    //   setTitle("");
+    //   setImage(null);
+    //   setContent("");
+    //   setCategory("");
+    // } catch (error) {
+    //   console.error("Error adding post:", error);
+    // }
   };
 
   let toolbarOptions = [
@@ -88,15 +124,19 @@ function ManageBlogs() {
             onChange={handleContentChange}
           />
 
-          <label htmlFor="content" className="mb-2 text-gray-300">
+          <label htmlFor="category" className="mb-2 text-gray-300">
             Select Category
           </label>
           <select
+            name="category"
             className="border p-2 text-black outline-none bg-gray-300 w-full"
-            value=""
+            value={category}
+            onChange={handleCategoryChange}
           >
-            <option value="" className="bg-gray-300">Skin</option>
-            <option value="" className="bg-gray-300">Others</option>
+            <option value="skin">Skin</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
           </select>
           <button
             type="submit"

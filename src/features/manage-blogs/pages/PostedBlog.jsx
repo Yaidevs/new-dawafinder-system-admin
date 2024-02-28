@@ -3,8 +3,13 @@ import pharma4 from "../../../assets/pharma4.jpeg";
 import { AiOutlineDelete } from "react-icons/ai";
 import { CiEdit } from "react-icons/ci";
 import { Link } from "react-router-dom";
+import { useGetAllPostsQuery } from "../api/blogApi";
 
 const PostedBlog = () => {
+  const { data: posts, isLoading, isSuccess } = useGetAllPostsQuery();
+
+  console.log(posts?.data.posts);
+
   return (
     <div className="min-h-screen overflow-hidden flex flex-col flex-shrink-0 antialiased bg-gray-700 text-white">
       <div className="h-full flex flex-col gap-y-3  ml-14 p-8  mt-14 mb-10 md:ml-64 ">

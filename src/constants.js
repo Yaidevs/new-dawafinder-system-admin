@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://api.dawaafinder.com/api/v1/';
+export const BASE_URL = 'https://api.dawaafinder.com/';

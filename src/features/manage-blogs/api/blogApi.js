@@ -1,31 +1,47 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { BASE_URL } from "../../../constants";
 
-
 export const blogApi = createApi({
   reducerPath: "blogApi",
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
-    getAllBlogs: builder.query({
-      query: () => `blogapi/`,
+    getAllPosts: builder.query({
+      query: () => `blogapi/posts/`,
     }),
-    addBlogs: builder.mutation({
+    getPostById: builder.query({
+      query: (postId) => ({
+        url: `blogapi/posts/{postId}`,
+      }),
+    }),
+    getPostCategory: builder.query({
+      query: () => ({
+        url: `blogapi/categories`,
+      }),
+    }),
+
+    addPostCategory: builder.mutation({
+      query: () => ({
+        url: `blogapi/categories/`,
+      }),
+    }),
+
+    addPosts: builder.mutation({
       query: (data) => ({
-        url: `blogapi/`,
+        url: `blogapi/posts/`,
         method: "POST",
         body: data,
       }),
     }),
-    updateBlog: builder.mutation({
+    updatePost: builder.mutation({
       query: (data) => ({
-        url: `blogapi/`,
+        url: `blogapi/posts/`,
         method: "PATCH",
         body: data,
       }),
     }),
-    deleteBlog: builder.mutation({
+    deletePost: builder.mutation({
       query: (blogId) => ({
-        url: `blogapi/${blogId}`,
+        url: `blogapi/posts/${blogId}`,
         method: "DELETE",
       }),
     }),
@@ -33,8 +49,11 @@ export const blogApi = createApi({
 });
 
 export const {
-  useGetAllBlogsQuery,
-  useAddBlogsMutation,
-  useUpdateBlogMutation,
-  useDeleteBlogMutation,
+  useGetAllPostsQuery,
+  useGetPostCategoryQuery,
+  useAddPostCategoryMutation,
+  useGetPostByIdQuery,
+  useAddPostsMutation,
+  useUpdatePostMutation,
+  useDeletePostMutation,
 } = blogApi;
