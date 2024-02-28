@@ -21,7 +21,7 @@ function ManageBlogs() {
 
   const submitFormHandler = (event) => {
     event.preventDefault();
-     console.log(title ,image.name ,content)
+    console.log(title, image.name, content);
   };
 
   let toolbarOptions = [
@@ -87,6 +87,17 @@ function ManageBlogs() {
             value={content}
             onChange={handleContentChange}
           />
+
+          <label htmlFor="content" className="mb-2 text-gray-300">
+            Select Category
+          </label>
+          <select
+            className="border p-2 text-black outline-none bg-gray-300 w-full"
+            value=""
+          >
+            <option value="" className="bg-gray-300">Skin</option>
+            <option value="" className="bg-gray-300">Others</option>
+          </select>
           <button
             type="submit"
             className="border bg-green-400 mx-auto px-3 mt-3 rounded text-white"

@@ -50,7 +50,13 @@ const PostedBlog = () => {
         <div className="border bg-gray-900 rounded p-3">
           <div className="flex items-center gap-x-3">
             <div>
-              <img src={pharma4} alt="No" width={500} height={500} />
+              <img
+                src={pharma4}
+                alt="No"
+                width={500}
+                height={500}
+                className="rounded"
+              />
             </div>
             <div className="">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
