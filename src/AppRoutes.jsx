@@ -13,6 +13,7 @@ import PrescriptionDetail from "./features/manage-prescriptions/pages/Prescripti
 import PharmacyDetails from "./features/manage-pharmacies/pages/PharmacyDetails";
 import PostedBlog from "./features/manage-blogs/pages/PostedBlog";
 import BlogCategory from "./features/manage-blogs/pages/BlogCategory";
+import AddHealthOrg from "./features/manage-pharmacies/pages/AddHealthOrg";
 
 const AppRoutes = () => {
   return (
@@ -82,6 +83,14 @@ const AppRoutes = () => {
           element={
             <Layout>
               <ManagePharmacies />
+            </Layout>
+          }
+        />
+        <Route
+          path="/manage-health-org"
+          element={
+            <Layout>
+              <AddHealthOrg />
             </Layout>
           }
         />

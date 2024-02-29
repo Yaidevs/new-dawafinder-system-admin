@@ -18,8 +18,6 @@ function ManageBlogs() {
     isError,
   } = useGetPostCategoryQuery();
 
-  console.log(categories?.data.categories);
-
   const [addPost] = useAddPostsMutation();
 
   const handleTitleChange = (event) => {
@@ -48,7 +46,6 @@ function ManageBlogs() {
 
   const submitFormHandler = async (event) => {
     event.preventDefault();
-    console.log(category, title, tags, image);
 
     try {
       const response = await addPost({
@@ -59,8 +56,6 @@ function ManageBlogs() {
         tagNames: tags,
         creatorId,
       }).unwrap();
-
-      console.log(response);
 
       setTitle("");
       setImage(null);
