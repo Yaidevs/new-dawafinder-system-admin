@@ -7,7 +7,9 @@ function ManageBlogs() {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState(null);
   const [content, setContent] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("65d64cb4ec5719c7c481ed11");
+  const [tags, setTags] = useState([]);
+  const [creatorId, setCreatorId] = useState("65d64cb4ec5719c7c481ed11");
 
   const {
     data: categories,
@@ -15,7 +17,9 @@ function ManageBlogs() {
     isSuccess,
     isError,
   } = useGetPostCategoryQuery();
-  // console.log(categories?.data.categories);
+
+  console.log(categories?.data.categories);
+
   const [addPost] = useAddPostsMutation();
 
   const handleTitleChange = (event) => {
@@ -23,7 +27,7 @@ function ManageBlogs() {
   };
 
   const handleImageChange = (event) => {
-    setImage(event.target.files[0]);
+    setImage(event.target.files[0].name);
   };
 
   const handleContentChange = (value) => {
@@ -31,33 +35,42 @@ function ManageBlogs() {
   };
 
   const handleCategoryChange = (event) => {
-    setCategory(event.target.value);
+    const categoryId = event.target.value;
+    setCategory(categoryId);
+
+    setCreatorId(categoryId);
+  };
+
+  const handleTagsChange = (event) => {
+    const newTags = event.target.value.split(",").map((tag) => tag.trim());
+    setTags(newTags);
   };
 
   const submitFormHandler = async (event) => {
     event.preventDefault();
+    console.log(category, title, tags, image);
 
-    console.log(title , image ,content , category)
+    try {
+      const response = await addPost({
+        title,
+        image,
+        content,
+        categoryId: category,
+        tagNames: tags,
+        creatorId,
+      }).unwrap();
 
-    // try {
-    //   const { data } = await addPost({
-    //     variables: {
-    //       title: title,
-    //       image: image.name,
-    //       content: content,
-    //       categoryId: category,
-    //     },
-    //   });
+      console.log(response);
 
-    //   console.log("New post added:", data.addPost);
-
-    //   setTitle("");
-    //   setImage(null);
-    //   setContent("");
-    //   setCategory("");
-    // } catch (error) {
-    //   console.error("Error adding post:", error);
-    // }
+      setTitle("");
+      setImage(null);
+      setContent("");
+      setCategory("");
+      setTags([]);
+      setCreatorId("");
+    } catch (error) {
+      console.error("Error adding post:", error);
+    }
   };
 
   let toolbarOptions = [
@@ -124,6 +137,26 @@ function ManageBlogs() {
             onChange={handleContentChange}
           />
 
+          <label htmlFor="tags" className="mb-2 text-gray-300">
+            Tags
+          </label>
+          <input
+            type="text"
+            placeholder="Enter tags separated by commas"
+            className="border p-2 text-black outline-none bg-gray-300 w-full"
+            value={tags.join(",")}
+            onChange={handleTagsChange}
+          />
+          <label htmlFor="creatorId" className="mb-2 text-gray-300 font-sans">
+            Creator ID
+          </label>
+          <input
+            type="text"
+            placeholder="Enter creator ID"
+            className="border p-2 text-black outline-none bg-gray-300 w-full"
+            value={creatorId}
+            onChange={(event) => setCreatorId(event.target.value)}
+          />
           <label htmlFor="category" className="mb-2 text-gray-300">
             Select Category
           </label>
@@ -133,10 +166,14 @@ function ManageBlogs() {
             value={category}
             onChange={handleCategoryChange}
           >
-            <option value="skin">Skin</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
+            {isLoading && <option>Loading...</option>}
+            {isError && <option>Error fetching categories</option>}
+            {isSuccess &&
+              categories?.data.categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
           </select>
           <button
             type="submit"
