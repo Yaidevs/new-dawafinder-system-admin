@@ -14,3 +14,19 @@ content-type: application/json
     "Skin","Thhhsw"
   ]
 }
+
+### Get health organizations
+GET https://api.dawaafinder.com/userapi/health-organizations/
+
+GET https://api.dawaafinder.com/productapi/product-categories/
+
+### Post to Product
+POST https://api.dawaafinder.com/productapi/products/
+content-type: application/json
+
+{
+  "category":"65ddd1053365666caa9cc3fa",
+  "name":"oil",
+  "brand":"dbc care"
+}
+

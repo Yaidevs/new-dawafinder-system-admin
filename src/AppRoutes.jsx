@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./features/pages/Home";
-import ManagePharmacies from "./features/manage-pharmacies/pages/ManagePharmacies";
+import ManageHealthOrgs from "./features/manage-pharmacies/pages/ManageHealthOrgs";
 import Layout from "./shared/Layout";
 import ManageUsers from "./features/manage-users/pages/ManageUsers";
 import Login from "./features/authentication/pages/Login";
@@ -79,26 +79,18 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path="/manage-pharmacies"
+          path="/view-organizations"
           element={
             <Layout>
-              <ManagePharmacies />
+              <ManageHealthOrgs />
             </Layout>
           }
         />
         <Route
-          path="/manage-health-org"
+          path="/add-health-org"
           element={
             <Layout>
               <AddHealthOrg />
-            </Layout>
-          }
-        />
-        <Route
-          path="/pharmacies"
-          element={
-            <Layout>
-              <ListOfPharmacies />
             </Layout>
           }
         />
