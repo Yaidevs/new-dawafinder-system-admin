@@ -1,6 +1,47 @@
 import React from "react";
+import { useState } from "react";
+import { useAddHealthOrganizationMutation } from "../api/healthorgApi";
 
 const AddHealthOrg = () => {
+  const [name, setName] = useState("");
+  const [type, setType] = useState("");
+  const [image, setImage] = useState(null);
+  const [subscription, setSubscription] = useState("");
+  const [license, setLicense] = useState("");
+  const [coordinates, setCoordinates] = useState(0);
+  const [description, setDescription] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  const [street, setStreet] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [serviceName, setServiceName] = useState("");
+  const [serviceDescription, setServiceDescription] = useState("");
+
+  const [addHealthOrganization] = useAddHealthOrganizationMutation();
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    const absoluteLocation = { coordinates, street };
+    const relativeLocation = { country, city, street };
+    const contact = { phoneNumber, email };
+    const service = [{ serviceName, serviceDescription }];
+
+    try {
+      const response = await addHealthOrganization({
+        name,
+        type,
+        absoluteLocation,
+        relativeLocation,
+        contact,
+        service,
+      }).unwrap();
+    } catch (error) {
+      console.error("Error adding org:", error);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-700 text-white">
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
@@ -9,7 +50,7 @@ const AddHealthOrg = () => {
             <h2 className="mb-4 text-xl flex font-sans font-semibold justify-center ms-6 mt-10 text-white">
               Add Health Organizations
             </h2>
-            <form className=" p-6  w-full">
+            <form className=" p-6  w-full" onSubmit={handleFormSubmit}>
               <div className="grid gap-4 sm:grid-cols-1 sm:gap-6 rounded bg-gray-900 p-8">
                 <div className="sm:col-span-2">
                   <label
@@ -24,7 +65,7 @@ const AddHealthOrg = () => {
                     id="name"
                     className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
                     placeholder="Type name"
-                    required
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
                 <div className="w-full">
@@ -40,7 +81,23 @@ const AddHealthOrg = () => {
                     id="type"
                     className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
                     placeholder="which type of org."
-                    required
+                    onChange={(e) => setType(e.target.value)}
+                  />
+                </div>
+                <div className="w-full">
+                  <label
+                    htmlFor="image"
+                    className="block mb-2 text-sm font-medium text-white"
+                  >
+                    Images
+                  </label>
+                  <input
+                    type="file"
+                    name="image"
+                    id="image"
+                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                    placeholder="select a file"
+                    onChange={(e) => setImage(e.target.value)}
                   />
                 </div>
                 <div className="w-full">
@@ -56,7 +113,7 @@ const AddHealthOrg = () => {
                     id="subscription"
                     className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
                     placeholder="free"
-                    required
+                    onChange={(e) => setSubscription(e.target.value)}
                   />
                 </div>
                 <div>
@@ -72,7 +129,7 @@ const AddHealthOrg = () => {
                     id="license"
                     className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
                     placeholder="free"
-                    required
+                    onChange={(e) => setLicense(e.target.value)}
                   />
                 </div>
                 <div>
@@ -88,7 +145,7 @@ const AddHealthOrg = () => {
                     id="cordinates"
                     className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
                     placeholder={12}
-                    required
+                    onChange={(e) => setCoordinates(e.target.value)}
                   />
                 </div>
                 <div className="sm:col-span-2">
@@ -103,6 +160,7 @@ const AddHealthOrg = () => {
                     rows={8}
                     className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
                     placeholder="Add about org."
+                    onChange={(e) => setDescription(e.target.value)}
                     defaultValue=""
                   />
                 </div>
@@ -119,7 +177,7 @@ const AddHealthOrg = () => {
                     id="country"
                     className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
                     placeholder="country"
-                    required
+                    onChange={(e) => setCountry(e.target.value)}
                   />
                 </div>
                 <div>
@@ -135,7 +193,7 @@ const AddHealthOrg = () => {
                     id="city"
                     className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
                     placeholder="city"
-                    required
+                    onChange={(e) => setCity(e.target.value)}
                   />
                 </div>
                 <div>
@@ -151,7 +209,7 @@ const AddHealthOrg = () => {
                     id="street"
                     className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
                     placeholder="street"
-                    required
+                    onChange={(e) => setStreet(e.target.value)}
                   />
                 </div>
                 <div>
@@ -167,7 +225,7 @@ const AddHealthOrg = () => {
                     id="phone-number"
                     className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
                     placeholder="phone-number"
-                    required
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                   />
                 </div>
                 <div>
@@ -183,7 +241,7 @@ const AddHealthOrg = () => {
                     id="email"
                     className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
                     placeholder="abel@gmail.com"
-                    required
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 <div>
@@ -198,8 +256,8 @@ const AddHealthOrg = () => {
                     name="service-name"
                     id="service-name"
                     className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="country"
-                    required
+                    placeholder="service"
+                    onChange={(e) => setServiceName(e.target.value)}
                   />
                 </div>
                 <div>
@@ -214,6 +272,7 @@ const AddHealthOrg = () => {
                     rows={8}
                     className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
                     placeholder="Add about service"
+                    onChange={(e) => setServiceDescription(e.target.value)}
                     defaultValue=""
                   />
                 </div>

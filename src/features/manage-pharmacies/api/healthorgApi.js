@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { BASE_URL } from "../../../constants";
 
 export const healthorgApi = createApi({
@@ -8,10 +8,18 @@ export const healthorgApi = createApi({
     getAllHealthOrganizations: builder.query({
       query: () => `userapi/health-organizations/`,
     }),
-    addHealthOrganizations: builder.mutation({
-      query: () => ({
+
+    addHealthOrganization: builder.mutation({
+      query: (data) => ({
         url: `userapi/health-organizations/`,
+        method: "POST",
+        body: data,
       }),
     }),
   }),
 });
+
+export const {
+  useGetAllHealthOrganizationsQuery,
+  useAddHealthOrganizationMutation,
+} = healthorgApi;
