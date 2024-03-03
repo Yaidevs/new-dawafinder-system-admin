@@ -1,5 +1,5 @@
 import React from "react";
-import PharmaciesTable from "./PharmaciesTable";
+import HealthorgTable from "./HealthorgTable";
 
 
 const ManageHealthOrgs = () => {
@@ -8,9 +8,9 @@ const ManageHealthOrgs = () => {
     <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
       <div className=" flex flex-col">
         <div className=" flex justify-center p-6 font-bold text-gray-300 ">
-          Pharmacies
+          Health Organizations
         </div>
-        <PharmaciesTable/>
+        <HealthorgTable/>
       </div>
     </div>
   </div>

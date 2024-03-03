@@ -7,13 +7,14 @@ import ManageUsers from "./features/manage-users/pages/ManageUsers";
 import Login from "./features/authentication/pages/Login";
 import ManageAds from "./features/manage-ads/pages/ManageAds";
 import AddBlog from "./features/manage-blogs/pages/AddBlog";
-import ListOfPharmacies from "./features/manage-pharmacies/pages/ListOfPharmacies";
 import ListOfPrescriptions from "./features/manage-prescriptions/pages/ListOfPrescriptions";
 import PrescriptionDetail from "./features/manage-prescriptions/pages/PrescriptionDetail";
 import PharmacyDetails from "./features/manage-pharmacies/pages/PharmacyDetails";
 import PostedBlog from "./features/manage-blogs/pages/PostedBlog";
 import BlogCategory from "./features/manage-blogs/pages/BlogCategory";
 import AddHealthOrg from "./features/manage-pharmacies/pages/AddHealthOrg";
+import Addads from "./features/manage-ads/pages/Addads";
+import AddOrgAds from "./features/manage-ads/pages/AddOrgAds";
 
 const AppRoutes = () => {
   return (
@@ -45,10 +46,26 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path="/manage-ads"
+          path="/view-ads"
           element={
             <Layout>
               <ManageAds />
+            </Layout>
+          }
+        />
+        <Route
+          path="/add-ads"
+          element={
+            <Layout>
+              <Addads />
+            </Layout>
+          }
+        />
+        <Route
+          path="/add-orgads"
+          element={
+            <Layout>
+              <AddOrgAds />
             </Layout>
           }
         />

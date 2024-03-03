@@ -33,10 +33,11 @@ const Sidebar = () => {
               </span>
             </Link>
           </li>
+
           <li>
-            <Link
-              to="/manage-ads"
-              className="relative flex flex-row items-center h-11 focus:outline-none  hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent  hover:border-gray-800 pr-6"
+            <div
+              className="relative flex flex-row items-center h-11 focus:outline-none  hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent  hover:border-gray-800 cursor-pointer pr-6"
+              onClick={toggleDropDown}
             >
               <span className="inline-flex justify-center items-center ml-4">
                 <RiAdvertisementLine size={20} />
@@ -44,7 +45,61 @@ const Sidebar = () => {
               <span className="ml-2 text-sm tracking-wide truncate">
                 Manage Ads
               </span>
-            </Link>
+              <span
+                className={`text-sm ms-5 ${
+                  isDropDownOpen ? "rotate-180" : "rotate-0"
+                }`}
+                id="arrow"
+              >
+                <IoMdArrowDropdown size={20} />
+              </span>
+            </div>
+            <div
+              id="submenu"
+              className={`submenu text-left text-sm mt-2 w-4/5 mx-auto ${
+                isDropDownOpen ? "" : "hidden"
+              }`}
+            >
+              <li>
+                <Link
+                  to="/view-ads"
+                  className="relative flex flex-row items-center h-11 focus:outline-none  hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent  hover:border-gray-800 pr-6"
+                >
+                  <span className="inline-flex justify-center items-center ml-4">
+                    <AiOutlineMedicineBox size={20} />
+                  </span>
+                  <span className="ml-2 text-sm tracking-wide truncate">
+                    View All Ads.
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/add-ads"
+                  className="relative flex flex-row items-center h-11 focus:outline-none  hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent  hover:border-gray-800 pr-6"
+                >
+                  <span className="inline-flex justify-center items-center ml-4">
+                    <AiOutlineMedicineBox size={20} />
+                  </span>
+                  <span className="ml-2 text-sm tracking-wide truncate">
+                    Add Ads
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/add-orgads"
+                  className="relative flex flex-row items-center h-11 focus:outline-none  hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent  hover:border-gray-800 pr-6"
+                >
+                  <span className="inline-flex justify-center items-center ml-4">
+                    <AiOutlineMedicineBox size={20} />
+                  </span>
+                  <span className="ml-2 text-sm tracking-wide truncate">
+                    Add Ads Organization
+                  </span>
+                </Link>
+              </li>
+            </div>
           </li>
 
           <li>

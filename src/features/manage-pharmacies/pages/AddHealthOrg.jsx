@@ -47,7 +47,7 @@ const AddHealthOrg = () => {
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
         <section className="">
           <div className="">
-            <h2 className="mb-4 text-xl flex font-sans font-semibold justify-center ms-6 mt-10 text-white">
+            <h2 className="mb-4 text-xl flex font-sans font-semibold justify-center ms-6 mt-10 text-gray-300">
               Add Health Organizations
             </h2>
             <form className=" p-6  w-full" onSubmit={handleFormSubmit}>

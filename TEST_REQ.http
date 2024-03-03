@@ -28,4 +28,20 @@ content-type: application/json
   "name":"New Pharmma bet",
   "type":"Pharmacy"
 }
+### Ads service
+GET  https://api.dawaafinder.com/adsapi/ads
+###
+GET https://api.dawaafinder.com/adsapi/organizations
+### Adding organization to the db
+POST https://api.dawaafinder.com/adsapi/organizations
+content-type: application/json
+
+{
+  "orgName":"Dr.Bona Dental Clinic",
+  "email":"bona@gmail.com",
+  "phoneNumber":"09938382",
+  "createdBy": "Abel"
+}
+
+
 
