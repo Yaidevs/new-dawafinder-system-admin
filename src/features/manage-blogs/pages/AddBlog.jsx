@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import QuillEditor from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
 import { useAddPostsMutation, useGetPostCategoryQuery } from "../api/blogApi";
+import { storage } from "../../../firebase";
 
 function ManageBlogs() {
   const [title, setTitle] = useState("");
@@ -25,7 +28,7 @@ function ManageBlogs() {
   };
 
   const handleImageChange = (event) => {
-    setImage(event.target.files[0].name);
+    setImage(event.target.files[0]);
   };
 
   const handleContentChange = (value) => {
@@ -48,9 +51,14 @@ function ManageBlogs() {
     event.preventDefault();
 
     try {
+      if (image === null) return;
+
+      const imageRef = ref(storage, `Blog-images/${image.name + v4()}`);
+      await uploadBytes(imageRef, image);
+      const imageUrl = await getDownloadURL(imageRef);
       const response = await addPost({
         title,
-        image,
+        image: imageUrl,
         content,
         categoryId: category,
         tagNames: tags,
@@ -201,7 +209,7 @@ function ManageBlogs() {
                     {isError && <option>Error fetching categories</option>}
                     {isSuccess &&
                       categories?.data.categories.map((category) => (
-                        <option key={category.id} value={category.id}>
+                        <option key={category._id} value={category._id}>
                           {category.name}
                         </option>
                       ))}

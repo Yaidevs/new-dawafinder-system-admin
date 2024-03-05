@@ -41,11 +41,11 @@ const PostedBlog = () => {
           </Link>
         </div>
         {currentPosts.map((post) => (
-          <div key={post.id} className="border bg-gray-900 rounded p-3">
+          <div key={post._id} className="border bg-gray-900 rounded p-3">
             <div className="flex items-center gap-x-3">
               <div>
                 <img
-                  src={pharma4}
+                  src={post.image}
                   alt="No"
                   width={200}
                   height={200}
