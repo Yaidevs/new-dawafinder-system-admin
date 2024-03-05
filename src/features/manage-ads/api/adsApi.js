@@ -13,6 +13,14 @@ export const adsApi = createApi({
       query: () => `adsapi/organizations`,
     }),
 
+    addOrgForAds: builder.mutation({
+      query: (data) => ({
+        url: `adsapi/organizations`,
+        method: "POST",
+        body: data,
+      }),
+    }),
+
     addAds: builder.mutation({
       query: (data) => ({
         url: `adsapi/ads`,
@@ -23,4 +31,4 @@ export const adsApi = createApi({
   }),
 });
 
-export const { useGetAllAdsQuery, useAddAdsMutation, useGetOrgsQuery } = adsApi;
+export const { useGetAllAdsQuery, useAddAdsMutation, useGetOrgsQuery , useAddOrgForAdsMutation} = adsApi;

@@ -37,8 +37,8 @@ POST https://api.dawaafinder.com/adsapi/organizations
 content-type: application/json
 
 {
-  "orgName":"Dr.Bona Dental Clinic",
-  "email":"bona@gmail.com",
+  "orgName":"Dr.Bonsa Clinic",
+  "email":"bonsa@gmail.com",
   "phoneNumber":"09938382",
   "createdBy": "Abel"
 }
