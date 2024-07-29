@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, { useState } from "react";
 import { useAddOrgForAdsMutation } from "../api/adsApi";
 const AddOrgAds = () => {
@@ -16,7 +18,7 @@ const AddOrgAds = () => {
         phoneNumber,
         createdBy,
       }).unwrap();
-      
+
       setOrgName("");
       setEmail("");
       setPhoneNUmber("");

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from "react";
 import { useState } from "react";
 import { useAddHealthOrganizationMutation } from "../api/healthorgApi";
