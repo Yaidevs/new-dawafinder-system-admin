@@ -43,5 +43,26 @@ content-type: application/json
   "createdBy": "Abel"
 }
 
+###
+POST  https://api.dawaafinder.com/userapi/system-admins/login/
+Content-Type: application/json
 
+{
+  "username":"abelk",
+   "password":"12345678"
+}
 
+###
+POST https://api.dawaafinder.com/userapi/system-admins/
+Content-Type: application/json
+
+{
+ "firstName":"Abel",
+ "lastName":"Kinfu",
+ "username":"abelk",
+ "role":"admin",
+ "password":"12345678",
+ "confirmPassword":"12345678",
+ "phoneNumber":"12345678",
+ "email":"abel@gmail.com"
+}

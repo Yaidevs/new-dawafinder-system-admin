@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useGetAllHealthOrganizationsQuery } from "../api/healthorgApi";
 
-const HealthorgTable = () => {
-  const healthOrgs = useGetAllHealthOrganizationsQuery();
+const UsersTable = () => {
   return (
     <div className="mt-4 mx-4 p-3">
       <div className="w-full overflow-hidden shadow-xs">
@@ -11,8 +9,8 @@ const HealthorgTable = () => {
           <table className="w-full">
             <thead>
               <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-900 ">
-                <th className="px-4 py-3">Organization</th>
-                <th className="px-4 py-3">Location</th>
+                <th className="px-4 py-3">Name</th>
+                <th className="px-4 py-3"></th>
                 <th className="px-4 py-3">Action</th>
               </tr>
             </thead>
@@ -34,14 +32,13 @@ const HealthorgTable = () => {
                         />
                       </div>
                       <div>
-                        <p className="font-semibold">Kena Pharmacy</p>
-                        <p className="text-xs text-gray-300 ">best pharmacy</p>
+                        <p className="font-semibold">Skin Protection</p>
                       </div>
                     </div>
                   </Link>
                 </td>
                 <td className="px-4 py-3">
-                  <div className="flex items-center text-sm">Jimma</div>
+                  <div className="flex items-center text-sm">01-01-2023</div>
                 </td>
                 <td className="px-4 py-3 text-xs flex gap-x-4 mt-2">
                   <div className="px-2 py-1 font-semibold leading-tight text-gray-300  rounded-full bg-green-700 ">
@@ -63,4 +60,4 @@ const HealthorgTable = () => {
   );
 };
 
-export default HealthorgTable;
+export default UsersTable;
