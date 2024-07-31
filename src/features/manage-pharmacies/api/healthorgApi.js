@@ -16,10 +16,17 @@ export const healthorgApi = createApi({
         body: data,
       }),
     }),
+    deleteOrgs: builder.mutation({
+      query: (id) => ({
+        url: `/userapi/health-organizations/${id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
 export const {
   useGetAllHealthOrganizationsQuery,
   useAddHealthOrganizationMutation,
+  useDeleteOrgsMutation,
 } = healthorgApi;

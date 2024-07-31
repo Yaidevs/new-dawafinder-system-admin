@@ -15,6 +15,10 @@ import BlogCategory from "./features/manage-blogs/pages/BlogCategory";
 import AddHealthOrg from "./features/manage-pharmacies/pages/AddHealthOrg";
 import Addads from "./features/manage-ads/pages/Addads";
 import AddOrgAds from "./features/manage-ads/pages/AddOrgAds";
+import ManageProducts from "./features/manage-products/pages/ManageProducts";
+import AddProduct from "./features/manage-products/pages/AddProduct";
+import AddProductCategory from "./features/manage-products/pages/AddProductCategory";
+import ManageCategory from "./features/manage-products/pages/ManageCategory";
 
 const AppRoutes = () => {
   return (
@@ -26,6 +30,38 @@ const AppRoutes = () => {
           element={
             <Layout>
               <Home />
+            </Layout>
+          }
+        />
+        <Route
+          path="/view-products"
+          element={
+            <Layout>
+              <ManageProducts />
+            </Layout>
+          }
+        />
+        <Route
+          path="/view-categories"
+          element={
+            <Layout>
+              <ManageCategory />
+            </Layout>
+          }
+        />
+        <Route
+          path="/add-products"
+          element={
+            <Layout>
+              <AddProduct />
+            </Layout>
+          }
+        />
+        <Route
+          path="/add-product-category"
+          element={
+            <Layout>
+              <AddProductCategory />
             </Layout>
           }
         />

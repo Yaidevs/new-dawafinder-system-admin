@@ -1,5 +1,4 @@
 import React from "react";
-import CategoryList from "../components/CategoryList";
 
 const BlogCategory = () => {
   return (
@@ -27,7 +26,6 @@ const BlogCategory = () => {
           </button>
         </form>
       </div>
-      <CategoryList />
     </div>
   );
 };

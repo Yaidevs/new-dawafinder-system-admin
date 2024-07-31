@@ -28,7 +28,19 @@ export const adsApi = createApi({
         body: data,
       }),
     }),
+    deleteAds: builder.mutation({
+      query: (id) => ({
+        url: `/adsapi/ads/${id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useGetAllAdsQuery, useAddAdsMutation, useGetOrgsQuery , useAddOrgForAdsMutation} = adsApi;
+export const {
+  useGetAllAdsQuery,
+  useAddAdsMutation,
+  useGetOrgsQuery,
+  useAddOrgForAdsMutation,
+  useDeleteAdsMutation,
+} = adsApi;

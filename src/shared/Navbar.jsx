@@ -44,9 +44,9 @@ const Navbar = () => {
             <div className="block w-px h-6 mx-3 bg-gray-700" />
           </li>
           <li>
-            <Link to='/' className="flex items-center mr-4 hover:text-blue-100">
+            <Link to="/" className="flex items-center mr-4 hover:text-blue-100">
               <span className="inline-flex mr-1">
-              <IoIosLogOut size={20} />
+                <IoIosLogOut size={20} />
               </span>
               Logout
             </Link>

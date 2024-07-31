@@ -16,7 +16,7 @@ content-type: application/json
 }
 
 ### Get health organizations
-GET https://api.dawaafinder.com/userapi/health-organizations/
+GET https://api.dawaafinder.com/userapi/health-organizations/65dfb79102d42e990b3bef00
 
 GET https://api.dawaafinder.com/productapi/product-categories/
 
@@ -66,3 +66,5 @@ Content-Type: application/json
  "phoneNumber":"12345678",
  "email":"abel@gmail.com"
 }
+###
+GET https://api.dawaafinder.com/productapi/products

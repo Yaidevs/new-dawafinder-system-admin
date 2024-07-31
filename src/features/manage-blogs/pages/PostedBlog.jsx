@@ -5,11 +5,25 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { CiEdit } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import parse from "html-react-parser";
-import { useGetAllPostsQuery } from "../api/blogApi";
-import pharma4 from "../../../assets/pharma4.jpeg";
+import { useDeletePostMutation, useGetAllPostsQuery } from "../api/blogApi";
 
 const PostedBlog = () => {
   const { data: posts, isLoading, isSuccess } = useGetAllPostsQuery();
+  const [deletePost] = useDeletePostMutation();
+
+  const onDelete = async (id) => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this post?"
+    );
+    if (confirmed) {
+      try {
+        await deletePost(id).unwrap();
+        window.location.reload();
+      } catch (error) {
+        console.error("Error deleting:", error);
+      }
+    }
+  };
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 2;
 
@@ -62,8 +76,12 @@ const PostedBlog = () => {
                 <button>Edit</button>
               </div>
               <div className="flex items-center justify-center gap-x-2 cursor-pointer font-semibold">
-                <AiOutlineDelete size={30} color="red" />
-                <button>Delete</button>
+                <AiOutlineDelete
+                  onClick={() => onDelete(post._id)}
+                  size={30}
+                  color="red"
+                />
+                <button onClick={() => onDelete(post._id)}>Delete</button>
               </div>
             </div>
           </div>

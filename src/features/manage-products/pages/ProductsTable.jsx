@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import {
-  useDeleteOrgsMutation,
-  useGetAllHealthOrganizationsQuery,
-} from "../api/healthorgApi";
+  useDeleteProductMutation,
+  useGetAllProductsQuery,
+} from "../api/productsApi";
 
-const HealthorgTable = () => {
-  const { data, error, isLoading } = useGetAllHealthOrganizationsQuery();
-  const [deleteOrgs] = useDeleteOrgsMutation();
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+const ProductsTable = () => {
+  const { data, error, isLoading } = useGetAllProductsQuery();
+  const [deleteProduct] = useDeleteProductMutation();
 
   const onDelete = async (id) => {
     const confirmed = window.confirm(
-      "Are you sure you want to delete this ad?"
+      "Are you sure you want to delete this product?"
     );
     if (confirmed) {
       try {
-        await deleteOrgs(id).unwrap();
+        await deleteProduct(id).unwrap();
         window.location.reload();
       } catch (error) {
         console.error("Error deleting:", error);
@@ -25,11 +22,17 @@ const HealthorgTable = () => {
     }
   };
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
   useEffect(() => {
-    if (data && currentPage > Math.ceil(data.data.length / itemsPerPage)) {
+    if (
+      data?.data &&
+      currentPage > Math.ceil(data?.data.length / itemsPerPage)
+    ) {
       setCurrentPage(1);
     }
-  }, [data]);
+  }, [data?.data]);
 
   const goToPreviousPage = () => {
     if (currentPage > 1) {
@@ -49,66 +52,75 @@ const HealthorgTable = () => {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = Math.min(startIndex + itemsPerPage, data?.data.length);
 
+  const truncateDescription = (description) => {
+    if (description.length <= 100) {
+      return description;
+    }
+    return `${description.slice(0, 100)}...`;
+  };
+
   return (
     <div className="mt-4 mx-4 p-3">
       <div className="w-full overflow-hidden shadow-xs">
         <div className="w-full overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-900 ">
-                <th className="px-4 py-3">Organization</th>
-                <th className="px-4 py-3">Location</th>
+              <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b bg-gray-900">
+                <th className="px-4 py-3">Name</th>
+                <th className="px-4 py-3">Brand</th>
+                <th className="px-4 py-3">Category</th>
+                <th className="px-4 py-3">Status</th>
                 <th className="px-4 py-3">Action</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-700 bg-gray-900">
               {isLoading && (
                 <tr className="bg-gray-900 text-gray-300">
-                  <td className="px-4 py-3" colSpan="3">
+                  <td className="px-4 py-3" colSpan="5">
                     Loading...
                   </td>
                 </tr>
               )}
               {error && (
                 <tr className="bg-gray-900 text-gray-300">
-                  <td className="px-4 py-3" colSpan="3">
+                  <td className="px-4 py-3" colSpan="5">
                     Error: {error.message}
                   </td>
                 </tr>
               )}
               {!isLoading &&
                 !error &&
-                data.data.slice(startIndex, endIndex).map((org) => (
-                  <tr key={org._id} className="bg-gray-900 text-gray-300">
-                    <td className="px-4 py-3">
-                      <Link to={`/healthorg-detail/${org._id}`}>
-                        <div className="flex items-center text-sm">
-                          <div className="relative hidden w-10 h-10 mr-3 rounded-full md:block">
-                            <img
-                              className="object-cover w-full h-full"
-                              src="https://images.unsplash.com/photo-1642055514517-7b52288890ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBoYXJtYWN5fGVufDB8fDB8fHww"
-                              alt={org.name}
-                              loading="lazy"
-                            />
-                            <div
-                              className="absolute inset-0 rounded-full shadow-inner"
-                              aria-hidden="true"
-                            />
-                          </div>
-                          <div>
-                            <p className="font-semibold">{org.name}</p>
-                            <p className="text-xs text-gray-300">{org.type}</p>
-                          </div>
-                        </div>
-                      </Link>
-                    </td>
+                data?.data.slice(startIndex, endIndex).map((product) => (
+                  <tr key={product._id} className="bg-gray-900 text-gray-300">
                     <td className="px-4 py-3">
                       <div className="flex items-center text-sm">
-                        {org.relativeLocation.city},{" "}
-                        {org.relativeLocation.country}
+                        <div className="relative hidden w-10 h-10 mr-3 rounded-full md:block">
+                          <img
+                            className="object-cover w-full h-full"
+                            src={product.image}
+                            alt={product.name}
+                            loading="lazy"
+                          />
+                          <div
+                            className="absolute inset-0 rounded-full shadow-inner"
+                            aria-hidden="true"
+                          />
+                        </div>
+                        <div>
+                          <p className="font-semibold">{product.name}</p>
+                          <p className="text-xs text-gray-500">
+                            {truncateDescription(product.description)}
+                          </p>
+                        </div>
                       </div>
                     </td>
-                    <td className="px-4 py-3 text-xs flex gap-x-4 mt-2">
+                    <td className="px-4 py-3">{product.brand}</td>
+                    <td className="px-4 py-3">
+                      {product.category}
+                      {/* Adjust if you need to display category name */}
+                    </td>
+                    <td className="px-4 py-3">{product.status}</td>
+                    <td className="px-4 mt-5 py-3 text-xs flex gap-x-4">
                       <div className="px-2 py-1 font-semibold leading-tight text-gray-300 rounded-full bg-green-700">
                         Approve
                       </div>
@@ -116,8 +128,8 @@ const HealthorgTable = () => {
                         Edit
                       </div>
                       <div
-                        onClick={() => onDelete(org._id)}
-                        className="px-2 py-1 font-semibold leading-tight text-gray-300 rounded-full bg-green-700 cursor-pointer"
+                        onClick={() => onDelete(product._id)}
+                        className="px-2 cursor-pointer py-1 font-semibold leading-tight text-gray-300 rounded-full bg-red-700"
                       >
                         Delete
                       </div>
@@ -128,7 +140,7 @@ const HealthorgTable = () => {
           </table>
           <div className="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t bg-gray-900 sm:grid-cols-9">
             <span className="flex items-center col-span-3">
-              Showing {startIndex + 1}-{endIndex} of {data?.data.length}
+              Showing {startIndex + 1}-{endIndex} of {data?.data?.length}
             </span>
             <span className="col-span-2" />
             <span className="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
@@ -200,4 +212,4 @@ const HealthorgTable = () => {
   );
 };
 
-export default HealthorgTable;
+export default ProductsTable;

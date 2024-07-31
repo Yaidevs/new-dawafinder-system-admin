@@ -41,6 +41,7 @@ const Addads = () => {
         targetGeo,
         description,
       }).unwrap();
+      console.log(response)
 
       setTitle("");
       setSelectedOrganization("");
