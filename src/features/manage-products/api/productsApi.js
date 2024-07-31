@@ -37,6 +37,20 @@ export const productsApi = createApi({
         method: "DELETE",
       }),
     }),
+    updateProductCategory: builder.mutation({
+      query: (data) => ({
+        url: `productapi/product-categories/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+    }),
+    updateProduct: builder.mutation({
+      query: (data) => ({
+        url: `productapi/products/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -47,4 +61,6 @@ export const {
   useAddProductCategoryMutation,
   useGetAllProductCategoryQuery,
   useDeleteCategoryMutation,
+  useUpdateProductCategoryMutation,
+  useUpdateProductMutation,
 } = productsApi;
