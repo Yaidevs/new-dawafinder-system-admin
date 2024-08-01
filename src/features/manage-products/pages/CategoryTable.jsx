@@ -3,6 +3,7 @@ import {
   useDeleteCategoryMutation,
   useGetAllProductCategoryQuery,
 } from "../api/productsApi";
+import { Link } from "react-router-dom";
 
 const CategoryTable = () => {
   const { data, error, isLoading } = useGetAllProductCategoryQuery();
@@ -103,9 +104,12 @@ const CategoryTable = () => {
                     <td className="px-4 py-3">{category.name}</td>
                     <td className="px-4 py-3">{category.description}</td>
                     <td className="px-4 py-3 text-xs flex gap-x-4 mt-2">
-                      <div className="px-2 py-1 font-semibold leading-tight text-gray-300 rounded-full bg-green-700">
+                      <Link
+                        to={`/edit-category/${category._id}`}
+                        className="px-2 py-1 font-semibold leading-tight text-gray-300 rounded-full bg-green-700"
+                      >
                         Edit
-                      </div>
+                      </Link>
                       <div
                         onClick={() => onDelete(category.id)}
                         className="px-2 cursor-pointer py-1 font-semibold leading-tight text-gray-300 rounded-full bg-red-700"

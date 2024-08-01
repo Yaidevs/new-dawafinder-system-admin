@@ -19,6 +19,8 @@ import ManageProducts from "./features/manage-products/pages/ManageProducts";
 import AddProduct from "./features/manage-products/pages/AddProduct";
 import AddProductCategory from "./features/manage-products/pages/AddProductCategory";
 import ManageCategory from "./features/manage-products/pages/ManageCategory";
+import EditProduct from "./features/manage-products/pages/EditProduct";
+import EditProductCategory from "./features/manage-products/pages/EditProductCategory";
 
 const AppRoutes = () => {
   return (
@@ -38,6 +40,22 @@ const AppRoutes = () => {
           element={
             <Layout>
               <ManageProducts />
+            </Layout>
+          }
+        />
+        <Route
+          path="/edit-product/:id"
+          element={
+            <Layout>
+              <EditProduct />
+            </Layout>
+          }
+        />
+        <Route
+          path="/edit-category/:id"
+          element={
+            <Layout>
+              <EditProductCategory />
             </Layout>
           }
         />

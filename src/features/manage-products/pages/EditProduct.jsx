@@ -7,7 +7,7 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 
 const EditProduct = () => {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -24,11 +24,11 @@ const EditProduct = () => {
 
   useEffect(() => {
     if (product) {
-      setName(product.name);
-      setDescription(product.description);
-      setBrand(product.brand);
-      setImage(product.image);
-      setCategory(product.category);
+      setName(product?.data.name);
+      setDescription(product?.data.description);
+      setBrand(product?.data.brand);
+      setImage(product?.data.image);
+      setCategory(product?.data.category);
     }
   }, [product]);
 
@@ -45,17 +45,14 @@ const EditProduct = () => {
         category,
       }).unwrap();
 
-      console.log(response);
-
       setUpdating(false);
       navigate("/view-products");
+      window.location.reload();
     } catch (error) {
       console.error("Error updating product:", error);
       setUpdating(false);
     }
   };
-
-  if (productLoading) return <p>Loading product...</p>;
 
   return (
     <div className="min-h-screen overflow-hidden flex flex-col flex-shrink-0 antialiased bg-gray-700 text-white">
@@ -65,110 +62,114 @@ const EditProduct = () => {
             <h2 className="mb-4 text-xl flex font-sans font-semibold justify-center ms-6 mt-10 text-gray-300">
               Edit Product
             </h2>
-            <form className="p-6 w-full" onSubmit={handleSubmit}>
-              <div className="grid gap-4 sm:grid-cols-1 sm:gap-6 rounded bg-gray-900 p-8">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block mb-2 text-sm font-medium text-white"
-                  >
-                    Product Name
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="Type product name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="description"
-                    className="block mb-2 text-sm font-medium text-white"
-                  >
-                    Description
-                  </label>
-                  <input
-                    type="text"
-                    name="description"
-                    id="description"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="Type product description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="brand"
-                    className="block mb-2 text-sm font-medium text-white"
-                  >
-                    Brand
-                  </label>
-                  <input
-                    type="text"
-                    name="brand"
-                    id="brand"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="Type brand name"
-                    value={brand}
-                    onChange={(e) => setBrand(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="image"
-                    className="block mb-2 text-sm font-medium text-white"
-                  >
-                    Image URL
-                  </label>
-                  <input
-                    type="text"
-                    name="image"
-                    id="image"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="http://example.com/image.jpg"
-                    value={image}
-                    onChange={(e) => setImage(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="category"
-                    className="block mb-2 text-sm font-medium text-white"
-                  >
-                    Category
-                  </label>
-                  {categoriesLoading ? (
-                    <p>Loading categories...</p>
-                  ) : (
-                    <select
-                      name="category"
-                      id="category"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                      value={category}
-                      onChange={(e) => setCategory(e.target.value)}
+            {productLoading ? (
+              <p>Loading product...</p>
+            ) : (
+              <form className="p-6 w-full" onSubmit={handleSubmit}>
+                <div className="grid gap-4 sm:grid-cols-1 sm:gap-6 rounded bg-gray-900 p-8">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block mb-2 text-sm font-medium text-white"
                     >
-                      <option value="">Select a category</option>
-                      {categories?.data.map((cat) => (
-                        <option key={cat._id} value={cat._id}>
-                          {cat.name}
-                        </option>
-                      ))}
-                    </select>
-                  )}
+                      Product Name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      placeholder="Type product name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="description"
+                      className="block mb-2 text-sm font-medium text-white"
+                    >
+                      Description
+                    </label>
+                    <input
+                      type="text"
+                      name="description"
+                      id="description"
+                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      placeholder="Type product description"
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="brand"
+                      className="block mb-2 text-sm font-medium text-white"
+                    >
+                      Brand
+                    </label>
+                    <input
+                      type="text"
+                      name="brand"
+                      id="brand"
+                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      placeholder="Type brand name"
+                      value={brand}
+                      onChange={(e) => setBrand(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="image"
+                      className="block mb-2 text-sm font-medium text-white"
+                    >
+                      Image URL
+                    </label>
+                    <input
+                      type="text"
+                      name="image"
+                      id="image"
+                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      placeholder="http://example.com/image.jpg"
+                      value={image}
+                      onChange={(e) => setImage(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="category"
+                      className="block mb-2 text-sm font-medium text-white"
+                    >
+                      Category
+                    </label>
+                    {categoriesLoading ? (
+                      <p>Loading categories...</p>
+                    ) : (
+                      <select
+                        name="category"
+                        id="category"
+                        className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                      >
+                        <option value="">Select a category</option>
+                        {categories?.data.map((cat) => (
+                          <option key={cat._id} value={cat._id}>
+                            {cat.name}
+                          </option>
+                        ))}
+                      </select>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <button
-                type="submit"
-                className="inline-flex items-center text-black px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center bg-green-400 rounded-lg"
-              >
-                {updating ? "Updating ..." : "Update Product"}
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  className="inline-flex items-center text-black px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center bg-green-400 rounded-lg"
+                >
+                  {updating ? "Updating ..." : "Update Product"}
+                </button>
+              </form>
+            )}
           </div>
         </section>
       </div>

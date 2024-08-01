@@ -11,6 +11,16 @@ export const productsApi = createApi({
     getAllProductCategory: builder.query({
       query: () => `productapi/product-categories`,
     }),
+    getProductById: builder.query({
+      query: (id) => ({
+        url: `productapi/products/${id}`,
+      }),
+    }),
+    getProductCategoryById: builder.query({
+      query: (id) => ({
+        url: `productapi/product-categories/${id}`,
+      }),
+    }),
     addProducts: builder.mutation({
       query: (data) => ({
         url: `productapi/products`,
@@ -39,14 +49,14 @@ export const productsApi = createApi({
     }),
     updateProductCategory: builder.mutation({
       query: (data) => ({
-        url: `productapi/product-categories/${id}`,
+        url: `productapi/product-categories/${data.id}`,
         method: "PATCH",
         body: data,
       }),
     }),
     updateProduct: builder.mutation({
       query: (data) => ({
-        url: `productapi/products/${id}`,
+        url: `productapi/products/${data.id}`,
         method: "PATCH",
         body: data,
       }),
@@ -63,4 +73,6 @@ export const {
   useDeleteCategoryMutation,
   useUpdateProductCategoryMutation,
   useUpdateProductMutation,
+  useGetProductByIdQuery,
+  useGetProductCategoryByIdQuery,
 } = productsApi;

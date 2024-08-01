@@ -3,6 +3,7 @@ import {
   useDeleteProductMutation,
   useGetAllProductsQuery,
 } from "../api/productsApi";
+import { Link } from "react-router-dom";
 
 const ProductsTable = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
@@ -121,12 +122,18 @@ const ProductsTable = () => {
                     </td>
                     <td className="px-4 py-3">{product.status}</td>
                     <td className="px-4 mt-5 py-3 text-xs flex gap-x-4">
-                      <div className="px-2 py-1 font-semibold leading-tight text-gray-300 rounded-full bg-green-700">
+                      <div
+                        className="cursor-pointer
+                       px-2 py-1 font-semibold leading-tight text-gray-300 rounded-full bg-green-700"
+                      >
                         Approve
                       </div>
-                      <div className="px-2 py-1 font-semibold leading-tight text-gray-300 rounded-full bg-green-700">
+                      <Link
+                        to={`/edit-product/${product._id}`}
+                        className="px-2 py-1 font-semibold leading-tight text-gray-300 rounded-full bg-green-700"
+                      >
                         Edit
-                      </div>
+                      </Link>
                       <div
                         onClick={() => onDelete(product._id)}
                         className="px-2 cursor-pointer py-1 font-semibold leading-tight text-gray-300 rounded-full bg-red-700"
