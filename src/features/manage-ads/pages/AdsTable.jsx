@@ -108,9 +108,12 @@ const AdsTable = () => {
                       <div className="px-2 py-1 font-semibold leading-tight text-gray-300 rounded-full bg-green-700">
                         Approve
                       </div>
-                      <div className="px-2 py-1 font-semibold leading-tight text-gray-300 rounded-full bg-green-700">
+                      <Link
+                        to={`/edit-ads/${ad._id}`}
+                        className="px-2 py-1 font-semibold leading-tight text-gray-300 rounded-full bg-green-700"
+                      >
                         Edit
-                      </div>
+                      </Link>
                       <div
                         onClick={() => onDelete(ad._id)}
                         className="px-2 cursor-pointer py-1 font-semibold leading-tight text-gray-300 rounded-full bg-green-700"

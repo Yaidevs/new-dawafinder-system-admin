@@ -13,6 +13,12 @@ export const adsApi = createApi({
       query: () => `adsapi/organizations`,
     }),
 
+    getAdsById: builder.query({
+      query: (id) => ({
+        url: `adsapi/organizations/${id}`,
+      }),
+    }),
+
     addOrgForAds: builder.mutation({
       query: (data) => ({
         url: `adsapi/organizations`,
@@ -34,6 +40,13 @@ export const adsApi = createApi({
         method: "DELETE",
       }),
     }),
+    updateAds: builder.mutation({
+      query: (data) => ({
+        url: `adsapi/ads/${data.id}`,
+        method: "PATCH",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -43,4 +56,6 @@ export const {
   useGetOrgsQuery,
   useAddOrgForAdsMutation,
   useDeleteAdsMutation,
+  useGetAdsByIdQuery,
+  useUpdateAdsMutation,
 } = adsApi;

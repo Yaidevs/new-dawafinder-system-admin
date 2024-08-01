@@ -21,6 +21,7 @@ import AddProductCategory from "./features/manage-products/pages/AddProductCateg
 import ManageCategory from "./features/manage-products/pages/ManageCategory";
 import EditProduct from "./features/manage-products/pages/EditProduct";
 import EditProductCategory from "./features/manage-products/pages/EditProductCategory";
+import EditAds from "./features/manage-ads/pages/EditAds";
 
 const AppRoutes = () => {
   return (
@@ -56,6 +57,14 @@ const AppRoutes = () => {
           element={
             <Layout>
               <EditProductCategory />
+            </Layout>
+          }
+        />
+        <Route
+          path="/edit-ads/:id"
+          element={
+            <Layout>
+              <EditAds />
             </Layout>
           }
         />
