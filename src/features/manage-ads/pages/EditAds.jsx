@@ -11,13 +11,13 @@ const EditAds = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [selectedOrganization, setSelectedOrganization] = useState("");
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState("");
   const [price, setPrice] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [linkUrl, setLinkUrl] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [targetAudience, setTargetAudience] = useState([]);
+  const [targetAudience, setTargetAudience] = useState("");
   const [addressLine, setAddressLine] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
@@ -34,19 +34,21 @@ const EditAds = () => {
 
   useEffect(() => {
     if (ad) {
-      setTitle(ad.title);
-      setSelectedOrganization(ad.orgId);
-      setTags(ad.tags);
-      setPrice(ad.price);
-      setImageUrl(ad.imageUrl);
-      setLinkUrl(ad.linkUrl);
-      setStartDate(ad.startDate);
-      setEndDate(ad.endDate);
-      setTargetAudience(ad.targetAudience);
-      setAddressLine(ad.targetGeo[0]?.addressLine || "");
-      setCity(ad.targetGeo[0]?.city || "");
-      setCountry(ad.targetGeo[0]?.country || "");
-      setDescription(ad.description);
+      setTitle(ad?.data.title);
+      setSelectedOrganization(ad?.data.orgId);
+      setTags(ad?.data.tags ? ad.data.tags.join(", ") : "");
+      setPrice(ad?.data.price);
+      setImageUrl(ad?.data.imageUrl);
+      setLinkUrl(ad?.data.linkUrl);
+      setStartDate(ad?.data.startDate);
+      setEndDate(ad?.data.endDate);
+      setTargetAudience(
+        ad?.data.targetAudience ? ad.data.targetAudience.join(", ") : ""
+      );
+      setAddressLine(ad?.data.targetGeo[0]?.addressLine || "");
+      setCity(ad?.data.targetGeo[0]?.city || "");
+      setCountry(ad?.data.targetGeo[0]?.country || "");
+      setDescription(ad?.data.description);
     }
   }, [ad]);
 
@@ -59,13 +61,15 @@ const EditAds = () => {
         id,
         title,
         orgId: selectedOrganization,
-        tags,
+        tags: tags.split(",").map((tag) => tag.trim()),
         imageUrl,
         linkUrl,
         startDate,
         endDate,
         price,
-        targetAudience,
+        targetAudience: targetAudience
+          .split(",")
+          .map((audience) => audience.trim()),
         targetGeo,
         description,
       }).unwrap();
@@ -147,12 +151,8 @@ const EditAds = () => {
                       id="tags"
                       className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
                       placeholder="Tags"
-                      value={tags.join(", ")}
-                      onChange={(e) =>
-                        setTags(
-                          e.target.value.split(",").map((tag) => tag.trim())
-                        )
-                      }
+                      value={tags}
+                      onChange={(e) => setTags(e.target.value)}
                     />
                   </div>
                   <div>
@@ -249,12 +249,8 @@ const EditAds = () => {
                       id="target-audience"
                       className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
                       placeholder="Target Audience"
-                      value={targetAudience.join(", ")}
-                      onChange={(e) =>
-                        setTargetAudience(
-                          e.target.value.split(",").map((aud) => aud.trim())
-                        )
-                      }
+                      value={targetAudience}
+                      onChange={(e) => setTargetAudience(e.target.value)}
                     />
                   </div>
                   <div>
@@ -293,22 +289,22 @@ const EditAds = () => {
                   </div>
                   <div>
                     <label
-                      htmlFor="address-line"
+                      htmlFor="addressLine"
                       className="block mb-2 text-sm font-medium text-white"
                     >
-                      Address Line
+                      Address
                     </label>
                     <input
                       type="text"
-                      name="address-line"
-                      id="address-line"
+                      name="addressLine"
+                      id="addressLine"
                       className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                      placeholder="Address Line"
+                      placeholder="Address"
                       value={addressLine}
                       onChange={(e) => setAddressLine(e.target.value)}
                     />
                   </div>
-                  <div>
+                  <div className="sm:col-span-2">
                     <label
                       htmlFor="description"
                       className="block mb-2 text-sm font-medium text-white"
@@ -316,21 +312,23 @@ const EditAds = () => {
                       Description
                     </label>
                     <textarea
-                      name="description"
                       id="description"
+                      rows="4"
                       className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                      placeholder="Description"
+                      placeholder="Your description here"
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
-                    />
+                    ></textarea>
                   </div>
                 </div>
-                <button
-                  type="submit"
-                  className="inline-flex items-center text-black px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center bg-green-400 rounded-lg"
-                >
-                  {updating ? "Updating ..." : "Update Ad"}
-                </button>
+                <div className="mt-6 flex justify-center">
+                  <button
+                    type="submit"
+                    className="px-5 py-2.5 text-center text-sm font-medium text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300"
+                  >
+                    {updating ? "Updating..." : "Update Ad"}
+                  </button>
+                </div>
               </form>
             )}
           </div>

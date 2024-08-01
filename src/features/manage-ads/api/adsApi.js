@@ -15,7 +15,7 @@ export const adsApi = createApi({
 
     getAdsById: builder.query({
       query: (id) => ({
-        url: `adsapi/organizations/${id}`,
+        url: `adsapi/ads/${id}`,
       }),
     }),
 
