@@ -51,7 +51,7 @@ const AddHealthOrg = () => {
       const response = await addHealthOrganization({
         name,
         type,
-        images:imageUrls,
+        images: imageUrls,
         subscription,
         license,
         description,
@@ -329,13 +329,14 @@ const AddHealthOrg = () => {
                   />
                 </div>
               </div>
-              <button
-                type="submit"
-                className="inline-flex items-center text-black px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center bg-green-400 rounded-lg"
-                disabled={adding}
-              >
-                {adding ? "Adding..." : "Add"}
-              </button>
+              <div className="mt-6 flex justify-center">
+                <button
+                  type="submit"
+                  className="px-5 py-2.5 text-center text-sm font-medium text-white bg-green-700 rounded-lg hover:bg-green-800"
+                >
+                  {adding ? "Adding..." : "Add Org."}
+                </button>
+              </div>
             </form>
           </div>
         </section>
