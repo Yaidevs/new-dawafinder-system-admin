@@ -314,7 +314,7 @@ const Sidebar = () => {
             </Link>
           </li>
 
-          <li>
+          {/* <li>
             <Link
               to="/manage-users"
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-gray-800 pr-6"
@@ -326,7 +326,7 @@ const Sidebar = () => {
                 Manage users
               </span>
             </Link>
-          </li>
+          </li> */}
 
           {/* <li className="px-5 hidden md:block">
             <div className="flex flex-row items-center mt-5 h-8">

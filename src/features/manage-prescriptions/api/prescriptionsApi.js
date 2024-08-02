@@ -9,6 +9,12 @@ export const prescriptionsApi = createApi({
       query: () => `searchandprescription/prescriptions/`,
     }),
 
+    getPrescriptionById: builder.query({
+      query: (id) => ({
+        url: `searchandprescription/prescriptions/${id}`,
+      }),
+    }),
+
     addPrescription: builder.mutation({
       query: (data) => ({
         url: `searchandprescription/prescriptions/`,
@@ -29,4 +35,5 @@ export const {
   useGetAllPrescriptionsQuery,
   useAddPrescriptionMutation,
   useDeletePrescriptionMutation,
+  useGetPrescriptionByIdQuery,
 } = prescriptionsApi;

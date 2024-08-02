@@ -102,7 +102,7 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path="/prescription-detail"
+          path="/prescription-detail/:id"
           element={
             <Layout>
               <PrescriptionDetail />
