@@ -7,6 +7,7 @@ import {
 
 const HealthorgTable = () => {
   const { data, error, isLoading } = useGetAllHealthOrganizationsQuery();
+  console.log(data)
   const [deleteOrgs] = useDeleteOrgsMutation();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
@@ -86,7 +87,7 @@ const HealthorgTable = () => {
                           <div className="relative hidden w-10 h-10 mr-3 rounded-full md:block">
                             <img
                               className="object-cover w-full h-full"
-                              src="https://images.unsplash.com/photo-1642055514517-7b52288890ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBoYXJtYWN5fGVufDB8fDB8fHww"
+                              src={org.images[0]}
                               alt={org.name}
                               loading="lazy"
                             />

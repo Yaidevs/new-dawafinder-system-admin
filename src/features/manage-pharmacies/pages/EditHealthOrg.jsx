@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
 import {
   useGetHealthOrgsByIdQuery,
   useUpdateHealthOrgMutation,
 } from "../api/healthorgApi";
+import { storage } from "../../../firebase";
 
 const EditHealthOrg = () => {
   const { id } = useParams();
@@ -11,7 +14,7 @@ const EditHealthOrg = () => {
   const [updating, setUpdating] = useState(false);
   const [name, setName] = useState("");
   const [type, setType] = useState("");
-  const [image, setImage] = useState(null);
+  const [images, setImages] = useState([]);
   const [subscription, setSubscription] = useState("");
   const [license, setLicense] = useState("");
   const [coordinates, setCoordinates] = useState(0);
@@ -44,11 +47,22 @@ const EditHealthOrg = () => {
         setServiceName(org.data.service[0]?.serviceName || "");
         setServiceDescription(org.data.service[0]?.serviceDescription || "");
       }
+      setImages(org.data.images || []);
     }
   }, [org]);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
+    let imageUrls = org.data?.images || [];
+    if (images.length > 0) {
+      const uploadPromises = images.map(async (image) => {
+        const imageRef = ref(storage, `HealthOrg-images/${image.name + v4()}`);
+        await uploadBytes(imageRef, image);
+        return getDownloadURL(imageRef);
+      });
+      imageUrls = await Promise.all(uploadPromises);
+    }
 
     const absoluteLocation = { coordinates, street };
     const relativeLocation = { country, city, street };
@@ -61,6 +75,10 @@ const EditHealthOrg = () => {
         id,
         name,
         type,
+        images: imageUrls,
+        subscription,
+        license,
+        description,
         absoluteLocation,
         relativeLocation,
         contact,
@@ -77,7 +95,7 @@ const EditHealthOrg = () => {
 
   const handleFileChange = (e) => {
     if (e.target.files.length > 0) {
-      setImage(e.target.files[0]);
+      setImages(Array.from(e.target.files));
     }
   };
 
@@ -130,17 +148,18 @@ const EditHealthOrg = () => {
                   </div>
                   <div className="w-full">
                     <label
-                      htmlFor="image"
+                      htmlFor="images"
                       className="block mb-2 text-sm font-medium text-white"
                     >
                       Images
                     </label>
                     <input
                       type="file"
-                      name="image"
-                      id="image"
+                      name="images"
+                      id="images"
                       className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                      placeholder="select a file"
+                      placeholder="select files"
+                      multiple
                       onChange={handleFileChange}
                     />
                   </div>
