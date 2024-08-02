@@ -79,25 +79,23 @@ const AdsTable = () => {
                 data.data.slice(startIndex, endIndex).map((ad) => (
                   <tr key={ad._id} className="bg-gray-900 text-gray-300">
                     <td className="px-4 py-3">
-                      <Link to={`/ad-detail/${ad._id}`}>
-                        <div className="flex items-center text-sm">
-                          <div className="relative hidden w-10 h-10 mr-3 rounded-full md:block">
-                            <img
-                              className="object-cover w-full h-full"
-                              src={ad.imageUrl}
-                              alt={ad.title}
-                              loading="lazy"
-                            />
-                            <div
-                              className="absolute inset-0 rounded-full shadow-inner"
-                              aria-hidden="true"
-                            />
-                          </div>
-                          <div>
-                            <p className="font-semibold">{ad.title}</p>
-                          </div>
+                      <div className="flex items-center text-sm">
+                        <div className="relative hidden w-10 h-10 mr-3 rounded-full md:block">
+                          <img
+                            className="object-cover w-full h-full"
+                            src={ad.imageUrl}
+                            alt={ad.title}
+                            loading="lazy"
+                          />
+                          <div
+                            className="absolute inset-0 rounded-full shadow-inner"
+                            aria-hidden="true"
+                          />
                         </div>
-                      </Link>
+                        <div>
+                          <p className="font-semibold">{ad.title}</p>
+                        </div>
+                      </div>
                     </td>
                     <td className="px-4 py-3">
                       <div className="flex items-center text-sm">

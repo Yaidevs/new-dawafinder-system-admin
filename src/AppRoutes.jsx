@@ -22,6 +22,7 @@ import ManageCategory from "./features/manage-products/pages/ManageCategory";
 import EditProduct from "./features/manage-products/pages/EditProduct";
 import EditProductCategory from "./features/manage-products/pages/EditProductCategory";
 import EditAds from "./features/manage-ads/pages/EditAds";
+import EditHealthOrg from "./features/manage-pharmacies/pages/EditHealthOrg";
 
 const AppRoutes = () => {
   return (
@@ -65,6 +66,14 @@ const AppRoutes = () => {
           element={
             <Layout>
               <EditAds />
+            </Layout>
+          }
+        />
+        <Route
+          path="/edit-health-org/:id"
+          element={
+            <Layout>
+              <EditHealthOrg />
             </Layout>
           }
         />

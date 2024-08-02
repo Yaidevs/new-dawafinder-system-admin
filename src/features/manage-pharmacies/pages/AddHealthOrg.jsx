@@ -19,6 +19,7 @@ const AddHealthOrg = () => {
   const [email, setEmail] = useState("");
   const [serviceName, setServiceName] = useState("");
   const [serviceDescription, setServiceDescription] = useState("");
+  const [adding, setAdding] = useState(false);
 
   const [addHealthOrganization] = useAddHealthOrganizationMutation();
 
@@ -31,6 +32,7 @@ const AddHealthOrg = () => {
     const service = [{ serviceName, serviceDescription }];
 
     try {
+      setAdding(true);
       const response = await addHealthOrganization({
         name,
         type,
@@ -39,7 +41,9 @@ const AddHealthOrg = () => {
         contact,
         service,
       }).unwrap();
+      setAdding(false);
     } catch (error) {
+      setAdding(false);
       console.error("Error adding org:", error);
     }
   };
@@ -279,12 +283,14 @@ const AddHealthOrg = () => {
                   />
                 </div>
               </div>
-              <button
-                type="submit"
-                className="inline-flex items-center text-black px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center bg-green-400 rounded-lg"
-              >
-                Add Org.
-              </button>
+              <div className="mt-6 flex justify-center">
+                <button
+                  type="submit"
+                  className="px-5 py-2.5 text-center text-sm font-medium text-white bg-green-700 rounded-lg hover:bg-green-800"
+                >
+                  {adding ? "Adding ..." : "Add Org."}
+                </button>
+              </div>
             </form>
           </div>
         </section>

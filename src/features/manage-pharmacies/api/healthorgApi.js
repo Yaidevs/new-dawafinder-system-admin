@@ -8,7 +8,11 @@ export const healthorgApi = createApi({
     getAllHealthOrganizations: builder.query({
       query: () => `userapi/health-organizations/`,
     }),
-
+    getHealthOrgsById: builder.query({
+      query: (id) => ({
+        url: `userapi/health-organizations/${id}`,
+      }),
+    }),
     addHealthOrganization: builder.mutation({
       query: (data) => ({
         url: `userapi/health-organizations/`,
@@ -22,6 +26,13 @@ export const healthorgApi = createApi({
         method: "DELETE",
       }),
     }),
+    updateHealthOrg: builder.mutation({
+      query: (data) => ({
+        url: `userapi/health-organizations/${data.id}`,
+        method: "PATCH",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -29,4 +40,6 @@ export const {
   useGetAllHealthOrganizationsQuery,
   useAddHealthOrganizationMutation,
   useDeleteOrgsMutation,
+  useUpdateHealthOrgMutation,
+  useGetHealthOrgsByIdQuery,
 } = healthorgApi;

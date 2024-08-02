@@ -324,7 +324,7 @@ const EditAds = () => {
                 <div className="mt-6 flex justify-center">
                   <button
                     type="submit"
-                    className="px-5 py-2.5 text-center text-sm font-medium text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300"
+                    className="px-5 py-2.5 text-center text-sm font-medium text-white bg-green-700 rounded-lg hover:bg-green-800"
                   >
                     {updating ? "Updating..." : "Update Ad"}
                   </button>

@@ -2,8 +2,11 @@
 
 import React, { useState } from "react";
 import { useAddAdsMutation, useGetOrgsQuery } from "../api/adsApi";
+import { useNavigate } from "react-router-dom";
 
 const Addads = () => {
+  const [adding, setAdding] = useState(false);
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [selectedOrganization, setSelectedOrganization] = useState("");
   const [tags, setTags] = useState([]);
@@ -23,11 +26,11 @@ const Addads = () => {
 
   const submitFormHandler = async (event) => {
     event.preventDefault();
-  
 
     const targetGeo = [{ addressLine, city, country }];
 
     try {
+      setAdding(true);
       const response = await addAds({
         title,
         orgId: selectedOrganization,
@@ -41,7 +44,6 @@ const Addads = () => {
         targetGeo,
         description,
       }).unwrap();
-      console.log(response)
 
       setTitle("");
       setSelectedOrganization("");
@@ -56,7 +58,10 @@ const Addads = () => {
       setStartDate("");
       setPrice("");
       setTargetAudience("");
+      setAdding(false);
+      navigate("/view-ads");
     } catch (error) {
+      setAdding(false);
       console.error("Error adding post:", error);
     }
   };
@@ -309,12 +314,14 @@ const Addads = () => {
                   />
                 </div>
               </div>
-              <button
-                type="submit"
-                className="inline-flex items-center text-black px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center bg-green-400 rounded-lg"
-              >
-                Add Ads
-              </button>
+              <div className="mt-6 flex justify-center">
+                <button
+                  type="submit"
+                  className="px-5 py-2.5 text-center text-sm font-medium text-white bg-green-700 rounded-lg hover:bg-green-800  focus:outline-none"
+                >
+                  {adding ? "Adding..." : "Add Ad"}
+                </button>
+              </div>
             </form>
           </div>
         </section>

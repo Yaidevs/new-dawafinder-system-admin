@@ -162,12 +162,14 @@ const EditProduct = () => {
                     )}
                   </div>
                 </div>
-                <button
-                  type="submit"
-                  className="inline-flex items-center text-black px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center bg-green-400 rounded-lg"
-                >
-                  {updating ? "Updating ..." : "Update Product"}
-                </button>
+                <div className="mt-6 flex justify-center">
+                  <button
+                    type="submit"
+                    className="px-5 py-2.5 text-center text-sm font-medium text-white bg-green-700 rounded-lg hover:bg-green-800"
+                  >
+                    {updating ? "Updating..." : "Updating Ad"}
+                  </button>
+                </div>
               </form>
             )}
           </div>
