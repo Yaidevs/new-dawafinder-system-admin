@@ -5,6 +5,7 @@ import { healthorgApi } from "./features/manage-pharmacies/api/healthorgApi";
 import { adsApi } from "./features/manage-ads/api/adsApi";
 import { productsApi } from "./features/manage-products/api/productsApi";
 import { prescriptionsApi } from "./features/manage-prescriptions/api/prescriptionsApi";
+import { formularyApi } from "./features/manage-medicine-formularies/api/formularyApi";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     [adsApi.reducerPath]: adsApi.reducer,
     [productsApi.reducerPath]: productsApi.reducer,
     [prescriptionsApi.reducerPath]: prescriptionsApi.reducer,
+    [formularyApi.reducerPath]: formularyApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -21,7 +23,8 @@ export const store = configureStore({
       healthorgApi.middleware,
       adsApi.middleware,
       productsApi.middleware,
-      prescriptionsApi.middleware
+      prescriptionsApi.middleware,
+      formularyApi.middleware
     ),
 });
 
