@@ -1,29 +1,29 @@
-/* eslint-disable */
-
 import React, { useState } from "react";
 import { useAddOrgForAdsMutation } from "../api/adsApi";
+
 const AddOrgAds = () => {
   const [adding, setAdding] = useState(false);
   const [orgName, setOrgName] = useState("");
   const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNUmber] = useState("");
-  const [createdBy, setCreatedBy] = useState("Barnaan");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [createdBy] = useState("Barnaan");
   const [addOrgs] = useAddOrgForAdsMutation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setAdding(false);
-      const response = await addOrgs({
+      setAdding(true);
+      await addOrgs({
         orgName,
         email,
         phoneNumber,
         createdBy,
       }).unwrap();
 
+      // Reset form fields after submission
       setOrgName("");
       setEmail("");
-      setPhoneNUmber("");
+      setPhoneNumber("");
       setAdding(false);
     } catch (error) {
       setAdding(false);
@@ -32,19 +32,19 @@ const AddOrgAds = () => {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden flex flex-col flex-shrink-0 antialiased bg-gray-700 text-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-800 via-gray-900 to-black text-gray-200">
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
-        <section className="">
-          <div className="">
-            <h2 className="mb-4 text-xl flex font-sans font-semibold justify-center ms-6 mt-10 text-gray-300">
+        <section className="px-6 py-10">
+          <div className="max-w-2xl mx-auto bg-gray-900 rounded-lg shadow-lg p-8">
+            <h2 className="mb-6 text-3xl font-semibold text-center text-white">
               Add Organization for Ads
             </h2>
-            <form className=" p-6  w-full" onSubmit={handleSubmit}>
-              <div className="grid gap-4 sm:grid-cols-1 sm:gap-6 rounded bg-gray-900 p-8">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid gap-6">
                 <div>
                   <label
-                    htmlFor="name"
-                    className="block mb-2 text-sm font-medium text-white"
+                    htmlFor="org-name"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Organization Name
                   </label>
@@ -52,15 +52,18 @@ const AddOrgAds = () => {
                     type="text"
                     name="org-name"
                     id="org-name"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="Type org. name"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter organization name"
+                    value={orgName}
                     onChange={(e) => setOrgName(e.target.value)}
+                    required
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="email"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Email
                   </label>
@@ -68,34 +71,40 @@ const AddOrgAds = () => {
                     type="email"
                     name="email"
                     id="email"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="abel@gmail.com"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter email"
+                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="phone-number"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Phone Number
                   </label>
                   <input
-                    type="number"
+                    type="tel"
                     name="phone-number"
                     id="phone-number"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="0933239293"
-                    onChange={(e) => setPhoneNUmber(e.target.value)}
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter phone number"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    required
                   />
                 </div>
               </div>
-              <div className="mt-6 flex justify-center">
+
+              <div className="flex justify-center mt-8">
                 <button
                   type="submit"
-                  className="px-5 py-2.5 text-center text-sm font-medium text-white bg-green-700 rounded-lg hover:bg-green-800"
+                  className="px-6 py-3 text-lg font-medium text-white bg-teal-600 rounded-lg hover:bg-teal-700 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:outline-none transition-colors duration-300"
                 >
-                  {adding ? "Adding..." : "Add Org."}
+                  {adding ? "Adding..." : "Add Organization"}
                 </button>
               </div>
             </form>

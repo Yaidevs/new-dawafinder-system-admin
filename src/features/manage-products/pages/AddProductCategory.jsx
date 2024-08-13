@@ -6,9 +6,9 @@ const AddProductCategory = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
-  const [adding, setAdding] = useState("");
+  const [adding, setAdding] = useState(false);
   const [addProductCategory] = useAddProductCategoryMutation();
-  const navigate = useNavigate("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,6 +20,7 @@ const AddProductCategory = () => {
         image,
       }).unwrap();
 
+      // Reset form fields after submission
       setName("");
       setDescription("");
       setImage("");
@@ -32,19 +33,19 @@ const AddProductCategory = () => {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden flex flex-col flex-shrink-0 antialiased bg-gray-700 text-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-800 via-gray-900 to-black text-gray-200">
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
-        <section className="">
-          <div className="">
-            <h2 className="mb-4 text-xl flex font-sans font-semibold justify-center ms-6 mt-10 text-gray-300">
+        <section className="px-6 py-10">
+          <div className="max-w-4xl mx-auto bg-gray-900 rounded-lg shadow-lg p-8">
+            <h2 className="mb-6 text-3xl font-semibold text-center text-white">
               Add Product Category
             </h2>
-            <form className=" p-6  w-full" onSubmit={handleSubmit}>
-              <div className="grid gap-4 sm:grid-cols-1 sm:gap-6 rounded bg-gray-900 p-8">
-                <div>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid gap-6 sm:grid-cols-2">
+                <div className="sm:col-span-2">
                   <label
                     htmlFor="name"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Category Name
                   </label>
@@ -52,33 +53,37 @@ const AddProductCategory = () => {
                     type="text"
                     name="name"
                     id="name"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="Type category name"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter category name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    required
                   />
                 </div>
-                <div>
+
+                <div className="sm:col-span-2">
                   <label
                     htmlFor="description"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Description
                   </label>
-                  <input
-                    type="text"
+                  <textarea
                     name="description"
                     id="description"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="Type category description"
+                    rows={4}
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter category description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
+                    required
                   />
                 </div>
-                <div>
+
+                <div className="sm:col-span-2">
                   <label
                     htmlFor="image"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Image URL
                   </label>
@@ -86,17 +91,19 @@ const AddProductCategory = () => {
                     type="text"
                     name="image"
                     id="image"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
                     placeholder="http://example.com/image.jpg"
                     value={image}
                     onChange={(e) => setImage(e.target.value)}
+                    required
                   />
                 </div>
               </div>
-              <div className="mt-6 flex justify-center">
+
+              <div className="flex justify-center mt-8">
                 <button
                   type="submit"
-                  className="px-5 py-2.5 text-center text-sm font-medium text-white bg-green-700 rounded-lg hover:bg-green-800"
+                  className="px-6 py-3 text-lg font-medium text-white bg-teal-600 rounded-lg hover:bg-teal-700 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:outline-none transition-colors duration-300"
                 >
                   {adding ? "Adding..." : "Add Category"}
                 </button>

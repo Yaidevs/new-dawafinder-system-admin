@@ -1,10 +1,8 @@
-/* eslint-disable */
-
 import React, { useState } from "react";
 import { useAddAdsMutation, useGetOrgsQuery } from "../api/adsApi";
 import { useNavigate } from "react-router-dom";
 
-const Addads = () => {
+const AddAds = () => {
   const [adding, setAdding] = useState(false);
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
@@ -31,7 +29,7 @@ const Addads = () => {
 
     try {
       setAdding(true);
-      const response = await addAds({
+      await addAds({
         title,
         orgId: selectedOrganization,
         tags,
@@ -45,6 +43,7 @@ const Addads = () => {
         description,
       }).unwrap();
 
+      // Reset form fields after submission
       setTitle("");
       setSelectedOrganization("");
       setTags([]);
@@ -57,28 +56,29 @@ const Addads = () => {
       setEndDate("");
       setStartDate("");
       setPrice("");
-      setTargetAudience("");
+      setTargetAudience([]);
       setAdding(false);
       navigate("/view-ads");
     } catch (error) {
       setAdding(false);
-      console.error("Error adding post:", error);
+      console.error("Error adding ad:", error);
     }
   };
+
   return (
-    <div className="min-h-screen overflow-hidden flex flex-col flex-shrink-0 antialiased bg-gray-700 text-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-800 via-gray-900 to-black text-gray-200">
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
-        <section className="">
-          <div className="">
-            <h2 className="mb-4 text-xl flex font-sans font-semibold justify-center ms-6 mt-10 text-gray-300">
-              Add Ads
+        <section className="px-6 py-10">
+          <div className="max-w-4xl mx-auto bg-gray-900 rounded-lg shadow-lg p-8">
+            <h2 className="mb-6 text-3xl font-semibold text-center text-white">
+              Add New Ad
             </h2>
-            <form className=" p-6  w-full" onSubmit={submitFormHandler}>
-              <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 rounded bg-gray-900 p-8">
+            <form onSubmit={submitFormHandler} className="space-y-6">
+              <div className="grid gap-6 sm:grid-cols-2">
                 <div>
                   <label
                     htmlFor="title"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Title
                   </label>
@@ -86,25 +86,27 @@ const Addads = () => {
                     type="text"
                     name="title"
                     id="title"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="Type title"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
+                    required
                   />
                 </div>
 
                 <div>
                   <label
                     htmlFor="organizations"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
-                    Select organizations
+                    Select Organization
                   </label>
                   <select
                     id="organizations"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
                     value={selectedOrganization}
                     onChange={(e) => setSelectedOrganization(e.target.value)}
+                    required
                   >
                     {isLoading && <option>Loading...</option>}
                     {isError && <option>Error fetching orgs</option>}
@@ -120,7 +122,7 @@ const Addads = () => {
                 <div>
                   <label
                     htmlFor="tags"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Tags
                   </label>
@@ -128,8 +130,8 @@ const Addads = () => {
                     type="text"
                     name="tags"
                     id="tags"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="Tags"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter tags, separated by commas"
                     value={tags}
                     onChange={(e) =>
                       setTags(
@@ -142,31 +144,34 @@ const Addads = () => {
                 <div>
                   <label
                     htmlFor="imageUrl"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
-                    ImagUrl
+                    Image URL
                   </label>
                   <input
                     type="text"
                     name="image-url"
                     id="image-url"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter image URL"
                     value={imageUrl}
                     onChange={(e) => setImageUrl(e.target.value)}
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="linkUrl"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
-                    LinkUrl
+                    Link URL
                   </label>
                   <input
                     type="text"
                     name="link-url"
                     id="link-url"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter link URL"
                     value={linkUrl}
                     onChange={(e) => setLinkUrl(e.target.value)}
                   />
@@ -175,7 +180,7 @@ const Addads = () => {
                 <div>
                   <label
                     htmlFor="start-date"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Start Date
                   </label>
@@ -183,7 +188,7 @@ const Addads = () => {
                     type="date"
                     name="start-date"
                     id="start-date"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
                     value={startDate}
                     onChange={(e) => setStartDate(e.target.value)}
                   />
@@ -192,7 +197,7 @@ const Addads = () => {
                 <div>
                   <label
                     htmlFor="end-date"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     End Date
                   </label>
@@ -200,7 +205,7 @@ const Addads = () => {
                     type="date"
                     name="end-date"
                     id="end-date"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
                     value={endDate}
                     onChange={(e) => setEndDate(e.target.value)}
                   />
@@ -209,7 +214,7 @@ const Addads = () => {
                 <div>
                   <label
                     htmlFor="price"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Price
                   </label>
@@ -217,16 +222,18 @@ const Addads = () => {
                     type="number"
                     name="price"
                     id="price"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="which type of org."
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter price"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
+                    required
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="target-audience"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Target Audience
                   </label>
@@ -234,8 +241,8 @@ const Addads = () => {
                     type="text"
                     name="target-audience"
                     id="target-audience"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="target-audience"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter target audience"
                     value={targetAudience}
                     onChange={(e) =>
                       setTargetAudience(
@@ -244,10 +251,11 @@ const Addads = () => {
                     }
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="country"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Country
                   </label>
@@ -255,16 +263,17 @@ const Addads = () => {
                     type="text"
                     name="country"
                     id="country"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="country"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter country"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="city"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     City
                   </label>
@@ -272,16 +281,17 @@ const Addads = () => {
                     type="text"
                     name="city"
                     id="city"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="city"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter city"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="address-line"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Address Line
                   </label>
@@ -289,8 +299,8 @@ const Addads = () => {
                     type="text"
                     name="address-line"
                     id="address-line"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="address-line"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter address line"
                     value={addressLine}
                     onChange={(e) => setAddressLine(e.target.value)}
                   />
@@ -299,25 +309,25 @@ const Addads = () => {
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="description"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Description
                   </label>
                   <textarea
                     id="description"
-                    rows={8}
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="Add about org."
-                    defaultValue=""
+                    rows={6}
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                   />
                 </div>
               </div>
-              <div className="mt-6 flex justify-center">
+
+              <div className="flex justify-center mt-8">
                 <button
                   type="submit"
-                  className="px-5 py-2.5 text-center text-sm font-medium text-white bg-green-700 rounded-lg hover:bg-green-800  focus:outline-none"
+                  className="px-6 py-3 text-lg font-medium text-white bg-teal-600 rounded-lg hover:bg-teal-700 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:outline-none transition-colors duration-300"
                 >
                   {adding ? "Adding..." : "Add Ad"}
                 </button>
@@ -330,4 +340,4 @@ const Addads = () => {
   );
 };
 
-export default Addads;
+export default AddAds;

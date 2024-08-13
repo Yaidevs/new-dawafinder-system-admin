@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import React, { useState } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
@@ -48,7 +46,7 @@ const AddHealthOrg = () => {
       const service = [{ serviceName, serviceDescription }];
 
       setAdding(true);
-      const response = await addHealthOrganization({
+      await addHealthOrganization({
         name,
         type,
         images: imageUrls,
@@ -84,19 +82,19 @@ const AddHealthOrg = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-700 text-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-800 via-gray-900 to-black text-gray-200">
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
-        <section className="">
-          <div className="">
-            <h2 className="mb-4 text-xl flex font-sans font-semibold justify-center ms-6 mt-10 text-gray-300">
-              Add Health Organizations
+        <section className="px-6 py-10">
+          <div className="max-w-4xl mx-auto bg-gray-900 rounded-lg shadow-lg p-8">
+            <h2 className="mb-6 text-3xl font-semibold text-center text-white">
+              Add Health Organization
             </h2>
-            <form className="p-6 w-full" onSubmit={handleFormSubmit}>
-              <div className="grid gap-4 sm:grid-cols-1 sm:gap-6 rounded bg-gray-900 p-8">
+            <form onSubmit={handleFormSubmit} className="space-y-6">
+              <div className="grid gap-6 sm:grid-cols-2">
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="name"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Name
                   </label>
@@ -104,16 +102,18 @@ const AddHealthOrg = () => {
                     type="text"
                     name="name"
                     id="name"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="Type name"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter organization name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    required
                   />
                 </div>
-                <div className="w-full">
+
+                <div>
                   <label
                     htmlFor="type"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Type
                   </label>
@@ -121,16 +121,18 @@ const AddHealthOrg = () => {
                     type="text"
                     name="type"
                     id="type"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="Which type of org."
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter organization type"
                     value={type}
                     onChange={(e) => setType(e.target.value)}
+                    required
                   />
                 </div>
-                <div className="w-full">
+
+                <div>
                   <label
                     htmlFor="images"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Images
                   </label>
@@ -138,15 +140,16 @@ const AddHealthOrg = () => {
                     type="file"
                     name="images"
                     id="images"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
                     multiple
                     onChange={(e) => setImages(Array.from(e.target.files))}
                   />
                 </div>
-                <div className="w-full">
+
+                <div>
                   <label
                     htmlFor="subscription"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Subscription
                   </label>
@@ -154,16 +157,18 @@ const AddHealthOrg = () => {
                     type="text"
                     name="subscription"
                     id="subscription"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="Free"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter subscription type"
                     value={subscription}
                     onChange={(e) => setSubscription(e.target.value)}
+                    required
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="license"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     License
                   </label>
@@ -171,16 +176,18 @@ const AddHealthOrg = () => {
                     type="text"
                     name="license"
                     id="license"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="License"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter license number"
                     value={license}
                     onChange={(e) => setLicense(e.target.value)}
+                    required
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="coordinates"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Coordinates
                   </label>
@@ -188,32 +195,36 @@ const AddHealthOrg = () => {
                     type="number"
                     name="coordinates"
                     id="coordinates"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="12"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter coordinates"
                     value={coordinates}
                     onChange={(e) => setCoordinates(e.target.value)}
+                    required
                   />
                 </div>
+
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="description"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Description
                   </label>
                   <textarea
                     id="description"
-                    rows={8}
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="Add about org."
+                    rows={5}
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
+                    required
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="country"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Country
                   </label>
@@ -221,16 +232,18 @@ const AddHealthOrg = () => {
                     type="text"
                     name="country"
                     id="country"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="Country"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter country"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
+                    required
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="city"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     City
                   </label>
@@ -238,16 +251,18 @@ const AddHealthOrg = () => {
                     type="text"
                     name="city"
                     id="city"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="City"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter city"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
+                    required
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="street"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Street
                   </label>
@@ -255,33 +270,37 @@ const AddHealthOrg = () => {
                     type="text"
                     name="street"
                     id="street"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="Street"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter street"
                     value={street}
                     onChange={(e) => setStreet(e.target.value)}
+                    required
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="phone-number"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Phone Number
                   </label>
                   <input
-                    type="text"
+                    type="tel"
                     name="phone-number"
                     id="phone-number"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="09-xxx-xxx-xxx"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter phone number"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
+                    required
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="email"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Email
                   </label>
@@ -289,16 +308,18 @@ const AddHealthOrg = () => {
                     type="email"
                     name="email"
                     id="email"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="example@gmail.com"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="service-name"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Service Name
                   </label>
@@ -306,35 +327,39 @@ const AddHealthOrg = () => {
                     type="text"
                     name="service-name"
                     id="service-name"
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="Enter a service"
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter service name"
                     value={serviceName}
                     onChange={(e) => setServiceName(e.target.value)}
+                    required
                   />
                 </div>
-                <div>
+
+                <div className="sm:col-span-2">
                   <label
                     htmlFor="service-description"
-                    className="block mb-2 text-sm font-medium text-white"
+                    className="block mb-2 text-sm font-medium"
                   >
                     Service Description
                   </label>
                   <textarea
                     id="service-description"
-                    rows={8}
-                    className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
-                    placeholder="Add about service."
+                    rows={5}
+                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter service description"
                     value={serviceDescription}
                     onChange={(e) => setServiceDescription(e.target.value)}
+                    required
                   />
                 </div>
               </div>
-              <div className="mt-6 flex justify-center">
+
+              <div className="flex justify-center mt-8">
                 <button
                   type="submit"
-                  className="px-5 py-2.5 text-center text-sm font-medium text-white bg-green-700 rounded-lg hover:bg-green-800"
+                  className="px-6 py-3 text-lg font-medium text-white bg-teal-600 rounded-lg hover:bg-teal-700 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:outline-none transition-colors duration-300"
                 >
-                  {adding ? "Adding..." : "Add Org."}
+                  {adding ? "Adding..." : "Add Organization"}
                 </button>
               </div>
             </form>
