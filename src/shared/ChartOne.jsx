@@ -1,132 +1,88 @@
-import React from 'react'
+import React from 'react';
 import {
     Card,
     CardBody,
     CardHeader,
     Typography,
-  } from "@material-tailwind/react";
-  import Chart from "react-apexcharts";
+} from "@material-tailwind/react";
+import Chart from "react-apexcharts";
 
-   
-  // If you're using Next.js please use the dynamic import for react-apexcharts and remove the import from the top for the react-apexcharts
-  // import dynamic from "next/dynamic";
-  // const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
-   
-  const chartConfig = {
+const chartConfig = {
     type: "bar",
     height: 240,
     series: [
-      {
-        name: "Sales",
-        data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
-      },
+        {
+            name: "Sales",
+            data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
+        },
     ],
     options: {
-      chart: {
-        toolbar: {
-          show: false,
+        chart: {
+            toolbar: {
+                show: false,
+            },
         },
-      },
-      title: {
-        show: "",
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      colors: ["#fff"],
-      plotOptions: {
-        bar: {
-          columnWidth: "40%",
-          borderRadius: 2,
+        dataLabels: {
+            enabled: false,
         },
-      },
-      xaxis: {
-        axisTicks: {
-          show: false,
+        colors: ["#4CAF50"],
+        plotOptions: {
+            bar: {
+                columnWidth: "40%",
+                borderRadius: 5,
+            },
         },
-        axisBorder: {
-          show: false,
-        },
-        labels: {
-          style: {
-            colors: "#616161",
-            fontSize: "12px",
-            fontFamily: "inherit",
-            fontWeight: 400,
-          },
-        },
-        categories: [
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec",
-        ],
-      },
-      yaxis: {
-        labels: {
-          style: {
-            colors: "#616161",
-            fontSize: "12px",
-            fontFamily: "inherit",
-            fontWeight: 400,
-          },
-        },
-      },
-      grid: {
-        show: true,
-        borderColor: "#dddddd",
-        strokeDashArray: 5,
         xaxis: {
-          lines: {
-            show: true,
-          },
+            categories: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            labels: {
+                style: {
+                    colors: "#616161",
+                    fontSize: "14px",
+                },
+            },
         },
-        padding: {
-          top: 5,
-          right: 20,
+        yaxis: {
+            labels: {
+                style: {
+                    colors: "#616161",
+                    fontSize: "14px",
+                },
+            },
         },
-      },
-      fill: {
-        opacity: 0.8,
-      },
-      tooltip: {
-        theme: "dark",
-      },
+        grid: {
+            borderColor: "#E0E0E0",
+            strokeDashArray: 4,
+        },
+        fill: {
+            opacity: 0.85,
+        },
+        tooltip: {
+            theme: "dark",
+        },
     },
-  };
+};
 
 const ChartOne = () => {
     return (
-        <Card className=' bg-gray-900'>
-          <CardHeader
-            floated={false}
-            shadow={false}
-            color="transparent"
-            className="flex flex-col gap-4 rounded-none md:flex-row md:items-center"
-          >
-            <div>
-              <Typography className='text-white font-bold flex justify-center'>
-                
-              </Typography>
-              <Typography
-                variant="small"
-                color="gray"
-                className="max-w-sm font-normal text-white"
-              >
-                
-              </Typography>
-            </div>
-          </CardHeader>
-          <CardBody className="px-2 pb-0">
-            <Chart {...chartConfig} />
-          </CardBody>
+        <Card className="bg-white shadow-xl">
+            <CardHeader
+                floated={false}
+                shadow={false}
+                color="transparent"
+                className="rounded-none flex flex-col md:flex-row md:items-center justify-center"
+            >
+                <Typography className="text-gray-900 font-bold text-center">
+                    Monthly Sales Overview
+                </Typography>
+                <Typography variant="small" color="gray" className="text-center text-gray-600">
+                    This bar chart represents the monthly sales data for the year, showing a significant increase during the summer months.
+                </Typography>
+            </CardHeader>
+            <CardBody className="px-4 pb-4">
+                <Chart {...chartConfig} />
+            </CardBody>
         </Card>
-      );
+    );
 }
 
-export default ChartOne
+export default ChartOne;

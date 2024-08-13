@@ -16,7 +16,8 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="fixed flex flex-col top-16 left-0 w-14 hover:w-64 md:w-64 bg-gradient-to-b from-gray-900 to-black text-gray-100 h-full shadow-lg transition-all duration-300 border-none z-10">
+    <div className="fixed flex flex-col top-16 left-0 w-14 hover:w-64 md:w-64 bg-gradient-to-b from-blue-600 to-blue-800 text-white h-full shadow-lg transition-all duration-300 z-10">
+      {" "}
       <div className="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
         <ul className="flex flex-col py-4 space-y-1">
           {/* Dashboard */}

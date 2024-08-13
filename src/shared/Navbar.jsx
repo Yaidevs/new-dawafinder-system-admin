@@ -7,18 +7,18 @@ const Navbar = () => {
   const newNotifications = 3; // Example number of new notifications
 
   return (
-    <div className="fixed w-full flex items-center justify-between h-16 text-gray-100 bg-gradient-to-r from-blue-800 via-purple-700 to-purple-900 z-10">
-      <div className="flex items-center justify-start md:justify-center px-5 w-14 md:w-64 h-16 bg-gradient-to-b from-gray-900 to-black border-none">
-        <h1 className="text-xl md:text-2xl font-bold tracking-wider text-white font-poppins">
+    <div className="fixed w-full flex items-center justify-between h-16 text-gray-800 bg-gradient-to-r from-gray-100 to-gray-200 z-10 shadow-lg">
+      <div className="flex items-center justify-start md:justify-center px-5 w-14 md:w-64 h-16 bg-gradient-to-b from-gray-200 to-gray-300">
+        <h1 className="text-xl md:text-2xl font-bold tracking-wider text-gray-800">
           DAWAAFINDER
         </h1>
       </div>
-      <div className="flex flex-1 justify-end items-center h-16 bg-gradient-to-b from-gray-900 to-black pr-6">
+      <div className="flex flex-1 justify-end items-center h-16 pr-6">
         <ul className="flex items-center space-x-6">
           <li className="relative">
             <Link
               to="/notifications"
-              className="flex items-center hover:text-cyan-400"
+              className="flex items-center hover:text-blue-600"
             >
               <IoMdNotificationsOutline size={24} />
               {newNotifications > 0 && (
@@ -29,7 +29,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/" className="flex items-center hover:text-cyan-400">
+            <Link to="/" className="flex items-center hover:text-blue-600">
               <IoIosLogOut size={24} />
               <span className="ml-2">Logout</span>
             </Link>

@@ -1,5 +1,8 @@
 {
     "recommendations": [
-        "humao.rest-client"
+        "humao.rest-client",
+        "johnpapa.vscode-peacock",
+        "github.copilot",
+        "ms-vscode-remote.remote-ssh"
     ]
 }
