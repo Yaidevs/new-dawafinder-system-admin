@@ -4,7 +4,7 @@ import {
   useGetAllProductsQuery,
 } from "../api/productsApi";
 import { Link } from "react-router-dom";
-import { FaTrashAlt, FaEdit, FaCheck } from "react-icons/fa"; // Importing icons
+import { FaTrashAlt, FaEdit, FaCheck } from "react-icons/fa"; 
 
 const ProductsTable = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
@@ -25,7 +25,7 @@ const ProductsTable = () => {
   };
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 3;
 
   useEffect(() => {
     if (

@@ -22,7 +22,7 @@ const Sidebar = () => {
           {/* Dashboard */}
           <li>
             <Link
-              to="/"
+              to="/home"
               className="relative flex flex-row items-center h-12 focus:outline-none hover:bg-gray-800 text-gray-100 hover:text-white border-l-4 border-transparent hover:border-teal-500 transition duration-300 pr-6"
             >
               <span className="inline-flex justify-center items-center ml-4">

@@ -3,12 +3,12 @@ import PrescriptionsTable from "./PrescriptionsTable";
 
 const ListOfPrescriptions = () => {
   return (
-    <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-800 via-gray-900 to-black text-gray-200">
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
-        <div className=" flex flex-col">
-          <div className=" flex justify-center p-6 font-bold text-gray-300 ">
+        <div className="p-6">
+          <h1 className="text-3xl font-semibold text-center text-gray-200 mb-6">
             Prescriptions
-          </div>
+          </h1>
           <PrescriptionsTable />
         </div>
       </div>
