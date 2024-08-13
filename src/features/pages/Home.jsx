@@ -31,7 +31,7 @@ const Home = () => {
               </dt>
               <dd className="ml-6 mt-4 flex items-baseline">
                 <p className="text-4xl font-bold text-white">71,897</p>
-                <p className="ml-3 flex items-baseline text-sm font-semibold text-green-200">
+                {/* <p className="ml-3 flex items-baseline text-sm font-semibold text-green-200">
                   <svg
                     className="h-5 w-5 flex-shrink-0 self-center text-green-400"
                     viewBox="0 0 20 20"
@@ -46,7 +46,7 @@ const Home = () => {
                   </svg>
                   <span className="sr-only">Increased by</span>
                   122
-                </p>
+                </p> */}
               </dd>
             </div>
 
@@ -62,7 +62,7 @@ const Home = () => {
               </dt>
               <dd className="ml-6 mt-4 flex items-baseline">
                 <p className="text-4xl font-bold text-white">58</p>
-                <p className="ml-3 flex items-baseline text-sm font-semibold text-green-200">
+                {/* <p className="ml-3 flex items-baseline text-sm font-semibold text-green-200">
                   <svg
                     className="h-5 w-5 flex-shrink-0 self-center text-green-400"
                     viewBox="0 0 20 20"
@@ -77,7 +77,7 @@ const Home = () => {
                   </svg>
                   <span className="sr-only">Increased by</span>
                   5.4%
-                </p>
+                </p> */}
               </dd>
             </div>
 
@@ -93,7 +93,7 @@ const Home = () => {
               </dt>
               <dd className="ml-6 mt-4 flex items-baseline">
                 <p className="text-4xl font-bold text-white">24</p>
-                <p className="ml-3 flex items-baseline text-sm font-semibold text-red-200">
+                {/* <p className="ml-3 flex items-baseline text-sm font-semibold text-red-200">
                   <svg
                     className="h-5 w-5 flex-shrink-0 self-center text-red-400"
                     viewBox="0 0 20 20"
@@ -108,7 +108,7 @@ const Home = () => {
                   </svg>
                   <span className="sr-only">Decreased by</span>
                   3.2%
-                </p>
+                </p> */}
               </dd>
             </div>
           </dl>
