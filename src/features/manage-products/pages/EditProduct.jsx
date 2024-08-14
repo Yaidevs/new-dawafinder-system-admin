@@ -16,11 +16,9 @@ const EditProduct = () => {
   const [category, setCategory] = useState("");
   const [updating, setUpdating] = useState(false);
 
-  const { data: product, isLoading: productLoading } =
-    useGetProductByIdQuery(id);
+  const { data: product, isLoading: productLoading } = useGetProductByIdQuery(id);
   const [updateProduct] = useUpdateProductMutation();
-  const { data: categories, isLoading: categoriesLoading } =
-    useGetAllProductCategoryQuery();
+  const { data: categories, isLoading: categoriesLoading } = useGetAllProductCategoryQuery();
 
   useEffect(() => {
     if (product) {
@@ -36,7 +34,7 @@ const EditProduct = () => {
     e.preventDefault();
     try {
       setUpdating(true);
-      const response = await updateProduct({
+      await updateProduct({
         id,
         name,
         description,
@@ -47,7 +45,6 @@ const EditProduct = () => {
 
       setUpdating(false);
       navigate("/view-products");
-      window.location.reload();
     } catch (error) {
       console.error("Error updating product:", error);
       setUpdating(false);
@@ -55,22 +52,22 @@ const EditProduct = () => {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden flex flex-col flex-shrink-0 antialiased bg-gray-700 text-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-gray-100 text-gray-800">
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
-        <section className="">
-          <div className="">
-            <h2 className="mb-4 text-xl flex font-sans font-semibold justify-center ms-6 mt-10 text-gray-300">
+        <section>
+          <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
+            {/* <h2 className="mb-6 text-3xl font-semibold text-center text-gray-900">
               Edit Product
-            </h2>
+            </h2> */}
             {productLoading ? (
               <p>Loading product...</p>
             ) : (
-              <form className="p-6 w-full" onSubmit={handleSubmit}>
-                <div className="grid gap-4 sm:grid-cols-1 sm:gap-6 rounded bg-gray-900 p-8">
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <div className="grid gap-6 sm:grid-cols-2">
                   <div>
                     <label
                       htmlFor="name"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Product Name
                     </label>
@@ -78,7 +75,7 @@ const EditProduct = () => {
                       type="text"
                       name="name"
                       id="name"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       placeholder="Type product name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -87,7 +84,7 @@ const EditProduct = () => {
                   <div>
                     <label
                       htmlFor="description"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Description
                     </label>
@@ -95,7 +92,7 @@ const EditProduct = () => {
                       type="text"
                       name="description"
                       id="description"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       placeholder="Type product description"
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
@@ -104,7 +101,7 @@ const EditProduct = () => {
                   <div>
                     <label
                       htmlFor="brand"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Brand
                     </label>
@@ -112,7 +109,7 @@ const EditProduct = () => {
                       type="text"
                       name="brand"
                       id="brand"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       placeholder="Type brand name"
                       value={brand}
                       onChange={(e) => setBrand(e.target.value)}
@@ -121,7 +118,7 @@ const EditProduct = () => {
                   <div>
                     <label
                       htmlFor="image"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Image URL
                     </label>
@@ -129,7 +126,7 @@ const EditProduct = () => {
                       type="text"
                       name="image"
                       id="image"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       placeholder="http://example.com/image.jpg"
                       value={image}
                       onChange={(e) => setImage(e.target.value)}
@@ -138,7 +135,7 @@ const EditProduct = () => {
                   <div>
                     <label
                       htmlFor="category"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Category
                     </label>
@@ -148,7 +145,7 @@ const EditProduct = () => {
                       <select
                         name="category"
                         id="category"
-                        className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                        className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
                       >
@@ -165,9 +162,9 @@ const EditProduct = () => {
                 <div className="mt-6 flex justify-center">
                   <button
                     type="submit"
-                    className="px-5 py-2.5 text-center text-sm font-medium text-white bg-green-700 rounded-lg hover:bg-green-800"
+                    className="px-5 py-2.5 text-center text-sm font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 focus:ring-4 focus:ring-teal-500"
                   >
-                    {updating ? "Updating..." : "Updating Ad"}
+                    {updating ? "Updating..." : "Update Product"}
                   </button>
                 </div>
               </form>

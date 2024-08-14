@@ -2,16 +2,16 @@ import React from "react";
 import { IoIosLogOut } from "react-icons/io";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
-import logo from '../assets/logo.png'; // Replace with the path to your logo image
+import logo from '../assets/dawa_logo.png'; 
 
 const Navbar = () => {
-  const newNotifications = 3; // Example number of new notifications
+  const newNotifications = 3; 
 
   return (
     <div className="fixed w-full flex items-center justify-between h-16 z-10 shadow-md">
       {/* Logo and Sidebar background part */}
-      <div className="flex items-center justify-start px-5 w-14 md:w-64 h-16 bg-gradient-to-b from-blue-600 to-blue-800">
-        <img src={logo} alt="Logo" className="h-10 md:h-12" />
+      <div className="flex items-center justify-center px-5 w-14 md:w-64 h-16 bg-gradient-to-b from-blue-600 to-blue-800">
+        <img src={logo} alt="Logo" className="w-20 h-10 md:h-12" />
       </div>
 
       {/* White background part */}

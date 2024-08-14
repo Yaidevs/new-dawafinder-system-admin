@@ -15,7 +15,6 @@ const EditProductCategory = () => {
 
   const { data: category, isLoading: categoryLoading } =
     useGetProductCategoryByIdQuery(id);
-
   const [updateProductCategory] = useUpdateProductCategoryMutation();
 
   useEffect(() => {
@@ -39,7 +38,6 @@ const EditProductCategory = () => {
 
       setUpdating(false);
       navigate("/view-categories");
-      window.location.reload();
     } catch (error) {
       console.error("Error updating product category:", error);
       setUpdating(false);
@@ -47,22 +45,22 @@ const EditProductCategory = () => {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden flex flex-col flex-shrink-0 antialiased bg-gray-700 text-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-gray-100 text-gray-800">
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
-        <section className="">
-          <div className="">
-            <h2 className="mb-4 text-xl flex font-sans font-semibold justify-center ms-6 mt-10 text-gray-300">
+        <section>
+          <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
+            {/* <h2 className="mb-6 text-3xl font-semibold text-center text-gray-900">
               Edit Product Category
-            </h2>
+            </h2> */}
             {categoryLoading ? (
               <p>Loading category...</p>
             ) : (
-              <form className="p-6 w-full" onSubmit={handleSubmit}>
-                <div className="grid gap-4 sm:grid-cols-1 sm:gap-6 rounded bg-gray-900 p-8">
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <div className="grid gap-6 sm:grid-cols-1">
                   <div>
                     <label
                       htmlFor="name"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Category Name
                     </label>
@@ -70,7 +68,7 @@ const EditProductCategory = () => {
                       type="text"
                       name="name"
                       id="name"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       placeholder="Type category name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -79,7 +77,7 @@ const EditProductCategory = () => {
                   <div>
                     <label
                       htmlFor="description"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Description
                     </label>
@@ -87,7 +85,7 @@ const EditProductCategory = () => {
                       type="text"
                       name="description"
                       id="description"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       placeholder="Type category description"
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
@@ -96,7 +94,7 @@ const EditProductCategory = () => {
                   <div>
                     <label
                       htmlFor="image"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Image URL
                     </label>
@@ -104,7 +102,7 @@ const EditProductCategory = () => {
                       type="text"
                       name="image"
                       id="image"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       placeholder="http://example.com/image.jpg"
                       value={image}
                       onChange={(e) => setImage(e.target.value)}
@@ -114,7 +112,7 @@ const EditProductCategory = () => {
                 <div className="mt-6 flex justify-center">
                   <button
                     type="submit"
-                    className="px-5 py-2.5 text-center text-sm font-medium text-white bg-green-700 rounded-lg hover:bg-green-800"
+                    className="px-5 py-2.5 text-center text-sm font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 focus:ring-4 focus:ring-teal-500"
                   >
                     {updating ? "Updating..." : "Update Category"}
                   </button>
