@@ -76,6 +76,7 @@ const EditAds = () => {
 
       setUpdating(false);
       navigate("/view-ads");
+      window.location.reload();
     } catch (error) {
       console.error("Error updating ad:", error);
       setUpdating(false);

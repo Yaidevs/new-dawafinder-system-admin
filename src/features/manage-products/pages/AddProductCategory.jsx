@@ -26,6 +26,7 @@ const AddProductCategory = () => {
       setImage("");
       setAdding(false);
       navigate("/view-categories");
+      window.location.reload();
     } catch (error) {
       setAdding(false);
       console.error("Error adding product category:", error);

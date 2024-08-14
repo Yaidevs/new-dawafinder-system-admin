@@ -16,7 +16,8 @@ const ProductsTable = () => {
     );
     if (confirmed) {
       try {
-        await deleteProduct(id).unwrap();
+        const res = await deleteProduct(id).unwrap();
+        console.log(res);
         window.location.reload();
       } catch (error) {
         console.error("Error deleting:", error);

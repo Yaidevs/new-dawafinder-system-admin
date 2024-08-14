@@ -42,8 +42,6 @@ const AddAds = () => {
         targetGeo,
         description,
       }).unwrap();
-
-      // Reset form fields after submission
       setTitle("");
       setSelectedOrganization("");
       setTags([]);
@@ -59,6 +57,7 @@ const AddAds = () => {
       setTargetAudience([]);
       setAdding(false);
       navigate("/view-ads");
+      window.location.reload();
     } catch (error) {
       setAdding(false);
       console.error("Error adding ad:", error);

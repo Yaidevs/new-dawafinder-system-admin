@@ -16,9 +16,11 @@ const EditProduct = () => {
   const [category, setCategory] = useState("");
   const [updating, setUpdating] = useState(false);
 
-  const { data: product, isLoading: productLoading } = useGetProductByIdQuery(id);
+  const { data: product, isLoading: productLoading } =
+    useGetProductByIdQuery(id);
   const [updateProduct] = useUpdateProductMutation();
-  const { data: categories, isLoading: categoriesLoading } = useGetAllProductCategoryQuery();
+  const { data: categories, isLoading: categoriesLoading } =
+    useGetAllProductCategoryQuery();
 
   useEffect(() => {
     if (product) {
@@ -45,6 +47,7 @@ const EditProduct = () => {
 
       setUpdating(false);
       navigate("/view-products");
+      window.location.reload();
     } catch (error) {
       console.error("Error updating product:", error);
       setUpdating(false);
