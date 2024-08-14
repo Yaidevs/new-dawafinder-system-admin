@@ -26,73 +26,83 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen shadow">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        {/* <img
-          className="mx-auto h-10 w-auto"
-          src="http://tailwindu.com/img/logos/mark.svg?color=indigo&shade=600"
-          alt="Dawa Logo"
-        /> */}
-        {/* <h2 className="mt-10 text-center font-sans text-2xl font-semibold leading-9 tracking-tight text-gray-900">
-          Sign in
-        </h2> */}
+    <div className="flex h-screen">
+      {/* Left Section */}
+      <div className="hidden lg:flex flex-col justify-center w-1/2 bg-[#20846c] p-10">
+        <h1 className="text-white text-4xl text-center font-bold mb-4">
+          Welcome 
+        </h1>
+        <p className="text-white text-lg">
+          Manage your products, ads, health organizations, and much more from one central location.
+          The dashboard provides all the tools you need to stay on top of your business.
+        </p>
       </div>
-      <div className="sm:mx-auto border-black p-10 shadow sm:w-full sm:max-w-sm">
-        <form className="space-y-6" onSubmit={handleLogin}>
-          <div>
-            <label
-              htmlFor="username"
-              className="block text-sm font-medium leading-6 text-gray-900"
-            >
-              Username
-            </label>
-            <div className="mt-2">
-              <input
-                placeholder="username"
-                id="username"
-                name="username"
-                type="text"
-                autoComplete="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-                className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset outline-none"
-              />
+
+      {/* Right Section */}
+      <div
+        className="flex items-center justify-center w-full lg:w-1/2 bg-cover bg-center"
+        style={{
+          backgroundImage: `url('https://your-background-image-url.com')`, // Replace with your image URL
+        }}
+      >
+        <div className="bg-white rounded-lg shadow-lg p-8 max-w-sm w-full">
+          {/* <h2 className="text-center text-2xl font-semibold text-gray-900 mb-6">
+            Sign In
+          </h2> */}
+          <form className="space-y-6" onSubmit={handleLogin}>
+            <div>
+              <label
+                htmlFor="username"
+                className="block text-sm font-medium text-gray-900"
+              >
+                Username
+              </label>
+              <div className="mt-2">
+                <input
+                  placeholder="username"
+                  id="username"
+                  name="username"
+                  type="text"
+                  autoComplete="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                  className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-[#20846c] outline-none"
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="flex items-center justify-between">
+            <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium leading-6 text-gray-900"
+                className="block text-sm font-medium text-gray-900"
               >
                 Password
               </label>
+              <div className="mt-2">
+                <input
+                  placeholder="password"
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-[#20846c] outline-none"
+                />
+              </div>
             </div>
-            <div className="mt-2">
-              <input
-                placeholder="password"
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset outline-none"
-              />
+            <div>
+              <button
+                type="submit"
+                className="flex w-full justify-center rounded-md bg-[#20846c] px-4 py-2 text-sm font-semibold text-white shadow-lg hover:bg-[#1a6b58] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#20846c]"
+              >
+                Sign in
+              </button>
             </div>
-          </div>
-          <div>
-            <button
-              type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              Sign in
-            </button>
-          </div>
-          {error && <p className="text-red-500">{error}</p>}
-        </form>
+            {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+          </form>
+        </div>
       </div>
     </div>
   );
