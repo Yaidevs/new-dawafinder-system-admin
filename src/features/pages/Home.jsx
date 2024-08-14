@@ -12,7 +12,7 @@ const Home = () => {
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
         <div className="p-6">
           <h1 className="text-3xl font-semibold text-gray-900 mb-6">
-            Dashboard Overview
+           Overview
           </h1>
           <dl className="mt-5 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {/* Total Pharmacies Card */}

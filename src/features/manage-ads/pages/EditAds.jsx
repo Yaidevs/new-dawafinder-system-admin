@@ -57,7 +57,7 @@ const EditAds = () => {
     try {
       setUpdating(true);
       const targetGeo = [{ addressLine, city, country }];
-      const response = await updateAd({
+      await updateAd({
         id,
         title,
         orgId: selectedOrganization,
@@ -76,7 +76,6 @@ const EditAds = () => {
 
       setUpdating(false);
       navigate("/view-ads");
-      window.location.reload();
     } catch (error) {
       console.error("Error updating ad:", error);
       setUpdating(false);
@@ -84,22 +83,22 @@ const EditAds = () => {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden flex flex-col flex-shrink-0 antialiased bg-gray-700 text-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-gray-100 text-gray-800">
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
-        <section className="">
-          <div className="">
-            <h2 className="mb-4 text-xl flex font-sans font-semibold justify-center ms-6 mt-10 text-gray-300">
+        <section>
+          <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
+            {/* <h2 className="mb-6 text-3xl font-semibold text-center text-gray-900">
               Edit Ad
-            </h2>
+            </h2> */}
             {adLoading ? (
               <p>Loading ad...</p>
             ) : (
-              <form className="p-6 w-full" onSubmit={handleSubmit}>
-                <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 rounded bg-gray-900 p-8">
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <div className="grid gap-6 sm:grid-cols-2">
                   <div>
                     <label
                       htmlFor="title"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Title
                     </label>
@@ -107,7 +106,7 @@ const EditAds = () => {
                       type="text"
                       name="title"
                       id="title"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       placeholder="Type title"
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
@@ -116,20 +115,18 @@ const EditAds = () => {
                   <div>
                     <label
                       htmlFor="organizations"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Select Organization
                     </label>
                     <select
                       id="organizations"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       value={selectedOrganization}
                       onChange={(e) => setSelectedOrganization(e.target.value)}
                     >
                       {orgsLoading && <option>Loading...</option>}
-                      {orgsError && (
-                        <option>Error fetching organizations</option>
-                      )}
+                      {orgsError && <option>Error fetching organizations</option>}
                       {orgs &&
                         orgs.data.map((org) => (
                           <option key={org._id} value={org._id}>
@@ -141,7 +138,7 @@ const EditAds = () => {
                   <div>
                     <label
                       htmlFor="tags"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Tags
                     </label>
@@ -149,7 +146,7 @@ const EditAds = () => {
                       type="text"
                       name="tags"
                       id="tags"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       placeholder="Tags"
                       value={tags}
                       onChange={(e) => setTags(e.target.value)}
@@ -158,7 +155,7 @@ const EditAds = () => {
                   <div>
                     <label
                       htmlFor="imageUrl"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Image URL
                     </label>
@@ -166,7 +163,7 @@ const EditAds = () => {
                       type="text"
                       name="image-url"
                       id="image-url"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       value={imageUrl}
                       onChange={(e) => setImageUrl(e.target.value)}
                     />
@@ -174,7 +171,7 @@ const EditAds = () => {
                   <div>
                     <label
                       htmlFor="linkUrl"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Link URL
                     </label>
@@ -182,7 +179,7 @@ const EditAds = () => {
                       type="text"
                       name="link-url"
                       id="link-url"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       value={linkUrl}
                       onChange={(e) => setLinkUrl(e.target.value)}
                     />
@@ -190,7 +187,7 @@ const EditAds = () => {
                   <div>
                     <label
                       htmlFor="start-date"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Start Date
                     </label>
@@ -198,7 +195,7 @@ const EditAds = () => {
                       type="date"
                       name="start-date"
                       id="start-date"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       value={startDate}
                       onChange={(e) => setStartDate(e.target.value)}
                     />
@@ -206,7 +203,7 @@ const EditAds = () => {
                   <div>
                     <label
                       htmlFor="end-date"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       End Date
                     </label>
@@ -214,7 +211,7 @@ const EditAds = () => {
                       type="date"
                       name="end-date"
                       id="end-date"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       value={endDate}
                       onChange={(e) => setEndDate(e.target.value)}
                     />
@@ -222,7 +219,7 @@ const EditAds = () => {
                   <div>
                     <label
                       htmlFor="price"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Price
                     </label>
@@ -230,7 +227,7 @@ const EditAds = () => {
                       type="number"
                       name="price"
                       id="price"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       placeholder="Price"
                       value={price}
                       onChange={(e) => setPrice(e.target.value)}
@@ -239,7 +236,7 @@ const EditAds = () => {
                   <div>
                     <label
                       htmlFor="target-audience"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Target Audience
                     </label>
@@ -247,7 +244,7 @@ const EditAds = () => {
                       type="text"
                       name="target-audience"
                       id="target-audience"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       placeholder="Target Audience"
                       value={targetAudience}
                       onChange={(e) => setTargetAudience(e.target.value)}
@@ -256,7 +253,7 @@ const EditAds = () => {
                   <div>
                     <label
                       htmlFor="country"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Country
                     </label>
@@ -264,7 +261,7 @@ const EditAds = () => {
                       type="text"
                       name="country"
                       id="country"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       placeholder="Country"
                       value={country}
                       onChange={(e) => setCountry(e.target.value)}
@@ -273,7 +270,7 @@ const EditAds = () => {
                   <div>
                     <label
                       htmlFor="city"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       City
                     </label>
@@ -281,7 +278,7 @@ const EditAds = () => {
                       type="text"
                       name="city"
                       id="city"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       placeholder="City"
                       value={city}
                       onChange={(e) => setCity(e.target.value)}
@@ -290,7 +287,7 @@ const EditAds = () => {
                   <div>
                     <label
                       htmlFor="addressLine"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Address
                     </label>
@@ -298,7 +295,7 @@ const EditAds = () => {
                       type="text"
                       name="addressLine"
                       id="addressLine"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       placeholder="Address"
                       value={addressLine}
                       onChange={(e) => setAddressLine(e.target.value)}
@@ -307,14 +304,14 @@ const EditAds = () => {
                   <div className="sm:col-span-2">
                     <label
                       htmlFor="description"
-                      className="block mb-2 text-sm font-medium text-white"
+                      className="block mb-2 text-sm font-medium text-gray-700"
                     >
                       Description
                     </label>
                     <textarea
                       id="description"
                       rows="4"
-                      className="bg-gray-700 border-gray-700 text-white text-sm rounded-lg outline-none block w-full p-2.5"
+                      className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                       placeholder="Your description here"
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
@@ -324,7 +321,7 @@ const EditAds = () => {
                 <div className="mt-6 flex justify-center">
                   <button
                     type="submit"
-                    className="px-5 py-2.5 text-center text-sm font-medium text-white bg-green-700 rounded-lg hover:bg-green-800"
+                    className="px-5 py-2.5 text-center text-sm font-medium text-white bg-teal-700 rounded-lg hover:bg-teal-800 focus:ring-4 focus:ring-teal-500"
                   >
                     {updating ? "Updating..." : "Update Ad"}
                   </button>

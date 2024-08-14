@@ -33,19 +33,19 @@ const AddProductCategory = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-800 via-gray-900 to-black text-gray-200">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-gray-100 text-gray-800">
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
         <section className="px-6 py-10">
-          <div className="max-w-4xl mx-auto bg-gray-900 rounded-lg shadow-lg p-8">
-            <h2 className="mb-6 text-3xl font-semibold text-center text-white">
+          <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+            {/* <h2 className="mb-6 text-3xl font-semibold text-center text-gray-900">
               Add Product Category
-            </h2>
+            </h2> */}
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid gap-6 sm:grid-cols-2">
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="name"
-                    className="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium text-gray-700"
                   >
                     Category Name
                   </label>
@@ -53,7 +53,7 @@ const AddProductCategory = () => {
                     type="text"
                     name="name"
                     id="name"
-                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                     placeholder="Enter category name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -64,7 +64,7 @@ const AddProductCategory = () => {
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="description"
-                    className="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium text-gray-700"
                   >
                     Description
                   </label>
@@ -72,7 +72,7 @@ const AddProductCategory = () => {
                     name="description"
                     id="description"
                     rows={4}
-                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                     placeholder="Enter category description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
@@ -83,7 +83,7 @@ const AddProductCategory = () => {
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="image"
-                    className="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium text-gray-700"
                   >
                     Image URL
                   </label>
@@ -91,7 +91,7 @@ const AddProductCategory = () => {
                     type="text"
                     name="image"
                     id="image"
-                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                     placeholder="http://example.com/image.jpg"
                     value={image}
                     onChange={(e) => setImage(e.target.value)}

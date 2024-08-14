@@ -27,7 +27,7 @@ const PostedBlog = () => {
 
   if (isLoading || !isSuccess || !posts) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-800 via-gray-900 to-black text-gray-300">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-white to-gray-100 text-gray-700">
         <div className="text-2xl font-semibold">Loading...</div>
       </div>
     );
@@ -43,18 +43,18 @@ const PostedBlog = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-800 via-gray-900 to-black text-gray-200">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-gray-100 text-gray-800">
       <div className="h-full flex flex-col gap-y-6 ml-14 p-8 mt-14 mb-10 md:ml-64">
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-semibold text-white">Posted Blogs</h1>
+          <h1 className="text-3xl font-semibold text-gray-900"></h1>
           <Link to="/post-blog">
-            <button className="mb-3 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow-md transition duration-300">
+            <button className="mb-3 bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg shadow-md transition duration-300">
               Add New Post
             </button>
           </Link>
         </div>
         {currentPosts.map((post) => (
-          <div key={post._id} className="bg-gray-900 rounded-lg shadow-lg p-6">
+          <div key={post._id} className="bg-white rounded-lg shadow-lg p-6">
             <div className="flex flex-col md:flex-row md:items-center gap-4">
               <img
                 src={post.image}
@@ -62,23 +62,23 @@ const PostedBlog = () => {
                 className="w-full md:w-1/3 rounded-lg shadow-md"
               />
               <div className="w-full md:w-2/3">
-                <h2 className="text-2xl font-bold text-white mb-4">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   {post.title}
                 </h2>
-                <div className="text-gray-300">{parse(post.content)}</div>
+                <div className="text-gray-700">{parse(post.content)}</div>
               </div>
             </div>
             <div className="flex justify-end mt-4 gap-x-4">
               <Link
                 to={`/edit-blog/${post._id}`}
-                className="flex items-center gap-x-2 text-blue-500 hover:text-blue-400 transition duration-300"
+                className="flex items-center gap-x-2 text-blue-600 hover:text-blue-500 transition duration-300"
               >
                 <CiEdit size={24} />
                 <span>Edit</span>
               </Link>
               <button
                 onClick={() => onDelete(post._id)}
-                className="flex items-center gap-x-2 text-red-500 hover:text-red-400 transition duration-300"
+                className="flex items-center gap-x-2 text-red-600 hover:text-red-500 transition duration-300"
               >
                 <AiOutlineDelete size={24} />
                 <span>Delete</span>
@@ -94,7 +94,7 @@ const PostedBlog = () => {
           >
             Previous
           </button>
-          <span className="px-4 py-2 bg-gray-800 text-gray-300">
+          <span className="px-4 py-2 bg-gray-200 text-gray-800">
             Page {currentPage}
           </span>
           <button

@@ -66,19 +66,19 @@ const AddAds = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-800 via-gray-900 to-black text-gray-200">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-gray-100 text-gray-800">
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
         <section className="px-6 py-10">
-          <div className="max-w-4xl mx-auto bg-gray-900 rounded-lg shadow-lg p-8">
-            <h2 className="mb-6 text-3xl font-semibold text-center text-white">
+          <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+            {/* <h2 className="mb-6 text-3xl font-semibold text-center text-gray-900">
               Add New Ad
-            </h2>
+            </h2> */}
             <form onSubmit={submitFormHandler} className="space-y-6">
               <div className="grid gap-6 sm:grid-cols-2">
-                <div>
+                <div className="sm:col-span-2">
                   <label
                     htmlFor="title"
-                    className="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium text-gray-700"
                   >
                     Title
                   </label>
@@ -86,7 +86,7 @@ const AddAds = () => {
                     type="text"
                     name="title"
                     id="title"
-                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                     placeholder="Enter title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
@@ -94,16 +94,16 @@ const AddAds = () => {
                   />
                 </div>
 
-                <div>
+                <div className="sm:col-span-2">
                   <label
                     htmlFor="organizations"
-                    className="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium text-gray-700"
                   >
                     Select Organization
                   </label>
                   <select
                     id="organizations"
-                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                     value={selectedOrganization}
                     onChange={(e) => setSelectedOrganization(e.target.value)}
                     required
@@ -119,10 +119,10 @@ const AddAds = () => {
                   </select>
                 </div>
 
-                <div>
+                <div className="sm:col-span-2">
                   <label
                     htmlFor="tags"
-                    className="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium text-gray-700"
                   >
                     Tags
                   </label>
@@ -130,7 +130,7 @@ const AddAds = () => {
                     type="text"
                     name="tags"
                     id="tags"
-                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                     placeholder="Enter tags, separated by commas"
                     value={tags}
                     onChange={(e) =>
@@ -144,15 +144,15 @@ const AddAds = () => {
                 <div>
                   <label
                     htmlFor="imageUrl"
-                    className="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium text-gray-700"
                   >
                     Image URL
                   </label>
                   <input
                     type="text"
-                    name="image-url"
-                    id="image-url"
-                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    name="imageUrl"
+                    id="imageUrl"
+                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                     placeholder="Enter image URL"
                     value={imageUrl}
                     onChange={(e) => setImageUrl(e.target.value)}
@@ -162,15 +162,15 @@ const AddAds = () => {
                 <div>
                   <label
                     htmlFor="linkUrl"
-                    className="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium text-gray-700"
                   >
                     Link URL
                   </label>
                   <input
                     type="text"
-                    name="link-url"
-                    id="link-url"
-                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    name="linkUrl"
+                    id="linkUrl"
+                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                     placeholder="Enter link URL"
                     value={linkUrl}
                     onChange={(e) => setLinkUrl(e.target.value)}
@@ -180,15 +180,15 @@ const AddAds = () => {
                 <div>
                   <label
                     htmlFor="start-date"
-                    className="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium text-gray-700"
                   >
                     Start Date
                   </label>
                   <input
                     type="date"
-                    name="start-date"
+                    name="startDate"
                     id="start-date"
-                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                     value={startDate}
                     onChange={(e) => setStartDate(e.target.value)}
                   />
@@ -197,15 +197,15 @@ const AddAds = () => {
                 <div>
                   <label
                     htmlFor="end-date"
-                    className="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium text-gray-700"
                   >
                     End Date
                   </label>
                   <input
                     type="date"
-                    name="end-date"
+                    name="endDate"
                     id="end-date"
-                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                     value={endDate}
                     onChange={(e) => setEndDate(e.target.value)}
                   />
@@ -214,7 +214,7 @@ const AddAds = () => {
                 <div>
                   <label
                     htmlFor="price"
-                    className="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium text-gray-700"
                   >
                     Price
                   </label>
@@ -222,7 +222,7 @@ const AddAds = () => {
                     type="number"
                     name="price"
                     id="price"
-                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                     placeholder="Enter price"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
@@ -233,15 +233,15 @@ const AddAds = () => {
                 <div>
                   <label
                     htmlFor="target-audience"
-                    className="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium text-gray-700"
                   >
                     Target Audience
                   </label>
                   <input
                     type="text"
-                    name="target-audience"
+                    name="targetAudience"
                     id="target-audience"
-                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                     placeholder="Enter target audience"
                     value={targetAudience}
                     onChange={(e) =>
@@ -254,8 +254,26 @@ const AddAds = () => {
 
                 <div>
                   <label
+                    htmlFor="addressLine"
+                    className="block mb-2 text-sm font-medium text-gray-700"
+                  >
+                    Address Line
+                  </label>
+                  <input
+                    type="text"
+                    name="addressLine"
+                    id="addressLine"
+                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
+                    placeholder="Enter address line"
+                    value={addressLine}
+                    onChange={(e) => setAddressLine(e.target.value)}
+                  />
+                </div>
+
+                <div>
+                  <label
                     htmlFor="country"
-                    className="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium text-gray-700"
                   >
                     Country
                   </label>
@@ -263,7 +281,7 @@ const AddAds = () => {
                     type="text"
                     name="country"
                     id="country"
-                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                     placeholder="Enter country"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
@@ -273,7 +291,7 @@ const AddAds = () => {
                 <div>
                   <label
                     htmlFor="city"
-                    className="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium text-gray-700"
                   >
                     City
                   </label>
@@ -281,42 +299,25 @@ const AddAds = () => {
                     type="text"
                     name="city"
                     id="city"
-                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                     placeholder="Enter city"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                   />
                 </div>
 
-                <div>
-                  <label
-                    htmlFor="address-line"
-                    className="block mb-2 text-sm font-medium"
-                  >
-                    Address Line
-                  </label>
-                  <input
-                    type="text"
-                    name="address-line"
-                    id="address-line"
-                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
-                    placeholder="Enter address line"
-                    value={addressLine}
-                    onChange={(e) => setAddressLine(e.target.value)}
-                  />
-                </div>
-
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="description"
-                    className="block mb-2 text-sm font-medium"
+                    className="block mb-2 text-sm font-medium text-gray-700"
                   >
                     Description
                   </label>
                   <textarea
+                    name="description"
                     id="description"
-                    rows={6}
-                    className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                    rows="4"
+                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                     placeholder="Enter description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
@@ -324,10 +325,11 @@ const AddAds = () => {
                 </div>
               </div>
 
-              <div className="flex justify-center mt-8">
+              <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="px-6 py-3 text-lg font-medium text-white bg-teal-600 rounded-lg hover:bg-teal-700 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:outline-none transition-colors duration-300"
+                  className="px-6 py-3 bg-teal-500 text-white rounded-lg shadow-lg hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  disabled={adding}
                 >
                   {adding ? "Adding..." : "Add Ad"}
                 </button>

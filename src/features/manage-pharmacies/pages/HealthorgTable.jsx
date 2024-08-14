@@ -52,15 +52,15 @@ const HealthorgTable = () => {
 
   return (
     <div className="overflow-x-auto mx-4">
-      <table className="w-full text-left text-sm text-gray-400">
-        <thead className="text-xs font-semibold uppercase bg-gray-700 text-gray-200">
+      <table className="w-full text-left text-sm text-gray-800">
+        <thead className="text-xs font-semibold uppercase bg-gray-200 text-gray-800">
           <tr>
             <th className="px-6 py-3">Organization</th>
             <th className="px-6 py-3">Location</th>
             <th className="px-6 py-3">Action</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-700 bg-gray-900">
+        <tbody className="divide-y divide-gray-200 bg-white">
           {isLoading && (
             <tr>
               <td className="px-6 py-3" colSpan="3">
@@ -80,7 +80,7 @@ const HealthorgTable = () => {
             data.data.slice(startIndex, endIndex).map((org) => (
               <tr
                 key={org._id}
-                className="hover:bg-gray-800 transition-colors duration-200"
+                className="hover:bg-gray-100 transition-colors duration-200"
               >
                 <td className="px-6 py-4 flex items-center">
                   <div className="relative w-20 h-14 mr-4 rounded-md overflow-hidden">
@@ -92,8 +92,8 @@ const HealthorgTable = () => {
                     />
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-200">{org.name}</p>
-                    <p className="text-xs text-gray-500">{org.type}</p>
+                    <p className="font-semibold text-gray-900">{org.name}</p>
+                    <p className="text-xs text-gray-600">{org.type}</p>
                   </div>
                 </td>
                 <td className="px-6 py-4">
@@ -102,14 +102,14 @@ const HealthorgTable = () => {
                 <td className="px-6 py-4 flex space-x-2">
                   <Link
                     to={`/edit-health-org/${org._id}`}
-                    className="p-2 text-gray-100 bg-blue-600 rounded-full hover:bg-blue-500"
+                    className="p-2 text-white bg-blue-600 rounded-full hover:bg-blue-500"
                     title="Edit"
                   >
                     <FaEdit />
                   </Link>
                   <button
                     onClick={() => onDelete(org._id)}
-                    className="p-2 text-gray-100 bg-red-600 rounded-full hover:bg-red-500"
+                    className="p-2 text-white bg-red-600 rounded-full hover:bg-red-500"
                     title="Delete"
                   >
                     <FaTrashAlt />
@@ -119,7 +119,7 @@ const HealthorgTable = () => {
             ))}
         </tbody>
       </table>
-      <div className="flex justify-between items-center px-6 py-4 text-xs text-gray-400 bg-gray-700 rounded-b-lg">
+      <div className="flex justify-between items-center px-6 py-4 text-xs text-gray-600 bg-gray-200 rounded-b-lg">
         <span>
           Showing {startIndex + 1}-{endIndex} of {data?.data?.length}
         </span>
@@ -127,7 +127,7 @@ const HealthorgTable = () => {
           <ul className="inline-flex items-center space-x-2">
             <li>
               <button
-                className="px-3 py-1 rounded-md bg-gray-600 hover:bg-gray-500 disabled:opacity-50"
+                className="px-3 py-1 rounded-md bg-gray-300 hover:bg-gray-400 disabled:opacity-50"
                 onClick={goToPreviousPage}
                 disabled={currentPage === 1}
               >
@@ -139,8 +139,8 @@ const HealthorgTable = () => {
                 <button
                   className={`px-3 py-1 rounded-md ${
                     currentPage === page
-                      ? "bg-purple-600 text-white"
-                      : "bg-gray-600 hover:bg-gray-500"
+                      ? "bg-blue-600 text-white"
+                      : "bg-gray-300 hover:bg-gray-400"
                   }`}
                   onClick={() => goToPage(page)}
                 >
@@ -150,7 +150,7 @@ const HealthorgTable = () => {
             ))}
             <li>
               <button
-                className="px-3 py-1 rounded-md bg-gray-600 hover:bg-gray-500 disabled:opacity-50"
+                className="px-3 py-1 rounded-md bg-gray-300 hover:bg-gray-400 disabled:opacity-50"
                 onClick={goToNextPage}
                 disabled={currentPage === totalPages}
               >

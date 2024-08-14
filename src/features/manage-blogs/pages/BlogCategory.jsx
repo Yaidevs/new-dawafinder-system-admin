@@ -2,18 +2,18 @@ import React from "react";
 
 const BlogCategory = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-800 via-gray-900 to-black text-gray-200">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-gray-100 text-gray-800">
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
         <section className="px-6 py-10">
-          <div className="max-w-2xl mx-auto bg-gray-900 rounded-lg shadow-lg p-8">
-            <h2 className="mb-6 text-3xl font-semibold text-center text-white">
+          <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-8">
+            {/* <h2 className="mb-6 text-3xl font-semibold text-center text-gray-900">
               Add Blog Category
-            </h2>
+            </h2> */}
             <form className="space-y-6">
               <div>
                 <label
                   htmlFor="category"
-                  className="block mb-2 text-sm font-medium"
+                  className="block mb-2 text-sm font-medium text-gray-700"
                 >
                   Category Name
                 </label>
@@ -21,7 +21,7 @@ const BlogCategory = () => {
                   type="text"
                   id="category"
                   placeholder="Enter category name"
-                  className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-teal-500"
+                  className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                   required
                 />
               </div>
