@@ -14,14 +14,14 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="fixed flex flex-col top-16 left-0 w-14 hover:w-64 md:w-64 bg-gradient-to-b from-blue-600 to-blue-800 text-white h-full shadow-lg transition-all duration-300 z-10">
+    <div className="fixed flex flex-col top-16 left-0 w-14 hover:w-64 md:w-64 bg-[#20846c] text-white h-full shadow-lg transition-all duration-300 z-10">
       <div className="overflow-hidden flex flex-col justify-between flex-grow">
         <ul className="flex flex-col py-4 space-y-1">
           {/* Dashboard */}
           <li>
             <Link
               to="/home"
-              className="relative flex flex-row items-center h-12 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white transition duration-300 pr-6"
+              className="relative flex flex-row items-center h-12 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
             >
               <span className="inline-flex justify-center items-center ml-4">
                 <RiDashboardLine size={24} />
@@ -35,7 +35,7 @@ const Sidebar = () => {
           {/* Manage Products */}
           <li>
             <div
-              className="relative flex flex-row items-center h-12 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white cursor-pointer transition duration-300 pr-6"
+              className="relative flex flex-row items-center h-12 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] cursor-pointer transition duration-300 pr-6"
               onClick={() => toggleDropdown("manageProducts")}
             >
               <span className="inline-flex justify-center items-center ml-4">
@@ -65,7 +65,7 @@ const Sidebar = () => {
                 <li>
                   <Link
                     to="/view-products"
-                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white transition duration-300 pr-6"
+                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
                   >
                     <span className="inline-flex justify-center items-center ml-4">
                       <AiOutlineMedicineBox size={20} />
@@ -78,7 +78,7 @@ const Sidebar = () => {
                 <li>
                   <Link
                     to="/view-categories"
-                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white transition duration-300 pr-6"
+                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
                   >
                     <span className="inline-flex justify-center items-center ml-4">
                       <AiOutlineTags size={20} />
@@ -91,7 +91,7 @@ const Sidebar = () => {
                 <li>
                   <Link
                     to="/add-products"
-                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white transition duration-300 pr-6"
+                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
                   >
                     <span className="inline-flex justify-center items-center ml-4">
                       <AiOutlineMedicineBox size={20} />
@@ -104,7 +104,7 @@ const Sidebar = () => {
                 <li>
                   <Link
                     to="/add-product-category"
-                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white transition duration-300 pr-6"
+                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
                   >
                     <span className="inline-flex justify-center items-center ml-4">
                       <AiOutlineTags size={20} />
@@ -121,7 +121,7 @@ const Sidebar = () => {
           {/* Manage Ads */}
           <li>
             <div
-              className="relative flex flex-row items-center h-12 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white cursor-pointer transition duration-300 pr-6"
+              className="relative flex flex-row items-center h-12 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] cursor-pointer transition duration-300 pr-6"
               onClick={() => toggleDropdown("manageAds")}
             >
               <span className="inline-flex justify-center items-center ml-4">
@@ -151,7 +151,7 @@ const Sidebar = () => {
                 <li>
                   <Link
                     to="/view-ads"
-                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white transition duration-300 pr-6"
+                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
                   >
                     <span className="inline-flex justify-center items-center ml-4">
                       <RiAdvertisementLine size={20} />
@@ -164,7 +164,7 @@ const Sidebar = () => {
                 <li>
                   <Link
                     to="/add-ads"
-                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white transition duration-300 pr-6"
+                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
                   >
                     <span className="inline-flex justify-center items-center ml-4">
                       <RiAdvertisementLine size={20} />
@@ -177,7 +177,7 @@ const Sidebar = () => {
                 <li>
                   <Link
                     to="/add-orgads"
-                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white transition duration-300 pr-6"
+                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
                   >
                     <span className="inline-flex justify-center items-center ml-4">
                       <RiAdvertisementLine size={20} />
@@ -194,7 +194,7 @@ const Sidebar = () => {
           {/* Manage Health Organizations */}
           <li>
             <div
-              className="relative flex flex-row items-center h-12 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white cursor-pointer transition duration-300 pr-6"
+              className="relative flex flex-row items-center h-12 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] cursor-pointer transition duration-300 pr-6"
               onClick={() => toggleDropdown("manageHealthOrgs")}
             >
               <span className="inline-flex justify-center items-center ml-4">
@@ -224,7 +224,7 @@ const Sidebar = () => {
                 <li>
                   <Link
                     to="/view-organizations"
-                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white transition duration-300 pr-6"
+                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
                   >
                     <span className="inline-flex justify-center items-center ml-4">
                       <AiOutlineMedicineBox size={20} />
@@ -237,7 +237,7 @@ const Sidebar = () => {
                 <li>
                   <Link
                     to="/add-health-org"
-                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white transition duration-300 pr-6"
+                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
                   >
                     <span className="inline-flex justify-center items-center ml-4">
                       <AiOutlineMedicineBox size={20} />
@@ -254,7 +254,7 @@ const Sidebar = () => {
           {/* Manage Blogs */}
           <li>
             <div
-              className="relative flex flex-row items-center h-12 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white cursor-pointer transition duration-300 pr-6"
+              className="relative flex flex-row items-center h-12 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] cursor-pointer transition duration-300 pr-6"
               onClick={() => toggleDropdown("manageBlogs")}
             >
               <span className="inline-flex justify-center items-center ml-4">
@@ -284,7 +284,7 @@ const Sidebar = () => {
                 <li>
                   <Link
                     to="/view-post"
-                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white transition duration-300 pr-6"
+                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
                   >
                     <span className="inline-flex justify-center items-center ml-4">
                       <FaBlogger size={20} />
@@ -297,7 +297,7 @@ const Sidebar = () => {
                 <li>
                   <Link
                     to="/blog-category"
-                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white transition duration-300 pr-6"
+                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
                   >
                     <span className="inline-flex justify-center items-center ml-4">
                       <FaBlogger size={20} />
@@ -310,7 +310,7 @@ const Sidebar = () => {
                 <li>
                   <Link
                     to="/post-blog"
-                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white transition duration-300 pr-6"
+                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
                   >
                     <span className="inline-flex justify-center items-center ml-4">
                       <FaBlogger size={20} />
@@ -328,7 +328,7 @@ const Sidebar = () => {
           <li>
             <Link
               to="/prescriptions"
-              className="relative flex flex-row items-center h-12 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white transition duration-300 pr-6"
+              className="relative flex flex-row items-center h-12 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
             >
               <span className="inline-flex justify-center items-center ml-4">
                 <FaFilePrescription size={24} />
@@ -343,7 +343,7 @@ const Sidebar = () => {
           <li>
             <Link
               to="/home"
-              className="relative flex flex-row items-center h-12 focus:outline-none hover:bg-blue-500 text-white border-l-4 border-transparent hover:border-white transition duration-300 pr-6"
+              className="relative flex flex-row items-center h-12 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
             >
               <span className="inline-flex justify-center items-center ml-4">
                 <FiUsers size={24} />
@@ -354,7 +354,7 @@ const Sidebar = () => {
             </Link>
           </li>
         </ul>
-        <p className="mb-14 px-5 py-3 hidden md:block text-center text-xs text-blue-200">
+        <p className="mb-14 px-5 py-3 hidden md:block text-center text-xs text-[#9cd7c4]">
           Powered by YAI @2024
         </p>
       </div>
