@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
-import { useGetHealthOrgsByIdQuery, useUpdateHealthOrgMutation } from "../api/healthorgApi";
+import {
+  useGetHealthOrgsByIdQuery,
+  useUpdateHealthOrgMutation,
+} from "../api/healthorgApi";
 import { storage } from "../../../firebase";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const EditHealthOrg = ({ id }) => {
+const EditHealthOrg = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
-  const { data: healthOrg, isLoading } = useGetHealthOrgsByIdQuery (id);
+  const { data: healthOrg, isLoading } = useGetHealthOrgsByIdQuery(id);
   const [updateHealthOrganization] = useUpdateHealthOrgMutation();
   const [name, setName] = useState("");
   const [type, setType] = useState("");
@@ -26,21 +30,22 @@ const EditHealthOrg = ({ id }) => {
   const [updating, setUpdating] = useState(false);
 
   useEffect(() => {
-    if (healthOrg) {
-      setName(healthOrg.name);
-      setType(healthOrg.type);
-      setImages(healthOrg.images || []);
-      setSubscription(healthOrg.subscription);
-      setLicense(healthOrg.license);
-      setCoordinates(healthOrg.absoluteLocation.coordinates);
-      setDescription(healthOrg.description);
-      setCountry(healthOrg.relativeLocation.country);
-      setCity(healthOrg.relativeLocation.city);
-      setStreet(healthOrg.relativeLocation.street);
-      setPhoneNumber(healthOrg.contact.phoneNumber);
-      setEmail(healthOrg.contact.email);
-      setServiceName(healthOrg.service[0]?.serviceName || "");
-      setServiceDescription(healthOrg.service[0]?.serviceDescription || "");
+    if (healthOrg?.data) {
+      const org = healthOrg.data;
+      setName(org.name);
+      setType(org.type);
+      setImages(org.images || []);
+      setSubscription(org.subscription);
+      setLicense(org.license);
+      setCoordinates(org.absoluteLocation.coordinates[0]);
+      setDescription(org.services[0]?.description || "");
+      setCountry(org.relativeLocation.country);
+      setCity(org.relativeLocation.city);
+      setStreet(org.relativeLocation.street || "");
+      setPhoneNumber(org.contact.phoneNumber);
+      setEmail(org.contact.email || "");
+      setServiceName(org.services[0]?.name || "");
+      setServiceDescription(org.services[0]?.description || "");
     }
   }, [healthOrg]);
 
@@ -50,7 +55,10 @@ const EditHealthOrg = ({ id }) => {
       const imageUrls = [];
       if (images.length > 0) {
         for (const image of images) {
-          const imageRef = ref(storage, `HealthOrg-images/${image.name + v4()}`);
+          const imageRef = ref(
+            storage,
+            `HealthOrg-images/${image.name + v4()}`
+          );
           await uploadBytes(imageRef, image);
           const imageUrl = await getDownloadURL(imageRef);
           imageUrls.push(imageUrl);
@@ -77,7 +85,8 @@ const EditHealthOrg = ({ id }) => {
         service,
       }).unwrap();
       setUpdating(false);
-      navigate("/view-health-orgs"); // Update the navigation path if needed
+      navigate("/view-organizations");
+      window.location.reload();
     } catch (error) {
       setUpdating(false);
       console.error("Error updating org:", error);
@@ -97,7 +106,10 @@ const EditHealthOrg = ({ id }) => {
             <form className="space-y-6" onSubmit={handleFormSubmit}>
               <div className="grid gap-6 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="name"
+                    className="block mb-2 text-sm font-medium text-gray-700"
+                  >
                     Name
                   </label>
                   <input
@@ -113,7 +125,10 @@ const EditHealthOrg = ({ id }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="type" className="block mb-2 text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="type"
+                    className="block mb-2 text-sm font-medium text-gray-700"
+                  >
                     Type
                   </label>
                   <input
@@ -129,7 +144,10 @@ const EditHealthOrg = ({ id }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="images" className="block mb-2 text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="images"
+                    className="block mb-2 text-sm font-medium text-gray-700"
+                  >
                     Images
                   </label>
                   <input
@@ -143,7 +161,10 @@ const EditHealthOrg = ({ id }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="subscription" className="block mb-2 text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="subscription"
+                    className="block mb-2 text-sm font-medium text-gray-700"
+                  >
                     Subscription
                   </label>
                   <input
@@ -159,7 +180,10 @@ const EditHealthOrg = ({ id }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="license" className="block mb-2 text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="license"
+                    className="block mb-2 text-sm font-medium text-gray-700"
+                  >
                     License
                   </label>
                   <input
@@ -175,7 +199,10 @@ const EditHealthOrg = ({ id }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="coordinates" className="block mb-2 text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="coordinates"
+                    className="block mb-2 text-sm font-medium text-gray-700"
+                  >
                     Coordinates
                   </label>
                   <input
@@ -191,7 +218,10 @@ const EditHealthOrg = ({ id }) => {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="description"
+                    className="block mb-2 text-sm font-medium text-gray-700"
+                  >
                     Description
                   </label>
                   <textarea
@@ -206,7 +236,10 @@ const EditHealthOrg = ({ id }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="country" className="block mb-2 text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="country"
+                    className="block mb-2 text-sm font-medium text-gray-700"
+                  >
                     Country
                   </label>
                   <input
@@ -222,7 +255,10 @@ const EditHealthOrg = ({ id }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="city" className="block mb-2 text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="city"
+                    className="block mb-2 text-sm font-medium text-gray-700"
+                  >
                     City
                   </label>
                   <input
@@ -238,7 +274,10 @@ const EditHealthOrg = ({ id }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="street" className="block mb-2 text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="street"
+                    className="block mb-2 text-sm font-medium text-gray-700"
+                  >
                     Street
                   </label>
                   <input
@@ -254,7 +293,10 @@ const EditHealthOrg = ({ id }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="phoneNumber" className="block mb-2 text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="phoneNumber"
+                    className="block mb-2 text-sm font-medium text-gray-700"
+                  >
                     Phone Number
                   </label>
                   <input
@@ -270,7 +312,10 @@ const EditHealthOrg = ({ id }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="email"
+                    className="block mb-2 text-sm font-medium text-gray-700"
+                  >
                     Email
                   </label>
                   <input
@@ -286,7 +331,10 @@ const EditHealthOrg = ({ id }) => {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label htmlFor="serviceName" className="block mb-2 text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="serviceName"
+                    className="block mb-2 text-sm font-medium text-gray-700"
+                  >
                     Service Name
                   </label>
                   <input
@@ -302,7 +350,10 @@ const EditHealthOrg = ({ id }) => {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label htmlFor="serviceDescription" className="block mb-2 text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="serviceDescription"
+                    className="block mb-2 text-sm font-medium text-gray-700"
+                  >
                     Service Description
                   </label>
                   <textarea

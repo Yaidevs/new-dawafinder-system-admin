@@ -9,8 +9,8 @@ export const blogApi = createApi({
       query: () => `blogapi/posts/`,
     }),
     getPostById: builder.query({
-      query: (postId) => ({
-        url: `blogapi/posts/{postId}`,
+      query: (id) => ({
+        url: `blogapi/posts/${id}`,
       }),
     }),
     getPostCategory: builder.query({
@@ -34,7 +34,7 @@ export const blogApi = createApi({
     }),
     updatePost: builder.mutation({
       query: (data) => ({
-        url: `blogapi/posts/`,
+        url: `blogapi/posts/${data.id}`,
         method: "PATCH",
         body: data,
       }),

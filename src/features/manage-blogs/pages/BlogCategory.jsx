@@ -1,6 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+import { useAddPostCategoryMutation } from "../api/blogApi";
+import { useNavigate } from "react-router-dom";
 
 const BlogCategory = () => {
+  const [categoryName, setCategoryName] = useState("");
+  const [adding, setAdding] = useState(false);
+  const [addCategory] = useAddPostCategoryMutation();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setAdding(true);
+      await addCategory({ name: categoryName }).unwrap();
+      setCategoryName("");
+      setAdding(false);
+      navigate("/post-blog");
+      window.location.reload();
+    } catch (error) {
+      setAdding(false);
+      console.error("Error adding category:", error);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-gray-100 text-gray-800">
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
@@ -9,7 +31,7 @@ const BlogCategory = () => {
             {/* <h2 className="mb-6 text-3xl font-semibold text-center text-gray-900">
               Add Blog Category
             </h2> */}
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label
                   htmlFor="category"
@@ -22,6 +44,8 @@ const BlogCategory = () => {
                   id="category"
                   placeholder="Enter category name"
                   className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
+                  value={categoryName}
+                  onChange={(e) => setCategoryName(e.target.value)}
                   required
                 />
               </div>
@@ -31,7 +55,7 @@ const BlogCategory = () => {
                   type="submit"
                   className="px-6 py-3 text-lg font-medium text-white bg-teal-600 rounded-lg hover:bg-teal-700 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:outline-none transition-colors duration-300"
                 >
-                  Submit
+                  {adding ? "Adding..." : "Submit"}
                 </button>
               </div>
             </form>

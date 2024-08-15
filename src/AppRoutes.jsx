@@ -23,6 +23,7 @@ import EditProduct from "./features/manage-products/pages/EditProduct";
 import EditProductCategory from "./features/manage-products/pages/EditProductCategory";
 import EditAds from "./features/manage-ads/pages/EditAds";
 import EditHealthOrg from "./features/manage-pharmacies/pages/EditHealthOrg";
+import EditPost from "./features/manage-blogs/pages/EditPost";
 
 const AppRoutes = () => {
   return (
@@ -156,6 +157,14 @@ const AppRoutes = () => {
           element={
             <Layout>
               <AddBlog />
+            </Layout>
+          }
+        />
+        <Route
+          path="/edit-blog/:id"
+          element={
+            <Layout>
+              <EditPost />
             </Layout>
           }
         />
