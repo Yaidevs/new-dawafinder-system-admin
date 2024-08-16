@@ -39,6 +39,14 @@ const AppRoutes = () => {
           }
         />
         <Route
+          path="/manage-users"
+          element={
+            <Layout>
+              <ManageUsers />
+            </Layout>
+          }
+        />
+        <Route
           path="/view-products"
           element={
             <Layout>

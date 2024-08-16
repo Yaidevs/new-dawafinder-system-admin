@@ -1,18 +1,19 @@
 import React from "react";
-import ClientTable from "../../../shared/ClientTable";
+import UsersTable from "./UsersTable";
 
 const ManageUsers = () => {
   return (
-      <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
-        <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
-          <div className=" flex flex-col">
-            <div className=" flex justify-center p-6 font-bold text-gray-300 ">
-              Users
-            </div>
-            <ClientTable />
-          </div>
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-gray-100 text-gray-800">
+      <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
+        <div className="p-6">
+          {/* Centered title */}
+          {/* <h1 className="text-3xl font-semibold text-center text-gray-900 mb-6">
+            Users
+          </h1> */}
+          <UsersTable />
         </div>
       </div>
+    </div>
   );
 };
 

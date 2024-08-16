@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { RiDashboardLine, RiAdvertisementLine } from "react-icons/ri";
-import { AiOutlineMedicineBox, AiOutlineShop, AiOutlineTags } from "react-icons/ai";
+import {
+  AiOutlineMedicineBox,
+  AiOutlineShop,
+  AiOutlineTags,
+} from "react-icons/ai";
 import { FaFilePrescription, FaBlogger } from "react-icons/fa";
 import { FiUsers } from "react-icons/fi";
 import { IoMdArrowDropright, IoMdArrowDropdown } from "react-icons/io";
@@ -205,7 +209,9 @@ const Sidebar = () => {
               </span>
               <span
                 className={`text-sm ml-auto transition-transform duration-300 ${
-                  openDropdown === "manageHealthOrgs" ? "rotate-180" : "rotate-0"
+                  openDropdown === "manageHealthOrgs"
+                    ? "rotate-180"
+                    : "rotate-0"
                 }`}
               >
                 {openDropdown === "manageHealthOrgs" ? (
@@ -342,7 +348,7 @@ const Sidebar = () => {
           {/* Manage Users */}
           <li>
             <Link
-              to="/home"
+              to="/manage-users"
               className="relative flex flex-row items-center h-12 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
             >
               <span className="inline-flex justify-center items-center ml-4">
