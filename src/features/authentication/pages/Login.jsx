@@ -3,27 +3,33 @@ import { useLoginMutation } from "../api/authApi";
 import { setToken } from "../slice/authSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../../shared/Loader";
+
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false); 
   const [login] = useLoginMutation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading to true when login starts
     try {
       const response = await login({ username, password }).unwrap();
-      console.log(response)
+      console.log(response);
       const data = response.data;
 
       dispatch(setToken(data));
       navigate("/home");
     } catch (error) {
-      console.log(error)
+      console.log(error);
       setError("Invalid username or password");
+    } finally {
+      setLoading(false); // Set loading to false when login completes
     }
   };
 
@@ -97,8 +103,9 @@ const Login = () => {
               <button
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-[#20846c] px-4 py-2 text-sm font-semibold text-white shadow-lg hover:bg-[#1a6b58] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#20846c]"
+                disabled={loading} // Disable button when loading
               >
-                Sign in
+                {loading ? <Loader /> : "Sign in"} {/* Show loader when loading */}
               </button>
             </div>
             {error && <p className="text-red-500 text-center mt-4">{error}</p>}
