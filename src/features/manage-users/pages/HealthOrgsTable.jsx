@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaTrashAlt, FaEdit, FaCheck } from "react-icons/fa";
+import { FaTrashAlt, FaCheck } from "react-icons/fa";
 import {
   useDeleteHealthOrgMutation,
   useGetHealthOrgsQuery,
