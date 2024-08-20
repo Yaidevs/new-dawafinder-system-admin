@@ -116,7 +116,7 @@ const ProductsTable = () => {
                 <td className="px-6 py-4">{product.brand}</td>
                 <td className="px-6 py-4">{product.category}</td>
                 <td className="px-6 py-4">{product.status}</td>
-                <td className="px-6 py-4 flex space-x-2">
+                <td className="px-6 py-4 flex justify-center items-center  space-x-2">
                   <button
                     onClick={() => onDelete(product._id)}
                     className="p-2 text-white bg-red-600 rounded-full hover:bg-red-500"

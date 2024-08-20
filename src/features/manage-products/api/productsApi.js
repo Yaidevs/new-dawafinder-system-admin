@@ -1,9 +1,19 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { BASE_URL } from "../../../constants";
+import { getTokenFromCookies } from "../../../shared/getToken.mjs";
 
 export const productsApi = createApi({
   reducerPath: "productsApi",
-  baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: BASE_URL,
+    prepareHeaders: (headers) => {
+      const token = getTokenFromCookies();
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
   endpoints: (builder) => ({
     getAllProducts: builder.query({
       query: () => `productapi/products`,
@@ -37,7 +47,7 @@ export const productsApi = createApi({
     }),
     deleteProduct: builder.mutation({
       query: (id) => ({
-        url: `/productapi/products/${id}`,
+        url: `productapi/products/${id}`,
         method: "DELETE",
       }),
     }),

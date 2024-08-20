@@ -16,11 +16,13 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await login({ username, password }).unwrap();
+      console.log(response)
       const data = response.data;
 
       dispatch(setToken(data));
       navigate("/home");
     } catch (error) {
+      console.log(error)
       setError("Invalid username or password");
     }
   };
@@ -33,8 +35,7 @@ const Login = () => {
           Welcome 
         </h1>
         <p className="text-white text-lg">
-          Manage your products, ads, health organizations, and much more from one central location.
-          The dashboard provides all the tools you need to stay on top of your business.
+          Manage products, ads, health organizations, and much more from one central location.
         </p>
       </div>
 

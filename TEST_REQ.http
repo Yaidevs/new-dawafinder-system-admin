@@ -48,8 +48,8 @@ POST  https://api.dawaafinder.com/userapi/system-admins/login/
 Content-Type: application/json
 
 {
-  "username":"abelk",
-   "password":"12345678"
+  "username":"admin1",
+   "password":"cc3377ch"
 }
 
 ###
@@ -57,14 +57,10 @@ POST https://api.dawaafinder.com/userapi/system-admins/
 Content-Type: application/json
 
 {
- "firstName":"Abel",
- "lastName":"Kinfu",
- "username":"abelk",
- "role":"admin",
- "password":"12345678",
- "confirmPassword":"12345678",
- "phoneNumber":"12345678",
- "email":"abel@gmail.com"
+  "username":"admin1"
+ "password":"",
+
 }
 ###
-GET https://api.dawaafinder.com/productapi/products
+GET https://api.dawaafinder.com/userapi/customers
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YzNjNTYxYjFiNGIyYTAwYTI2ZDdjOCIsInJvbGUiOiJzeXN0ZW1BZG1pbiIsImlhdCI6MTcyNDE0NDk4MywiZXhwIjoxNzMxOTIwOTgzfQ.Y8ZfDDaJrvSeL3B5vXD5I3aKqfDoAvys9sZbmLLCOGM

@@ -1,9 +1,20 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { BASE_URL } from "../../../constants";
+import { getTokenFromCookies } from "../../../shared/getToken.mjs";
+
 
 export const adsApi = createApi({
   reducerPath: "adsApi",
-  baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: BASE_URL,
+    prepareHeaders: (headers) => {
+      const token = getTokenFromCookies();
+      if (token) {
+        headers.set("Authorization", `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
   endpoints: (builder) => ({
     getAllAds: builder.query({
       query: () => `adsapi/ads`,
