@@ -97,7 +97,7 @@ function PrescriptionDetail() {
                 <div className="flex justify-center mt-8">
                   <button
                     type="submit"
-                    className="px-6 py-3 text-lg font-medium text-white bg-teal-600 rounded-lg hover:bg-teal-700 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:outline-none transition-colors duration-300"
+                    className="px-6 py-3 text-lg font-medium text-white bg-teal-600 rounded-lg transition-colors duration-300"
                   >
                     {adding ? "submiting ..." : "Submit"}
                   </button>
