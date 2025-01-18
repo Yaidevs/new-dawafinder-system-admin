@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useGetAllPrescriptionsQuery, useDeletePrescriptionMutation } from "../api/prescriptionsApi";
+import {
+  useGetAllPrescriptionsQuery,
+  useDeletePrescriptionMutation,
+} from "../api/prescriptionsApi";
 import { FaTrashAlt, FaEdit, FaUndoAlt } from "react-icons/fa";
 
 const PrescriptionsTable = () => {
   const { data, isLoading, error } = useGetAllPrescriptionsQuery();
+  console.log("datat", data);
   const [deletePrescription] = useDeletePrescriptionMutation();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
@@ -30,11 +34,13 @@ const PrescriptionsTable = () => {
   };
 
   const onDelete = async (id) => {
-    const confirmed = window.confirm("Are you sure you want to delete this prescription?");
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this prescription?"
+    );
     if (confirmed) {
       try {
-        await deletePrescription(id).unwrap();
-        window.location.reload();
+        const res = await deletePrescription(id).unwrap();
+        console.log("resss", res);
       } catch (error) {
         console.error("Error deleting:", error);
       }
@@ -70,19 +76,24 @@ const PrescriptionsTable = () => {
             </tr>
           ) : (
             data?.data.slice(startIndex, endIndex).map((prescription) => (
-              <tr key={prescription._id} className="hover:bg-gray-100 transition-colors duration-200">
+              <tr
+                key={prescription._id}
+                className="hover:bg-gray-100 transition-colors duration-200"
+              >
                 <td className="px-6 py-4 flex items-center">
-                  <div className="relative w-20 h-14 mr-4 rounded-md overflow-hidden">
-                    <img
-                      className="object-cover w-full h-full"
-                      src={prescription.imageLink}
-                      alt="Prescription"
-                      loading="lazy"
-                    />
-                  </div>
+                  <Link to={`/view-prescription/${prescription._id}`}>
+                    <div className="relative w-20 h-14 mr-4 rounded-md overflow-hidden">
+                      <img
+                        className="object-cover w-full h-full"
+                        src={prescription.imageLink}
+                        alt="Prescription"
+                        loading="lazy"
+                      />
+                    </div>
+                  </Link>
                 </td>
                 <td className="px-6 py-4 text-sm">
-                  {prescription.phoneNumber}
+                  <Link to={`/view-prescription/${prescription._id}`}>{prescription.phoneNumber}</Link>
                 </td>
                 <td className="px-6 py-4 flex space-x-2">
                   <Link

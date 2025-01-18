@@ -6,25 +6,31 @@ export const prescriptionsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
     getAllPrescriptions: builder.query({
-      query: () => `searchandprescription/prescriptions/`,
+      query: () => `searchandprescriptionapi/prescriptions/`,
     }),
 
     getPrescriptionById: builder.query({
       query: (id) => ({
-        url: `searchandprescription/prescriptions/${id}`,
+        url: `searchandprescriptionapi/prescriptions/${id}`,
       }),
     }),
-
     addPrescription: builder.mutation({
       query: (data) => ({
-        url: `searchandprescription/prescriptions/`,
+        url: `searchandprescriptionapi/prescriptions/`,
+        method: "POST",
+        body: data,
+      }),
+    }),
+    sendPrescriptionResult: builder.mutation({
+      query: (data) => ({
+        url: `searchandprescriptionapi/prescription-results/`,
         method: "POST",
         body: data,
       }),
     }),
     deletePrescription: builder.mutation({
       query: (id) => ({
-        url: `searchandprescription/prescriptions/${id}`,
+        url: `searchandprescriptionapi/prescriptions/${id}`,
         method: "DELETE",
       }),
     }),
@@ -36,4 +42,5 @@ export const {
   useAddPrescriptionMutation,
   useDeletePrescriptionMutation,
   useGetPrescriptionByIdQuery,
+  useSendPrescriptionResultMutation,
 } = prescriptionsApi;

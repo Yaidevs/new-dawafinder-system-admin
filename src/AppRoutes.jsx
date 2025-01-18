@@ -34,7 +34,7 @@ import { selectIsAuthenticated } from "./features/authentication/slice/authSlice
 
 const AppRoutes = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
-  console.log(isAuthenticated)
+  console.log(isAuthenticated);
 
   return (
     <Router>
@@ -66,6 +66,14 @@ const AppRoutes = () => {
               element={
                 <Layout>
                   <ManageProducts />
+                </Layout>
+              }
+            />
+            <Route
+              path="/view-prescription/:id"
+              element={
+                <Layout>
+                  <PrescriptionDetail />
                 </Layout>
               }
             />

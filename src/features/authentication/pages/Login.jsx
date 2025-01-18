@@ -20,7 +20,6 @@ const Login = () => {
     setLoading(true); // Set loading to true when login starts
     try {
       const response = await login({ username, password }).unwrap();
-      console.log(response);
       const data = response.data;
 
       dispatch(setToken(data));

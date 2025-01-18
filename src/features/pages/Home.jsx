@@ -29,7 +29,7 @@ const Home = () => {
                   Total Pharmacies
                 </p>
               </dt>
-              <dd className="ml-6 mt-4 flex items-baseline">
+              <dd className="ml-6 mt-4 flex items-baseline p-2">
                 <p className="text-4xl font-bold text-white">71,897</p>
               </dd>
             </div>
