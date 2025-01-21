@@ -6,18 +6,18 @@ export const formularyApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
     getAllFormularies: builder.query({
-      query: () => `medicine-formularies`,
+      query: () => `formularyapi/medicine-formularies`,
     }),
 
     getFormularyById: builder.query({
       query: (id) => ({
-        url: `medicine-formularies/${id}`,
+        url: `formularyapi/medicine-formularies/${id}`,
       }),
     }),
 
     addFormulary: builder.mutation({
       query: (data) => ({
-        url: `medicine-formularies`,
+        url: `formularyapi/medicine-formularies`,
         method: "POST",
         body: data,
       }),
@@ -25,14 +25,14 @@ export const formularyApi = createApi({
 
     deleteFormulary: builder.mutation({
       query: (id) => ({
-        url: `medicine-formularies/${id}`,
+        url: `formularyapi/medicine-formularies/${id}`,
         method: "DELETE",
       }),
     }),
 
     updateFormulary: builder.mutation({
       query: (data) => ({
-        url: `formularies/${data.id}`,
+        url: `formularyapi/medicine-formularies/${data.id}`,
         method: "PATCH",
         body: data,
       }),

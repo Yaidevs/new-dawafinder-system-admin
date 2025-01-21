@@ -256,7 +256,80 @@ const Sidebar = () => {
               </ul>
             </div>
           </li>
-
+          {/* Manage Medicine Formularies */}
+          <li>
+            <div
+              className="relative flex flex-row items-center h-12 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] cursor-pointer transition duration-300 pr-6"
+              onClick={() => toggleDropdown("manageMedicineFormularies")}
+            >
+              <span className="inline-flex justify-center items-center ml-4">
+                <AiOutlineMedicineBox size={24} />
+              </span>
+              <span className="ml-2 text-sm font-medium tracking-wide truncate">
+                Manage Medicine Formularies
+              </span>
+              <span
+                className={`text-sm ml-auto transition-transform duration-300 ${
+                  openDropdown === "manageMedicineFormularies"
+                    ? "rotate-180"
+                    : "rotate-0"
+                }`}
+              >
+                {openDropdown === "manageMedicineFormularies" ? (
+                  <IoMdArrowDropdown size={20} />
+                ) : (
+                  <IoMdArrowDropright size={20} />
+                )}
+              </span>
+            </div>
+            <div
+              className={`submenu text-left text-sm mt-2 pl-10 pr-4 ${
+                openDropdown === "manageMedicineFormularies" ? "" : "hidden"
+              }`}
+            >
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    to="/view-medicine-formularies"
+                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
+                  >
+                    <span className="inline-flex justify-center items-center ml-4">
+                      <AiOutlineMedicineBox size={20} />
+                    </span>
+                    <span className="ml-2 text-sm tracking-wide truncate">
+                      View Medicine Formularies
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/add-formularies"
+                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
+                  >
+                    <span className="inline-flex justify-center items-center ml-4">
+                      <AiOutlineMedicineBox size={20} />
+                    </span>
+                    <span className="ml-2 text-sm tracking-wide truncate">
+                      Add Formularies
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/add-category"
+                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
+                  >
+                    <span className="inline-flex justify-center items-center ml-4">
+                      <AiOutlineMedicineBox size={20} />
+                    </span>
+                    <span className="ml-2 text-sm tracking-wide truncate">
+                      Add Category
+                    </span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </li>
           {/* Manage Blogs */}
           <li>
             <div

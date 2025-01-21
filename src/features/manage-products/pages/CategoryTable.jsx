@@ -111,7 +111,7 @@ const CategoryTable = () => {
                 <td className="px-6 py-4">{category.description}</td>
                 <td className="px-6 py-4 flex space-x-2">
                   <Link
-                    to={`/edit-category/${category.id}`}
+                    to={`/edit-category/${category._id}`}
                     className="p-2 text-white bg-blue-600 rounded-full hover:bg-blue-500"
                     title="Edit"
                   >
@@ -133,41 +133,86 @@ const CategoryTable = () => {
         <span>
           Showing {startIndex + 1}-{endIndex} of {data?.data?.length}
         </span>
-        <nav aria-label="Table navigation">
-          <ul className="inline-flex items-center space-x-2">
-            <li>
-              <button
-                className="px-3 py-1 rounded-md bg-gray-300 hover:bg-gray-400 disabled:opacity-50"
-                onClick={goToPreviousPage}
-                disabled={currentPage === 1}
-              >
-                Previous
-              </button>
-            </li>
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-              <li key={page}>
-                <button
-                  className={`px-3 py-1 rounded-md ${
-                    currentPage === page
-                      ? "bg-blue-600 text-white"
-                      : "bg-gray-300 hover:bg-gray-400"
-                  }`}
-                  onClick={() => goToPage(page)}
-                >
-                  {page}
-                </button>
-              </li>
-            ))}
-            <li>
-              <button
-                className="px-3 py-1 rounded-md bg-gray-300 hover:bg-gray-400 disabled:opacity-50"
-                onClick={goToNextPage}
-                disabled={currentPage === totalPages}
-              >
-                Next
-              </button>
-            </li>
+        <nav
+          aria-label="Table navigation"
+          className="flex items-center overflow-x-auto space-x-2 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200"
+        >
+          {/* Previous Button */}
+          <button
+            className="px-3 py-1 rounded-md bg-gray-300 hover:bg-gray-400 disabled:opacity-50"
+            onClick={goToPreviousPage}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+
+          {/* Dynamic Pagination with Ellipses */}
+          <ul className="flex items-center space-x-2">
+            {/* Show '1' and ellipsis if currentPage > 3 */}
+            {currentPage > 3 && (
+              <>
+                <li>
+                  <button
+                    className={`px-3 py-1 rounded-md ${
+                      currentPage === 1
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-300 hover:bg-gray-400"
+                    }`}
+                    onClick={() => goToPage(1)}
+                  >
+                    1
+                  </button>
+                </li>
+                <span className="text-gray-500">...</span>
+              </>
+            )}
+
+            {/* Show surrounding page numbers */}
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) =>
+              Math.abs(currentPage - page) <= 2 ? (
+                <li key={page}>
+                  <button
+                    className={`px-3 py-1 rounded-md ${
+                      currentPage === page
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-300 hover:bg-gray-400"
+                    }`}
+                    onClick={() => goToPage(page)}
+                  >
+                    {page}
+                  </button>
+                </li>
+              ) : null
+            )}
+
+            {/* Show ellipsis and last page if currentPage < totalPages - 2 */}
+            {currentPage < totalPages - 2 && (
+              <>
+                <span className="text-gray-500">...</span>
+                <li>
+                  <button
+                    className={`px-3 py-1 rounded-md ${
+                      currentPage === totalPages
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-300 hover:bg-gray-400"
+                    }`}
+                    onClick={() => goToPage(totalPages)}
+                  >
+                    {totalPages}
+                  </button>
+                </li>
+              </>
+            )}
           </ul>
+
+          {/* Next Button */}
+          <button
+            className="px-3 py-1 rounded-md bg-gray-300 hover:bg-gray-400 disabled:opacity-50"
+            onClick={goToNextPage}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
         </nav>
       </div>
     </div>

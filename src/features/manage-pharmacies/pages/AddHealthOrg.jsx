@@ -3,8 +3,10 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
 import { useAddHealthOrganizationMutation } from "../api/healthorgApi";
 import { storage } from "../../../firebase";
+import { useNavigate } from "react-router-dom";
 
 const AddHealthOrg = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [images, setImages] = useState([]);
@@ -59,6 +61,8 @@ const AddHealthOrg = () => {
         service,
       }).unwrap();
       setAdding(false);
+      navigate("/view-organizations");
+      window.location.reload();
 
       // Reset form fields
       setName("");

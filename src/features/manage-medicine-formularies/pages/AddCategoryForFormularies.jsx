@@ -1,40 +1,35 @@
-/* eslint-disable */
 import React, { useState } from "react";
+import { useAddCategoryForFormulariesMutation } from "../api/productsApi";
 import { useNavigate } from "react-router-dom";
-import { useAddFormularyMutation } from "../api/formularyApi";
 
-const AddFormularies = () => {
-  const [title, setTitle] = useState("");
+const AddCategoryForFormularies = () => {
+  const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [last_update] = useState("string");
-  const [created_by] = useState("string");
-  const [updated_by] = useState("string");
+  const [image, setImage] = useState("");
   const [adding, setAdding] = useState(false);
-  const [addFormulary] = useAddFormularyMutation();
+  const [AddCategoryForFormularies] = useAddCategoryForFormulariesMutation();
   const navigate = useNavigate();
 
-  const submitFormHandler = async (event) => {
-    event.preventDefault();
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       setAdding(true);
-      await addFormulary({
-        title,
+      await AddCategoryForFormularies({
+        name,
         description,
-        last_update,
-        created_by,
-        updated_by,
+        image,
       }).unwrap();
 
-      // Reset form fields
-      setTitle("");
+      // Reset form fields after submission
+      setName("");
       setDescription("");
+      setImage("");
       setAdding(false);
-      navigate("/view-medicine-formularies");
+      navigate("/view-categories");
       window.location.reload();
     } catch (error) {
       setAdding(false);
-      console.error("Error adding formulary:", error);
+      console.error("Error adding product category:", error);
     }
   };
 
@@ -43,23 +38,26 @@ const AddFormularies = () => {
       <div className="h-full ml-14 mt-14 mb-10 md:ml-64">
         <section className="px-6 py-10">
           <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
-            <form onSubmit={submitFormHandler} className="space-y-6">
+            {/* <h2 className="mb-6 text-3xl font-semibold text-center text-gray-900">
+              Add formulary Category
+            </h2> */}
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid gap-6 sm:grid-cols-2">
                 <div className="sm:col-span-2">
                   <label
-                    htmlFor="title"
+                    htmlFor="name"
                     className="block mb-2 text-sm font-medium text-gray-700"
                   >
-                    Title
+                    Category Name
                   </label>
                   <input
                     type="text"
-                    name="title"
-                    id="title"
+                    name="name"
+                    id="name"
                     className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
-                    placeholder="Enter formulary title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    placeholder="Enter category name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     required
                   />
                 </div>
@@ -76,9 +74,28 @@ const AddFormularies = () => {
                     id="description"
                     rows={4}
                     className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
-                    placeholder="Enter formulary description"
+                    placeholder="Enter category description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label
+                    htmlFor="image"
+                    className="block mb-2 text-sm font-medium text-gray-700"
+                  >
+                    Image URL
+                  </label>
+                  <input
+                    type="text"
+                    name="image"
+                    id="image"
+                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
+                    placeholder="http://example.com/image.jpg"
+                    value={image}
+                    onChange={(e) => setImage(e.target.value)}
                     required
                   />
                 </div>
@@ -89,7 +106,7 @@ const AddFormularies = () => {
                   type="submit"
                   className="px-6 py-3 text-lg font-medium text-white bg-teal-600 rounded-lg hover:bg-teal-700 focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:outline-none transition-colors duration-300"
                 >
-                  {adding ? "Adding..." : "Add Formulary"}
+                  {adding ? "Adding..." : "Add Category"}
                 </button>
               </div>
             </form>
@@ -100,4 +117,4 @@ const AddFormularies = () => {
   );
 };
 
-export default AddFormularies;
+export default AddCategoryForFormularies;

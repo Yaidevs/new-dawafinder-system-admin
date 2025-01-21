@@ -31,6 +31,8 @@ import EditAds from "./features/manage-ads/pages/EditAds";
 import EditHealthOrg from "./features/manage-pharmacies/pages/EditHealthOrg";
 import EditPost from "./features/manage-blogs/pages/EditPost";
 import { selectIsAuthenticated } from "./features/authentication/slice/authSlice";
+import MedicineFormularies from "./features/manage-medicine-formularies/pages/ManageFormularies";
+import AddFormularies from "./features/manage-medicine-formularies/pages/AddFormularies";
 
 const AppRoutes = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -109,6 +111,7 @@ const AppRoutes = () => {
                 </Layout>
               }
             />
+
             <Route
               path="/view-categories"
               element={
@@ -210,6 +213,22 @@ const AppRoutes = () => {
               element={
                 <Layout>
                   <ManageHealthOrgs />
+                </Layout>
+              }
+            />
+            <Route
+              path="/view-medicine-formularies"
+              element={
+                <Layout>
+                  <MedicineFormularies />
+                </Layout>
+              }
+            />
+            <Route
+              path="/add-formularies"
+              element={
+                <Layout>
+                  <AddFormularies />
                 </Layout>
               }
             />

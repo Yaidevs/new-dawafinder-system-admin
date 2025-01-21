@@ -4,7 +4,7 @@ import {
   useGetAllPrescriptionsQuery,
   useDeletePrescriptionMutation,
 } from "../api/prescriptionsApi";
-import { FaTrashAlt, FaEdit, FaUndoAlt } from "react-icons/fa";
+import { FaTrashAlt,FaEye } from "react-icons/fa";
 
 const PrescriptionsTable = () => {
   const { data, isLoading, error } = useGetAllPrescriptionsQuery();
@@ -93,22 +93,18 @@ const PrescriptionsTable = () => {
                   </Link>
                 </td>
                 <td className="px-6 py-4 text-sm">
-                  <Link to={`/view-prescription/${prescription._id}`}>{prescription.phoneNumber}</Link>
+                  <Link to={`/view-prescription/${prescription._id}`}>
+                    {prescription.phoneNumber}
+                  </Link>
                 </td>
                 <td className="px-6 py-4 flex space-x-2">
                   <Link
-                    to={`/edit-prescription/${prescription._id}`}
+                    to={`/view-prescription/${prescription._id}`}
                     className="p-2 text-white bg-blue-600 rounded-full hover:bg-blue-500"
-                    title="Edit"
+                    title="view"
                   >
-                    <FaEdit />
+                    <FaEye />
                   </Link>
-                  <div
-                    className="p-2 text-white bg-yellow-600 rounded-full hover:bg-yellow-500 cursor-pointer"
-                    title="Restore"
-                  >
-                    <FaUndoAlt />
-                  </div>
                   <button
                     onClick={() => onDelete(prescription._id)}
                     className="p-2 text-white bg-red-600 rounded-full hover:bg-red-500"
