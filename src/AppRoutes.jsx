@@ -235,7 +235,7 @@ const AppRoutes = () => {
               }
             />
             <Route
-              path="/add-formularies"
+              path="/add-medicine-formularies"
               element={
                 <Layout>
                   <AddMedicineFormularies />

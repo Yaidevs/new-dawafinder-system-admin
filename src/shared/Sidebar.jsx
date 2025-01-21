@@ -303,7 +303,7 @@ const Sidebar = () => {
                 </li>
                 <li>
                   <Link
-                    to="/add-formularies"
+                    to="/add-medicine-formularies"
                     className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
                   >
                     <span className="inline-flex justify-center items-center ml-4">
