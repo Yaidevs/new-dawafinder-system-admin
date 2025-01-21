@@ -310,13 +310,13 @@ const Sidebar = () => {
                       <AiOutlineMedicineBox size={20} />
                     </span>
                     <span className="ml-2 text-sm tracking-wide truncate">
-                      Add Formularies
+                      Add medicine Formularies
                     </span>
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to="/add-category"
+                    to="/add-formulary-category"
                     className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
                   >
                     <span className="inline-flex justify-center items-center ml-4">
@@ -324,6 +324,19 @@ const Sidebar = () => {
                     </span>
                     <span className="ml-2 text-sm tracking-wide truncate">
                       Add Category
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/view-formulary-category"
+                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
+                  >
+                    <span className="inline-flex justify-center items-center ml-4">
+                      <AiOutlineMedicineBox size={20} />
+                    </span>
+                    <span className="ml-2 text-sm tracking-wide truncate">
+                      View Category
                     </span>
                   </Link>
                 </li>

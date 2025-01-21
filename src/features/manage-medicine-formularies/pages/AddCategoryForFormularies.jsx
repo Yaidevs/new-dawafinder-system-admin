@@ -1,31 +1,30 @@
 import React, { useState } from "react";
-import { useAddCategoryForFormulariesMutation } from "../api/productsApi";
 import { useNavigate } from "react-router-dom";
+import { useAddCategoryForFormularyMutation } from "../api/formularyApi";
 
 const AddCategoryForFormularies = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
   const [adding, setAdding] = useState(false);
-  const [AddCategoryForFormularies] = useAddCategoryForFormulariesMutation();
+  const [AddCategoryForFormularies] = useAddCategoryForFormularyMutation();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setAdding(true);
-      await AddCategoryForFormularies({
+    const res =  await AddCategoryForFormularies({
         name,
         description,
-        image,
       }).unwrap();
+
+      console.log('hdhhdhdhd',res)
 
       // Reset form fields after submission
       setName("");
       setDescription("");
-      setImage("");
       setAdding(false);
-      navigate("/view-categories");
+      navigate("/view-formulary-category");
       window.location.reload();
     } catch (error) {
       setAdding(false);
@@ -77,25 +76,6 @@ const AddCategoryForFormularies = () => {
                     placeholder="Enter category description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    required
-                  />
-                </div>
-
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="image"
-                    className="block mb-2 text-sm font-medium text-gray-700"
-                  >
-                    Image URL
-                  </label>
-                  <input
-                    type="text"
-                    name="image"
-                    id="image"
-                    className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
-                    placeholder="http://example.com/image.jpg"
-                    value={image}
-                    onChange={(e) => setImage(e.target.value)}
                     required
                   />
                 </div>

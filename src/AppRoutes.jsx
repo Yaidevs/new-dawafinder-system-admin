@@ -32,7 +32,9 @@ import EditHealthOrg from "./features/manage-pharmacies/pages/EditHealthOrg";
 import EditPost from "./features/manage-blogs/pages/EditPost";
 import { selectIsAuthenticated } from "./features/authentication/slice/authSlice";
 import MedicineFormularies from "./features/manage-medicine-formularies/pages/ManageFormularies";
-import AddFormularies from "./features/manage-medicine-formularies/pages/AddFormularies";
+import AddCategoryForFormularies from "./features/manage-medicine-formularies/pages/AddCategoryForFormularies";
+import ManageFormularyCategory from "./features/manage-medicine-formularies/pages/ManageFormularyCategory";
+import AddMedicineFormularies from "./features/manage-medicine-formularies/pages/AddMedicineFormularies";
 
 const AppRoutes = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -217,6 +219,14 @@ const AppRoutes = () => {
               }
             />
             <Route
+              path="/view-formulary-category"
+              element={
+                <Layout>
+                  <ManageFormularyCategory />
+                </Layout>
+              }
+            />
+            <Route
               path="/view-medicine-formularies"
               element={
                 <Layout>
@@ -228,7 +238,15 @@ const AppRoutes = () => {
               path="/add-formularies"
               element={
                 <Layout>
-                  <AddFormularies />
+                  <AddMedicineFormularies />
+                </Layout>
+              }
+            />
+            <Route
+              path="/add-formulary-category"
+              element={
+                <Layout>
+                  <AddCategoryForFormularies />
                 </Layout>
               }
             />

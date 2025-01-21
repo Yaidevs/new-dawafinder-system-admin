@@ -1,16 +1,16 @@
 /* eslint-disable */
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAddFormularyMutation } from "../api/formularyApi";
+import { useAddMedicineFormularyMutation } from "../api/formularyApi";
 
-const AddFormularies = () => {
+const AddMedicineFormularies = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [last_update] = useState("string");
   const [created_by] = useState("string");
   const [updated_by] = useState("string");
   const [adding, setAdding] = useState(false);
-  const [addFormulary] = useAddFormularyMutation();
+  const [addFormulary] = useAddMedicineFormularyMutation();
   const navigate = useNavigate();
 
   const submitFormHandler = async (event) => {
@@ -100,4 +100,4 @@ const AddFormularies = () => {
   );
 };
 
-export default AddFormularies;
+export default AddMedicineFormularies;
