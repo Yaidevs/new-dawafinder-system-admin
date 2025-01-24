@@ -5,11 +5,11 @@ export const formularyApi = createApi({
   reducerPath: "formularyApi",
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
   endpoints: (builder) => ({
-    getAllFormularies: builder.query({
+    getAllMedicineFormularies: builder.query({
       query: () => `formularyapi/medicine-formularies`,
     }),
 
-    getFormularyById: builder.query({
+    getMedicineFormularyById: builder.query({
       query: (id) => ({
         url: `formularyapi/medicine-formularies/${id}`,
       }),
@@ -18,6 +18,14 @@ export const formularyApi = createApi({
     addMedicineFormulary: builder.mutation({
       query: (data) => ({
         url: `formularyapi/medicine-formularies`,
+        method: "POST",
+        body: data,
+      }),
+    }),
+
+    addFormularyForMedicine: builder.mutation({
+      query: (data) => ({
+        url: `formularyapi/formularies`,
         method: "POST",
         body: data,
       }),
@@ -33,7 +41,17 @@ export const formularyApi = createApi({
     getAllFormularyCategories: builder.query({
       query: () => `formularyapi/categories`,
     }),
-
+    getFormularyCategoryById: builder.query({
+      query: (id) => ({
+        url: `formularyapi/categories/${id}`,
+      }),
+    }),
+    getAllFormulary: builder.query({
+      query: () => `formularyapi/formularies`,
+    }),
+    getFormularyById: builder.query({
+      query: (id) => `formularyapi/formularies/${id}`,
+    }),
     deleteFormularyCategory: builder.mutation({
       query: (id) => ({
         url: `formularyapi/categories/${id}`,
@@ -43,21 +61,34 @@ export const formularyApi = createApi({
 
     updateFormularyCategory: builder.mutation({
       query: (data) => ({
-        url: `formularyapi/categories/${data.id}`,
+        url: `formularyapi/categories/${data._id}`,
         method: "PATCH",
         body: data,
       }),
     }),
-    deleteFormulary: builder.mutation({
+    deleteMedicineFormulary: builder.mutation({
       query: (id) => ({
         url: `formularyapi/medicine-formularies/${id}`,
         method: "DELETE",
       }),
     }),
+    deleteFormulary: builder.mutation({
+      query: (id) => ({
+        url: `formularyapi/formulary/${id}`,
+        method: "DELETE",
+      }),
+    }),
 
+    updateMedicineFormulary: builder.mutation({
+      query: (data) => ({
+        url: `formularyapi/medicine-formularies/${data._id}`,
+        method: "PATCH",
+        body: data,
+      }),
+    }),
     updateFormulary: builder.mutation({
       query: (data) => ({
-        url: `formularyapi/medicine-formularies/${data.id}`,
+        url: `formularyapi/formularies/${data._id}`,
         method: "PATCH",
         body: data,
       }),
@@ -66,13 +97,19 @@ export const formularyApi = createApi({
 });
 
 export const {
-  useGetAllFormulariesQuery,
-  useGetFormularyByIdQuery,
+  useGetAllMedicineFormulariesQuery,
+  useGetFormularyCategoryByIdQuery,
+  useGetMedicineFormularyByIdQuery,
+  useDeleteMedicineFormularyMutation,
   useAddMedicineFormularyMutation,
-  useDeleteFormularyMutation,
-  useUpdateFormularyMutation,
+  useUpdateMedicineFormularyMutation,
   useAddCategoryForFormularyMutation,
   useGetAllFormularyCategoriesQuery,
   useDeleteFormularyCategoryMutation,
   useUpdateFormularyCategoryMutation,
+  useAddFormularyForMedicineMutation,
+  useGetAllFormularyQuery,
+  useDeleteFormularyMutation,
+  useGetFormularyByIdQuery,
+  useUpdateFormularyMutation,
 } = formularyApi;

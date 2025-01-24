@@ -19,7 +19,7 @@ const Navbar = () => {
         <ul className="flex items-center space-x-6">
           <li className="relative">
             <Link
-              to="/notifications"
+              to="/home"
               className="flex items-center hover:text-blue-600 transition duration-300"
             >
               <IoMdNotificationsOutline size={24} className="text-gray-800" />

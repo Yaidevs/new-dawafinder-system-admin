@@ -19,7 +19,7 @@ const Sidebar = () => {
 
   return (
     <div className="fixed flex flex-col top-16 left-0 w-14 hover:w-64 md:w-64 bg-[#20846c] text-white h-full shadow-lg transition-all duration-300 z-10">
-      <div className="overflow-hidden flex flex-col justify-between flex-grow">
+      <div className="overflow-y-auto overflow-hidden flex flex-col justify-between flex-grow">
         <ul className="flex flex-col py-4 space-y-1">
           {/* Dashboard */}
           <li>
@@ -303,6 +303,19 @@ const Sidebar = () => {
                 </li>
                 <li>
                   <Link
+                    to="/view-formulary"
+                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
+                  >
+                    <span className="inline-flex justify-center items-center ml-4">
+                      <AiOutlineMedicineBox size={20} />
+                    </span>
+                    <span className="ml-2 text-sm tracking-wide truncate">
+                      View Formulary
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     to="/add-medicine-formularies"
                     className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
                   >
@@ -311,6 +324,19 @@ const Sidebar = () => {
                     </span>
                     <span className="ml-2 text-sm tracking-wide truncate">
                       Add medicine Formularies
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/add-formulary"
+                    className="relative flex flex-row items-center h-10 focus:outline-none hover:bg-[#1a6b58] text-white border-l-4 border-transparent hover:border-[#b3ede0] transition duration-300 pr-6"
+                  >
+                    <span className="inline-flex justify-center items-center ml-4">
+                      <AiOutlineMedicineBox size={20} />
+                    </span>
+                    <span className="ml-2 text-sm tracking-wide truncate">
+                      Add Formulary
                     </span>
                   </Link>
                 </li>

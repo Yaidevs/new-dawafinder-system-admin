@@ -31,10 +31,15 @@ import EditAds from "./features/manage-ads/pages/EditAds";
 import EditHealthOrg from "./features/manage-pharmacies/pages/EditHealthOrg";
 import EditPost from "./features/manage-blogs/pages/EditPost";
 import { selectIsAuthenticated } from "./features/authentication/slice/authSlice";
-import MedicineFormularies from "./features/manage-medicine-formularies/pages/ManageFormularies";
 import AddCategoryForFormularies from "./features/manage-medicine-formularies/pages/AddCategoryForFormularies";
 import ManageFormularyCategory from "./features/manage-medicine-formularies/pages/ManageFormularyCategory";
 import AddMedicineFormularies from "./features/manage-medicine-formularies/pages/AddMedicineFormularies";
+import AddFormulary from "./features/manage-medicine-formularies/pages/AddFormulary";
+import ManageMedicineFormularies from "./features/manage-medicine-formularies/pages/ManageMedicineFormularies";
+import ManageFormulary from "./features/manage-medicine-formularies/pages/ManageFormulary";
+import EditMedicineFormularies from "./features/manage-medicine-formularies/pages/EditMedicineFormularies";
+import EditCategoryForFormularies from "./features/manage-medicine-formularies/pages/EditCategoryForFormularies";
+import EditFormulary from "./features/manage-medicine-formularies/pages/EditFormulary";
 
 const AppRoutes = () => {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -203,6 +208,30 @@ const AppRoutes = () => {
               }
             />
             <Route
+              path="/edit-medicine-formulary/:id"
+              element={
+                <Layout>
+                  <EditMedicineFormularies />
+                </Layout>
+              }
+            />
+            <Route
+              path="/edit-formulary/:id"
+              element={
+                <Layout>
+                  <EditFormulary />
+                </Layout>
+              }
+            />
+            <Route
+              path="/edit-formulary-category/:id"
+              element={
+                <Layout>
+                  <EditCategoryForFormularies />
+                </Layout>
+              }
+            />
+            <Route
               path="/blog-category"
               element={
                 <Layout>
@@ -230,7 +259,7 @@ const AppRoutes = () => {
               path="/view-medicine-formularies"
               element={
                 <Layout>
-                  <MedicineFormularies />
+                  <ManageMedicineFormularies />
                 </Layout>
               }
             />
@@ -239,6 +268,22 @@ const AppRoutes = () => {
               element={
                 <Layout>
                   <AddMedicineFormularies />
+                </Layout>
+              }
+            />
+            <Route
+              path="/add-formulary"
+              element={
+                <Layout>
+                  <AddFormulary />
+                </Layout>
+              }
+            />
+            <Route
+              path="/view-formulary"
+              element={
+                <Layout>
+                  <ManageFormulary />
                 </Layout>
               }
             />

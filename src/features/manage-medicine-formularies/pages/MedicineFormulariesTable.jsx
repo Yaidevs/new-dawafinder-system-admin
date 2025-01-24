@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { FaTrashAlt, FaEdit } from "react-icons/fa";
-
 import {
-  useDeleteFormularyCategoryMutation,
-  useGetAllFormularyCategoriesQuery,
+  useDeleteMedicineFormularyMutation,
+  useGetAllMedicineFormulariesQuery,
 } from "../api/formularyApi";
+import { FaTrashAlt, FaEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const FormularyCategoryTable = () => {
-  const { data, error, isLoading } = useGetAllFormularyCategoriesQuery();
-  console.log(data?.data.categories);
-  const [deleteCategory] = useDeleteFormularyCategoryMutation();
+const MedicineFormulariesTable = () => {
+  const { data, error, isLoading } = useGetAllMedicineFormulariesQuery();
+  console.log("formmms", data?.data.medicineFormularies);
+  const [deleteFormulary] = useDeleteMedicineFormularyMutation();
 
   const onDelete = async (id) => {
     const confirmed = window.confirm(
-      "Are you sure you want to delete this category?"
+      "Are you sure you want to delete this formulary?"
     );
     if (confirmed) {
       try {
-        await deleteCategory(id).unwrap();
+        await deleteFormulary(id).unwrap();
         window.location.reload();
       } catch (error) {
         console.error("Error deleting:", error);
@@ -27,16 +26,17 @@ const FormularyCategoryTable = () => {
   };
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3;
+  const itemsPerPage = 5;
 
   useEffect(() => {
     if (
-      data?.data.categories &&
-      currentPage > Math.ceil(data?.data.categories.length / itemsPerPage)
+      data &&
+      currentPage >
+        Math.ceil(data?.data.medicineFormularies.length / itemsPerPage)
     ) {
       setCurrentPage(1);
     }
-  }, [data?.data.categories]);
+  }, [data]);
 
   const goToPreviousPage = () => {
     if (currentPage > 1) {
@@ -53,11 +53,11 @@ const FormularyCategoryTable = () => {
   };
 
   const totalPages =
-    Math.ceil(data?.data.categories.length / itemsPerPage) || 1;
+    Math.ceil(data?.data.medicineFormularies.length / itemsPerPage) || 1;
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = Math.min(
     startIndex + itemsPerPage,
-    data?.data.categories.length
+    data?.data.medicineFormularies.length
   );
 
   return (
@@ -65,7 +65,7 @@ const FormularyCategoryTable = () => {
       <table className="w-full text-left text-sm text-gray-700">
         <thead className="text-xs font-semibold uppercase bg-gray-200 text-gray-700">
           <tr>
-            <th className="px-6 py-3">Category Name</th>
+            <th className="px-6 py-3">Title</th>
             <th className="px-6 py-3">Description</th>
             <th className="px-6 py-3">Action</th>
           </tr>
@@ -73,39 +73,45 @@ const FormularyCategoryTable = () => {
         <tbody className="divide-y divide-gray-200 bg-white">
           {isLoading && (
             <tr>
-              <td className="px-6 py-3" colSpan="4">
+              <td className="px-6 py-3" colSpan="3">
                 Loading...
               </td>
             </tr>
           )}
           {error && (
             <tr>
-              <td className="px-6 py-3" colSpan="4">
+              <td className="px-6 py-3" colSpan="3">
                 Error: {error.message}
               </td>
             </tr>
           )}
           {!isLoading &&
             !error &&
-            data?.data.categories
+            data?.data.medicineFormularies
               .slice(startIndex, endIndex)
-              .map((category) => (
+              .map((formulary) => (
                 <tr
-                  key={category.id}
+                  key={formulary._id}
                   className="hover:bg-gray-100 transition-colors duration-200"
                 >
-                  <td className="px-6 py-4">{category.name}</td>
-                  <td className="px-6 py-4">{category.description}</td>
+                  <td className="px-6 py-4">
+                    <p className="font-semibold text-gray-900">
+                      {formulary.title}
+                    </p>
+                  </td>
+                  <td className="px-6 py-4 text-gray-600">
+                    {formulary.description}
+                  </td>
                   <td className="px-6 py-4 flex space-x-2">
                     <Link
-                      to={`/edit-formulary-category/${category._id}`}
+                      to={`/edit-medicine-formulary/${formulary._id}`}
                       className="p-2 text-white bg-blue-600 rounded-full hover:bg-blue-500"
                       title="Edit"
                     >
                       <FaEdit />
                     </Link>
                     <button
-                      onClick={() => onDelete(category._id)}
+                      onClick={() => onDelete(formulary._id)}
                       className="p-2 text-white bg-red-600 rounded-full hover:bg-red-500"
                       title="Delete"
                     >
@@ -118,7 +124,8 @@ const FormularyCategoryTable = () => {
       </table>
       <div className="flex justify-between items-center px-6 py-4 text-xs text-gray-600 bg-gray-200 rounded-b-lg">
         <span>
-          Showing {startIndex + 1}-{endIndex} of {data?.data.categories?.length}
+          Showing {startIndex + 1}-{endIndex} of{" "}
+          {data?.data?.medicineFormularies.length}
         </span>
         <nav
           aria-label="Table navigation"
@@ -206,4 +213,4 @@ const FormularyCategoryTable = () => {
   );
 };
 
-export default FormularyCategoryTable;
+export default MedicineFormulariesTable;
