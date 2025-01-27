@@ -18,7 +18,7 @@ const EditHealthOrg = () => {
   const [images, setImages] = useState([]);
   const [subscription, setSubscription] = useState("");
   const [license, setLicense] = useState("");
-  const [coordinates, setCoordinates] = useState(0);
+  const [coordinates, setCoordinates] = useState([]);
   const [description, setDescription] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
@@ -120,7 +120,6 @@ const EditHealthOrg = () => {
                     placeholder="Enter organization name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    required
                   />
                 </div>
 
@@ -139,7 +138,6 @@ const EditHealthOrg = () => {
                     placeholder="Enter organization type"
                     value={type}
                     onChange={(e) => setType(e.target.value)}
-                    required
                   />
                 </div>
 
@@ -175,7 +173,6 @@ const EditHealthOrg = () => {
                     placeholder="Enter subscription type"
                     value={subscription}
                     onChange={(e) => setSubscription(e.target.value)}
-                    required
                   />
                 </div>
 
@@ -194,7 +191,6 @@ const EditHealthOrg = () => {
                     placeholder="Enter license number"
                     value={license}
                     onChange={(e) => setLicense(e.target.value)}
-                    required
                   />
                 </div>
 
@@ -213,7 +209,6 @@ const EditHealthOrg = () => {
                     placeholder="Enter coordinates"
                     value={coordinates}
                     onChange={(e) => setCoordinates(e.target.value)}
-                    required
                   />
                 </div>
 
@@ -231,7 +226,6 @@ const EditHealthOrg = () => {
                     placeholder="Enter description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    required
                   />
                 </div>
 
@@ -250,7 +244,6 @@ const EditHealthOrg = () => {
                     placeholder="Enter country"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
-                    required
                   />
                 </div>
 
@@ -269,7 +262,6 @@ const EditHealthOrg = () => {
                     placeholder="Enter city"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                    required
                   />
                 </div>
 
@@ -288,7 +280,6 @@ const EditHealthOrg = () => {
                     placeholder="Enter street"
                     value={street}
                     onChange={(e) => setStreet(e.target.value)}
-                    required
                   />
                 </div>
 
@@ -307,7 +298,6 @@ const EditHealthOrg = () => {
                     placeholder="Enter phone number"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
-                    required
                   />
                 </div>
 
@@ -326,7 +316,6 @@ const EditHealthOrg = () => {
                     placeholder="Enter email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    required
                   />
                 </div>
 
@@ -345,7 +334,6 @@ const EditHealthOrg = () => {
                     placeholder="Enter service name"
                     value={serviceName}
                     onChange={(e) => setServiceName(e.target.value)}
-                    required
                   />
                 </div>
 
@@ -363,7 +351,6 @@ const EditHealthOrg = () => {
                     placeholder="Enter service description"
                     value={serviceDescription}
                     onChange={(e) => setServiceDescription(e.target.value)}
-                    required
                   />
                 </div>
               </div>

@@ -12,7 +12,7 @@ const AddHealthOrg = () => {
   const [images, setImages] = useState([]);
   const [subscription, setSubscription] = useState("");
   const [license, setLicense] = useState("");
-  const [coordinates, setCoordinates] = useState(0);
+  const [coordinates, setCoordinates] = useState([7.6731, 36.8356]);
   const [description, setDescription] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
@@ -196,12 +196,12 @@ const AddHealthOrg = () => {
                     Coordinates
                   </label>
                   <input
-                    type="number"
+                    type="text"
                     name="coordinates"
                     id="coordinates"
                     className="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500"
                     placeholder="Enter coordinates"
-                    value={coordinates}
+                    value={coordinates?.join(",")}
                     onChange={(e) => setCoordinates(e.target.value)}
                     required
                   />

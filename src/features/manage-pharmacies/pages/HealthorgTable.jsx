@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FaTrashAlt, FaEdit } from "react-icons/fa"; 
+import { FaTrashAlt, FaEdit } from "react-icons/fa";
 import {
   useDeleteOrgsMutation,
   useGetAllHealthOrganizationsQuery,
@@ -13,13 +13,15 @@ const HealthorgTable = () => {
   const itemsPerPage = 3;
 
   const onDelete = async (id) => {
+    console.log('lll',id)
     const confirmed = window.confirm(
       "Are you sure you want to delete this organization?"
     );
     if (confirmed) {
       try {
-        await deleteOrgs(id).unwrap();
-        window.location.reload();
+        const res = await deleteOrgs(id).unwrap();
+        console.log("jjjj", res);
+        // window.location.reload();
       } catch (error) {
         console.error("Error deleting:", error);
       }
@@ -120,90 +122,86 @@ const HealthorgTable = () => {
         </tbody>
       </table>
       <div className="flex justify-between items-center px-6 py-4 text-xs text-gray-600 bg-gray-200 rounded-b-lg">
-  <span>
-    Showing {startIndex + 1}-{endIndex} of {data?.data?.length}
-  </span>
-  <nav
-    aria-label="Table navigation"
-    className="flex items-center overflow-x-auto space-x-2 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200"
-  >
-    {/* Previous Button */}
-    <button
-      className="px-3 py-1 rounded-md bg-gray-300 hover:bg-gray-400 disabled:opacity-50"
-      onClick={goToPreviousPage}
-      disabled={currentPage === 1}
-    >
-      Previous
-    </button>
+        <span>
+          Showing {startIndex + 1}-{endIndex} of {data?.data?.length}
+        </span>
+        <nav
+          aria-label="Table navigation"
+          className="flex items-center overflow-x-auto space-x-2 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200"
+        >
+          {/* Previous Button */}
+          <button
+            className="px-3 py-1 rounded-md bg-gray-300 hover:bg-gray-400 disabled:opacity-50"
+            onClick={goToPreviousPage}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
 
-    {/* Dynamic Pagination */}
-    <ul className="flex items-center space-x-2">
-      {currentPage > 3 && (
-        <>
-          <li>
-            <button
-              className={`px-3 py-1 rounded-md ${
-                currentPage === 1
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-300 hover:bg-gray-400"
-              }`}
-              onClick={() => goToPage(1)}
-            >
-              1
-            </button>
-          </li>
-          <span className="text-gray-500">...</span>
-        </>
-      )}
-      {Array.from(
-        { length: totalPages },
-        (_, i) => i + 1
-      ).map((page) =>
-        Math.abs(currentPage - page) <= 2 ? (
-          <li key={page}>
-            <button
-              className={`px-3 py-1 rounded-md ${
-                currentPage === page
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-300 hover:bg-gray-400"
-              }`}
-              onClick={() => goToPage(page)}
-            >
-              {page}
-            </button>
-          </li>
-        ) : null
-      )}
-      {currentPage < totalPages - 2 && (
-        <>
-          <span className="text-gray-500">...</span>
-          <li>
-            <button
-              className={`px-3 py-1 rounded-md ${
-                currentPage === totalPages
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-300 hover:bg-gray-400"
-              }`}
-              onClick={() => goToPage(totalPages)}
-            >
-              {totalPages}
-            </button>
-          </li>
-        </>
-      )}
-    </ul>
+          {/* Dynamic Pagination */}
+          <ul className="flex items-center space-x-2">
+            {currentPage > 3 && (
+              <>
+                <li>
+                  <button
+                    className={`px-3 py-1 rounded-md ${
+                      currentPage === 1
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-300 hover:bg-gray-400"
+                    }`}
+                    onClick={() => goToPage(1)}
+                  >
+                    1
+                  </button>
+                </li>
+                <span className="text-gray-500">...</span>
+              </>
+            )}
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) =>
+              Math.abs(currentPage - page) <= 2 ? (
+                <li key={page}>
+                  <button
+                    className={`px-3 py-1 rounded-md ${
+                      currentPage === page
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-300 hover:bg-gray-400"
+                    }`}
+                    onClick={() => goToPage(page)}
+                  >
+                    {page}
+                  </button>
+                </li>
+              ) : null
+            )}
+            {currentPage < totalPages - 2 && (
+              <>
+                <span className="text-gray-500">...</span>
+                <li>
+                  <button
+                    className={`px-3 py-1 rounded-md ${
+                      currentPage === totalPages
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-300 hover:bg-gray-400"
+                    }`}
+                    onClick={() => goToPage(totalPages)}
+                  >
+                    {totalPages}
+                  </button>
+                </li>
+              </>
+            )}
+          </ul>
 
-    {/* Next Button */}
-    <button
-      className="px-3 py-1 rounded-md bg-gray-300 hover:bg-gray-400 disabled:opacity-50"
-      onClick={goToNextPage}
-      disabled={currentPage === totalPages}
-    >
-      Next
-    </button>
-  </nav>
-</div>
-
+          {/* Next Button */}
+          <button
+            className="px-3 py-1 rounded-md bg-gray-300 hover:bg-gray-400 disabled:opacity-50"
+            onClick={goToNextPage}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+        </nav>
+      </div>
     </div>
   );
 };
