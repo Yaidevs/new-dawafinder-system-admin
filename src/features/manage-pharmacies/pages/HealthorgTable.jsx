@@ -21,7 +21,7 @@ const HealthorgTable = () => {
       try {
         const res = await deleteOrgs(id).unwrap();
         console.log("jjjj", res);
-        // window.location.reload();
+        window.location.reload();
       } catch (error) {
         console.error("Error deleting:", error);
       }

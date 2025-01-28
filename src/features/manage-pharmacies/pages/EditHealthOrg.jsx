@@ -18,7 +18,7 @@ const EditHealthOrg = () => {
   const [images, setImages] = useState([]);
   const [subscription, setSubscription] = useState("");
   const [license, setLicense] = useState("");
-  const [coordinates, setCoordinates] = useState([]);
+  // const [coordinates, setCoordinates] = useState([]);
   const [description, setDescription] = useState("");
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
@@ -37,7 +37,7 @@ const EditHealthOrg = () => {
       setImages(org.images || []);
       setSubscription(org.subscription);
       setLicense(org.license);
-      setCoordinates(org.absoluteLocation.coordinates[0]);
+      // setCoordinates(org.absoluteLocation.coordinates[0]);
       setDescription(org.services[0]?.description || "");
       setCountry(org.relativeLocation.country);
       setCity(org.relativeLocation.city);
@@ -65,8 +65,8 @@ const EditHealthOrg = () => {
         }
       }
 
-      const absoluteLocation = { coordinates, street };
-      const relativeLocation = { country, city, street };
+      // const absoluteLocation = { coordinates, street };
+      // const relativeLocation = { country, city, street };
       const contact = { phoneNumber, email };
       const service = [{ serviceName, serviceDescription }];
 
@@ -79,8 +79,8 @@ const EditHealthOrg = () => {
         subscription,
         license,
         description,
-        absoluteLocation,
-        relativeLocation,
+        // absoluteLocation,
+        // relativeLocation,
         contact,
         service,
       }).unwrap();
@@ -194,7 +194,7 @@ const EditHealthOrg = () => {
                   />
                 </div>
 
-                <div>
+                {/* <div>
                   <label
                     htmlFor="coordinates"
                     className="block mb-2 text-sm font-medium text-gray-700"
@@ -210,7 +210,7 @@ const EditHealthOrg = () => {
                     value={coordinates}
                     onChange={(e) => setCoordinates(e.target.value)}
                   />
-                </div>
+                </div> */}
 
                 <div className="sm:col-span-2">
                   <label

@@ -69,6 +69,8 @@ const EditFormulary = () => {
     }
   };
 
+  
+
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-white to-gray-100 text-gray-800">
       {formularyLoading || categoriesLoading ? (
